@@ -27,6 +27,7 @@ import org.dwcj.exceptions.DwcjException;
     }
 
     .profilMenüP{
+        display:flex;
         background-color: black;
         height: 60px;
         width: 100%;
@@ -42,6 +43,11 @@ import org.dwcj.exceptions.DwcjException;
         padding-left: 2px;
         color: #d40f2f;
     }
+
+    .menüIcon{
+        display: contents;
+    }
+
     """)
 @AppTitle("DWCJ Hello World")
 public class HelloWorldJava extends App {
@@ -53,15 +59,26 @@ public class HelloWorldJava extends App {
     private Button übersichtbtn;
     private Button feedbackbtn;
     private Button mitarbeiterbtn;
-    // private Button;
+    private Label menüIcon;
 
     @Override
     public void run() throws DwcjException {
-        App.setTheme("dark-pure");
+    App.setTheme("dark-pure");
+    menüIcon = new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIcon");
 
     frame = new Frame().addClassName("frame");
     navbarP = new Panel().addClassName("navbarP");
-    profilMenüP = new Panel().addClassName("profilMenüP");
+    profilMenüP = new Panel().addClassName("profilMenüP")
+    .add(menüIcon);
+
+        menüIcon.addMouseExitListener(e ->{
+            // if (!profilMenüP.isVisible()) {
+                menübarP.setVisible(false);
+            // }else{
+                // profilMenüP.setVisible(true);
+            // }
+        });
+
     menübarP = new Panel().addClassName("menübarP");
 
     übersichtbtn = new Button("Übersicht").addClassName("übersichtsbtn");
@@ -72,4 +89,5 @@ public class HelloWorldJava extends App {
         frame.add(navbarP, profilMenüP, menübarP);
         menübarP.add(übersichtbtn, feedbackbtn, mitarbeiterbtn);
     }
+
 }
