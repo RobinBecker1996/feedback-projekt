@@ -8,6 +8,7 @@ import org.dwcj.component.button.Button;
 import org.dwcj.component.button.ButtonTheme;
 import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Frame;
+import org.dwcj.component.window.Panel;
 import org.dwcj.exceptions.DwcjException;
 
 /**
@@ -15,29 +16,60 @@ import org.dwcj.exceptions.DwcjException;
  */
 @InlineStyleSheet(/* css */"""
     .frame {
-      display: inline-grid;
-      gap: 20px;
-      margin: 20px;
-      padding: 20px;
-      border: 1px dotted;
+        display: inline;
+
     }
-      """)
+
+    .navbarP{
+        background-color: #101418;
+        height:32px;
+        width: 100%;
+    }
+
+    .profilMenüP{
+        background-color: black;
+        height: 60px;
+        width: 100%;
+    }
+
+    .menübarP{
+        background-color: #333F4D;
+        height:80px;
+    }
+
+    .übersichtsbtn, .feedbackbtn, .mitarbeiterbtn{
+        height: 80px;
+        padding-left: 2px;
+        color: #d40f2f;
+    }
+    """)
 @AppTitle("DWCJ Hello World")
 public class HelloWorldJava extends App {
+    private Panel navbarP;
+    private Panel profilMenüP;
+    private Panel menübarP;
+    private Frame frame;
 
-  @Override
-  public void run() throws DwcjException {
+    private Button übersichtbtn;
+    private Button feedbackbtn;
+    private Button mitarbeiterbtn;
+    // private Button;
 
-    Frame frame = new Frame();
-    frame.addClassName("frame");
+    @Override
+    public void run() throws DwcjException {
+        App.setTheme("dark-pure");
 
-    Label label = new Label("Hello World!");
+    frame = new Frame().addClassName("frame");
+    navbarP = new Panel().addClassName("navbarP");
+    profilMenüP = new Panel().addClassName("profilMenüP");
+    menübarP = new Panel().addClassName("menübarP");
 
-    Button btn = new Button("Say Hello");
-    btn.setTheme(ButtonTheme.SUCCESS)
-        .setExpanse(Expanse.XLARGE)
-        .onClick(e -> msgbox("Hello World!"));
+    übersichtbtn = new Button("Übersicht").addClassName("übersichtsbtn");
+    feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
+    mitarbeiterbtn = new Button("Mitarbeiter").addClassName("mitarbeiterbtn");
 
-    frame.add(label, btn);
-  }
+
+        frame.add(navbarP, profilMenüP, menübarP);
+        menübarP.add(übersichtbtn, feedbackbtn, mitarbeiterbtn);
+    }
 }
