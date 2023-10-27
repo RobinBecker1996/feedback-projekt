@@ -60,7 +60,7 @@ public class HelloWorldJava extends App {
         employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");
 
         overviewbtn.onClick(e -> {
-            mit.employeesP.setVisible(false);
+            mit.employeesMitP.setVisible(false);
             overviewP.setVisible(true);
         });
 
@@ -68,7 +68,9 @@ public class HelloWorldJava extends App {
         employeesbtn.onClick(e -> {
             overviewP.setVisible(false);
             mit.run();
-            mit.employeesP.setVisible(true);
+            mit.employeesMitP.setVisible(true);
+            // overviewP.destroy();
+            frame.add(mit.employeesMitP);
         });
 
         overviewP.add(tableP, calendarP);

@@ -9,9 +9,9 @@ import org.dwcj.component.window.Panel;
 public class MitarbeiterPan {
     private Panel topP;
     private Panel bottomP;
-    public Panel employeesP; // alle panel
-    private Panel tableP; //Tabelle
-    private Panel calendarP; //Kaledner und TextArea
+    public Panel employeesMitP; // alle panel
+    private Panel tableMitP; //Tabelle
+    private Panel calendarMitP; //Kaledner und TextArea
     private Panel insertP; // Formular + Button
     private Panel buttonP;
 
@@ -26,9 +26,9 @@ public class MitarbeiterPan {
     private Button createbtn;
 
     public void run() {
-        employeesP = new Panel().addClassName("employeesP").setVisible(false);
-        tableP = new Panel().addClassName("tableP");
-        calendarP = new Panel().addClassName("calendarP");
+        employeesMitP = new Panel().addClassName("employeesMitP");
+        tableMitP = new Panel().addClassName("tableMitP");
+        calendarMitP = new Panel().addClassName("calendarMitP");
         insertP = new Panel().addClassName("insertP");
         buttonP = new Panel().addClassName("buttonP");
         topP = new Panel().addClassName("topP");
@@ -37,7 +37,7 @@ public class MitarbeiterPan {
         employeesIDNF = new NumberField("Employees ID").addClassName("employeesIDNF");
         terminDF = new DateField("Termin").addClassName("terminDF");
         addedDF = new DateField("Added").addClassName("addedDF");
-        zielTF = new TextField("Ziele").addClassName("zielTF");
+        zielTF = new TextField("Goals").addClassName("zielTF");
         feedbackinfo = new TextField("Feedback infos").addClassName("feedbackinfo");
 
         savebtn = new Button("Save").addClassName("savebtn");
@@ -48,9 +48,9 @@ public class MitarbeiterPan {
 
         insertP.add(employeesIDNF, terminDF, addedDF, zielTF, feedbackinfo);
         buttonP.add(savebtn, deletbtn, createbtn);
-        topP.add(tableP, calendarP);
+        topP.add(tableMitP, calendarMitP);
         bottomP.add(insertP, buttonP);
-        employeesP.add(topP, bottomP);
+        employeesMitP.add(topP, bottomP);
 
 
 
