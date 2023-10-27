@@ -97,10 +97,12 @@ public class HelloWorldJava extends App {
     private Label title;
     private Label basisicon;
 
+    MitarbeiterPan mit;
 
     @Override
     public void run() throws DwcjException {
         App.setTheme("dark-pure");
+        mit = new MitarbeiterPan();
 
         title = new Label("Feedback").addClassName("title");
 
@@ -121,15 +123,22 @@ public class HelloWorldJava extends App {
 
         overviewP = new Panel().addClassName("übersichtsP");
 
-        employeesbtn.onClick(e -> {
-
-        });
-
-
         menübarP = new Panel().addClassName("menübarP");
         overviewbtn = new Button("Übersicht").addClassName("übersichtsbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
         employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");
+
+        overviewbtn.onClick(e -> {
+            mit.employeesP.setVisible(false);
+            overviewP.setVisible(true);
+        });
+
+
+        employeesbtn.onClick(e -> {
+            overviewP.setVisible(false);
+            mit.run();
+            mit.employeesP.setVisible(true);
+        });
 
         overviewP.add(tableP, calendarP);
         frame.add(navbarP, profilMenüP, menübarP, overviewP);
