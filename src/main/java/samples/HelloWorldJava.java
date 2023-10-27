@@ -4,6 +4,7 @@ import org.dwcj.App;
 import org.dwcj.annotation.AppTitle;
 import org.dwcj.annotation.InlineStyleSheet;
 import org.dwcj.component.button.Button;
+import org.dwcj.component.textarea.TextArea;
 import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Frame;
 import org.dwcj.component.window.Panel;
@@ -53,13 +54,28 @@ import org.dwcj.exceptions.DwcjException;
         margin: 5px;
     }
 
+    .kalenderP {
+        display: flex;
+        height: 388px;
+        background-color: blue;
+        width: 30%;
+        margin-left: 149px;
+        margin-top: 20px;
+    }
+
+    .übersichtsP {
+        display: flex;
+    }
+
     """)
 @AppTitle("DWCJ Hello World")
 public class HelloWorldJava extends App {
     private Panel navbarP;
     private Panel profilMenüP;
     private Panel menübarP;
+    private Panel übersichtP;
     private Panel tabelleP;
+    private Panel kalenderP;
     private Frame frame;
 
     private Button übersichtbtn;
@@ -69,25 +85,31 @@ public class HelloWorldJava extends App {
 
     @Override
     public void run() throws DwcjException {
-    App.setTheme("dark-pure");
-    tabelleP = new Panel().addClassName("tabelleP");
-    menüIcon = new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIcon");
+        App.setTheme("dark-pure");
+        tabelleP = new Panel().addClassName("tabelleP");
 
-    frame = new Frame().addClassName("frame");
-    navbarP = new Panel().addClassName("navbarP");
-    profilMenüP = new Panel().addClassName("profilMenüP")
-    .add(menüIcon);
+        menüIcon = new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIcon");
+
+        kalenderP = new Panel().addClassName("kalenderP");
+
+        frame = new Frame().addClassName("frame");
+
+        navbarP = new Panel().addClassName("navbarP");
+
+        profilMenüP = new Panel().addClassName("profilMenüP")
+        .add(menüIcon);
+
+        übersichtP = new Panel().addClassName("übersichtsP");
 
 
-    menübarP = new Panel().addClassName("menübarP");
+        menübarP = new Panel().addClassName("menübarP");
+        übersichtbtn = new Button("Übersicht").addClassName("übersichtsbtn");
+        feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
+        mitarbeiterbtn = new Button("Mitarbeiter").addClassName("mitarbeiterbtn");
 
-    übersichtbtn = new Button("Übersicht").addClassName("übersichtsbtn");
-    feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
-    mitarbeiterbtn = new Button("Mitarbeiter").addClassName("mitarbeiterbtn");
-
-
-        frame.add(navbarP, profilMenüP, menübarP, tabelleP);
-        menübarP.add(übersichtbtn, feedbackbtn, mitarbeiterbtn);
+        übersichtP.add(tabelleP, kalenderP);
+        frame.add(navbarP, profilMenüP, menübarP, übersichtP);
+        menübarP.add(übersichtbtn, mitarbeiterbtn, feedbackbtn);
     }
 
 }
