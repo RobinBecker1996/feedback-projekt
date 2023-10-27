@@ -1,5 +1,6 @@
 package samples;
 
+import org.dwcj.component.Expanse;
 import org.dwcj.component.button.Button;
 import org.dwcj.component.field.DateField;
 import org.dwcj.component.field.NumberField;
@@ -34,11 +35,16 @@ public class MitarbeiterPan {
         topP = new Panel().addClassName("topP");
         bottomP = new Panel().addClassName("bottomP");
 
-        employeesIDNF = new NumberField("Employees ID").addClassName("employeesIDNF");
-        terminDF = new DateField("Termin").addClassName("terminDF");
-        addedDF = new DateField("Added").addClassName("addedDF");
-        zielTF = new TextField("Goals").addClassName("zielTF");
-        feedbackinfo = new TextField("Feedback infos").addClassName("feedbackinfo");
+        employeesIDNF = new NumberField("Employees ID:").addClassName("employeesIDNF");
+        terminDF = new DateField("Termin:").addClassName("terminDF");
+        addedDF = new DateField("Added:").addClassName("addedDF");
+        zielTF = new TextField("Goals:").addClassName("zielTF");
+        feedbackinfo = new TextField("Feedback infos:").addClassName("feedbackinfo");
+        // employeesIDNF.setExpanse(Expanse.SMALL);
+        // terminDF.setExpanse(Expanse.SMALL);
+        // addedDF.setExpanse(Expanse.SMALL);
+        // zielTF.setExpanse(Expanse.SMALL);
+        // feedbackinfo.setExpanse(Expanse.SMALL);
 
         savebtn = new Button("Save").addClassName("savebtn");
         deletbtn = new Button("Delet").addClassName("deletbtn");
@@ -48,8 +54,8 @@ public class MitarbeiterPan {
 
         topP.add(tableMitP, calendarMitP);
         bottomP.add(insertP, buttonP);
-        // insertP.add(employeesIDNF, terminDF, addedDF, zielTF, feedbackinfo);
-        // buttonP.add(savebtn, deletbtn, createbtn);
+        insertP.add(employeesIDNF, terminDF, addedDF, zielTF, feedbackinfo);
+        buttonP.add(savebtn, deletbtn, createbtn);
         employeesMitP.add(topP, bottomP);
 
 

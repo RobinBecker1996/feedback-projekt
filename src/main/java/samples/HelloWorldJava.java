@@ -1,5 +1,7 @@
 package samples;
 
+import javax.swing.plaf.metal.MetalBorders.ScrollPaneBorder;
+
 import org.dwcj.App;
 import org.dwcj.annotation.AppTitle;
 import org.dwcj.annotation.InlineStyleSheet;
@@ -27,12 +29,14 @@ public class HelloWorldJava extends App {
     private Label menüIcon;
     private Label title;
     private Label basisicon;
+    ScrollPaneBorder scroll;
 
     MitarbeiterPan mit;
 
     @Override
     public void run() throws DwcjException {
         App.setTheme("dark-pure");
+
         mit = new MitarbeiterPan();
 
         title = new Label("Feedback").addClassName("title");
@@ -47,6 +51,7 @@ public class HelloWorldJava extends App {
 
         frame = new Frame().addClassName("frame");
 
+
         navbarP = new Panel().addClassName("navbarP").add(basisicon, title);
 
         profilMenüP = new Panel().addClassName("profilMenüP")
@@ -58,6 +63,14 @@ public class HelloWorldJava extends App {
         overviewbtn = new Button("Übersicht").addClassName("übersichtsbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
         employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");
+
+        menüIcon.onMouseEnter(e -> {
+            if (!menübarP.isVisible()){
+                menübarP.setVisible(true);
+            }else{
+                menübarP.setVisible(false);
+            }
+        });
 
         overviewbtn.onClick(e -> {
             mit.employeesMitP.setVisible(false);

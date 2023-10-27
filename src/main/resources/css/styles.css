@@ -1,91 +1,145 @@
+.frame {
+    display: inline;
 
-    .frame {
-        display: inline;
+}
 
-    }
+.navbarP {
+    /*teil des Menüs*/
+    background-color: #101418;
+    height: 32px;
+    width: 100%;
+}
 
-    .navbarP{ /*teil des Menüs*/
-        background-color: #101418;
-        height:32px;
-        width: 100%;
-    }
+.profilMenüP {
+    /*teil des Menüs*/
+    display: flex;
+    background-color: black;
+    height: 60px;
+    width: 100%;
+}
 
-    .profilMenüP{ /*teil des Menüs*/
-        display:flex;
-        background-color: black;
-        height: 60px;
-        width: 100%;
-    }
+.menübarP {
+    /*teil des Menüs*/
+    background-color: #333F4D;
+    height: 80px;
+}
 
-    .menübarP{ /*teil des Menüs*/
-        background-color: #333F4D;
-        height:80px;
-    }
+.übersichtsbtn,
+.feedbackbtn,
+.employeesbtn {
+    /*teil des Menüs*/
+    height: 80px;
+    padding-left: 2px;
+    color: #d40f2f;
+}
 
-    .übersichtsbtn, .feedbackbtn, .employeesbtn{ /*teil des Menüs*/
-        height: 80px;
-        padding-left: 2px;
-        color: #d40f2f;
-    }
+.menüIcon {
+    /*teil des Menüs*/
+    display: contents;
+}
 
-    .menüIcon{ /*teil des Menüs*/
-        display: contents;
-    }
+.übersichtsP {
+    /*teil des Menüs*/
+    display: flex;
+}
 
-    .übersichtsP { /*teil des Menüs*/
-        display: flex;
-    }
+.title {
+    /*teil des Menüs*/
+    display: flex;
+    justify-content: center;
+    margin-top: -27px;
+    font-size: 20px;
+}
 
-    .title { /*teil des Menüs*/
-        display: flex;
-        justify-content: center;
-        margin-top: -27px;
-        font-size: 20px;
-    }
-
-    .basisicon { /*teil des Menüs*/
-        display: flex;
-        height: 31px;
-    }
+.basisicon {
+    /*teil des Menüs*/
+    display: flex;
+    height: 31px;
+}
 
 /*Übersicht*/
 /*Übersicht*/
 /*Übersicht*/
-    .tableP {
-        height: 250px;
-        background-color: white;
-        width: 50%;
-        margin: 5px;
-    }
+.tableP {
+    height: 250px;
+    background-color: white;
+    width: 50%;
+    margin: 5px;
+}
 
-    .calendarP {
-        display: flex;
-        height: 388px;
-        background-color: blue;
-        width: 30%;
-        margin-left: 149px;
-        margin-top: 20px;
-    }
+.calendarP {
+    display: flex;
+    height: 388px;
+    background-color: blue;
+    width: 30%;
+    margin-left: 149px;
+    margin-top: 20px;
+}
 
 /*Mitarbeiter*/
 /*Mitarbeiter*/
 /*Mitarbeiter*/
-    .topP {
-        display: flex;
-        height: 200px;
-        /* background-color: brown; */
-    }
+employeesMitP {
+    overflow-y: auto;
+    overflow: auto;
 
-    .calendarMitP {
-        height: 400px;
-        background-color: aliceblue;
-        width: 30%;
-        margin-left: 147px;
-        margin-top: 40px;
-    }
+}
 
-    .tableMitP {
-        height: 500px;
-        background-color: antiquewhite;
-        width: 50%;
-    }
+.topP {
+    display: flex;
+    height: 200px;
+    /* background-color: brown; */
+}
+
+.calendarMitP {
+    height: 400px;
+    background-color: aliceblue;
+    width: 30%;
+    margin-left: 147px;
+    margin-top: 40px;
+}
+
+.tableMitP {
+    height: 500px;
+    background-color: antiquewhite;
+    width: 50%;
+}
+
+.insertP {
+    display: flex;
+    margin-top: 312px;
+    gap: 10px;
+    width: 900px;
+}
+
+.buttonP {
+    display: flex;
+    margin: 21px;
+    margin-left: 200px;
+    gap: 100px;
+}
+
+.employeesIDNF,
+.terminDF,
+.addedDF,
+.zielTF,
+.feedbackinfo {
+    display: flex;
+    width: 10px;
+}
+
+/*Scrollbar*/
+/*Scrollbar*/
+/*Scrollbar*/
+/* .employeesMitP {
+    overflow: auto;
+} */
+
+/* :root {
+    overflow: auto !important;
+} */
+
+/* .element.style {
+    border-style: none;
+    overflow: scroll !important;
+} */
