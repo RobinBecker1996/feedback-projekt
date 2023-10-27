@@ -9,78 +9,9 @@ import org.dwcj.component.window.Frame;
 import org.dwcj.component.window.Panel;
 import org.dwcj.exceptions.DwcjException;
 
-/**
- * A simple HelloWorld app.
- */
-@InlineStyleSheet(/* css */"""
-    .frame {
-        display: inline;
-
-    }
-
-    .navbarP{
-        background-color: #101418;
-        height:32px;
-        width: 100%;
-    }
-
-    .profilMenüP{
-        display:flex;
-        background-color: black;
-        height: 60px;
-        width: 100%;
-    }
-
-    .menübarP{
-        background-color: #333F4D;
-        height:80px;
-    }
-
-    .übersichtsbtn, .feedbackbtn, .employeesbtn{
-        height: 80px;
-        padding-left: 2px;
-        color: #d40f2f;
-    }
-
-    .menüIcon{
-        display: contents;
-    }
-
-    .tableP {
-        height: 250px;
-        background-color: white;
-        width: 50%;
-        margin: 5px;
-    }
-
-    .calendarP {
-        display: flex;
-        height: 388px;
-        background-color: blue;
-        width: 30%;
-        margin-left: 149px;
-        margin-top: 20px;
-    }
-
-    .übersichtsP {
-        display: flex;
-    }
-
-    .title {
-        display: flex;
-        justify-content: center;
-        margin-top: -27px;
-        font-size: 20px;
-    }
-
-    .basisicon {
-        display: flex;
-        height: 31px;
-    }
-
-
-    """)
+@InlineStyleSheet("context://css/styles.css")
 @AppTitle("DWCJ Hello World")
+
 public class HelloWorldJava extends App {
     private Panel navbarP;
     private Panel profilMenüP;
