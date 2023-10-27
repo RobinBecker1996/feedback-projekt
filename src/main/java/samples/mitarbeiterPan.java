@@ -6,7 +6,7 @@ import org.dwcj.component.field.NumberField;
 import org.dwcj.component.field.TextField;
 import org.dwcj.component.window.Panel;
 
-public class MitarbeiterPan {
+public class MitarbeiterPan{
     private Panel topP;
     private Panel bottomP;
     public Panel employeesMitP; // alle panel
@@ -40,6 +40,7 @@ public class MitarbeiterPan {
         zielTF = new TextField("Goals:").addClassName("zielTF");
         feedbackinfo = new TextField("Feedback infos:").addClassName("feedbackinfo");
 
+
         savebtn = new Button("Save").addClassName("savebtn");
         deletbtn = new Button("Delet").addClassName("deletbtn");
         createbtn = new Button("Create").addClassName("createbtn");
@@ -51,8 +52,6 @@ public class MitarbeiterPan {
         insertP.add(employeesIDNF, terminDF, addedDF, zielTF, feedbackinfo);
         buttonP.add(savebtn, deletbtn, createbtn);
         employeesMitP.add(topP, bottomP);
-
-
 
     }
 

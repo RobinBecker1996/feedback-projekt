@@ -64,13 +64,13 @@ public class HelloWorldJava extends App {
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
         employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");
 
-        menüIcon.onMouseEnter(e -> {
-            if (!menübarP.isVisible()){
-                menübarP.setVisible(true);
-            }else{
-                menübarP.setVisible(false);
-            }
-        });
+        // menüIcon.onMouseEnter(e -> {
+        //     if (!menübarP.isVisible()){
+        //         menübarP.setVisible(true);
+        //     }else{
+        //         menübarP.setVisible(false);
+        //     }
+        // });
 
         overviewbtn.onClick(e -> {
             mit.employeesMitP.setVisible(false);
@@ -82,7 +82,6 @@ public class HelloWorldJava extends App {
             overviewP.setVisible(false);
             mit.run();
             mit.employeesMitP.setVisible(true);
-            // overviewP.destroy();
             frame.add(mit.employeesMitP);
         });
 
@@ -91,6 +90,8 @@ public class HelloWorldJava extends App {
         menübarP.add(overviewbtn, employeesbtn, feedbackbtn);
     }
 
+    public void changtab(){
 
+    }
 
 }

@@ -1,6 +1,11 @@
+/* body,
+html { */
+/* :root{
+    overflow: hidden;
+} */
+
 .frame {
     display: inline;
-
 }
 
 .navbarP {
@@ -79,11 +84,11 @@
 /*Mitarbeiter*/
 /*Mitarbeiter*/
 /*Mitarbeiter*/
-employeesMitP {
+/* employeesMitP {
     overflow-y: auto;
     overflow: auto;
 
-}
+} */
 
 .topP {
     display: flex;
@@ -126,5 +131,9 @@ employeesMitP {
 .feedbackinfo {
     display: flex;
     width: 10px;
+}
+
+.emplyoeesMitP{
+    overflow: scroll;
 }
 
