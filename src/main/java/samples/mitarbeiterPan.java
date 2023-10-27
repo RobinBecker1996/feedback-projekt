@@ -1,6 +1,5 @@
 package samples;
 
-import org.dwcj.component.Expanse;
 import org.dwcj.component.button.Button;
 import org.dwcj.component.field.DateField;
 import org.dwcj.component.field.NumberField;
@@ -40,11 +39,6 @@ public class MitarbeiterPan {
         addedDF = new DateField("Added:").addClassName("addedDF");
         zielTF = new TextField("Goals:").addClassName("zielTF");
         feedbackinfo = new TextField("Feedback infos:").addClassName("feedbackinfo");
-        // employeesIDNF.setExpanse(Expanse.SMALL);
-        // terminDF.setExpanse(Expanse.SMALL);
-        // addedDF.setExpanse(Expanse.SMALL);
-        // zielTF.setExpanse(Expanse.SMALL);
-        // feedbackinfo.setExpanse(Expanse.SMALL);
 
         savebtn = new Button("Save").addClassName("savebtn");
         deletbtn = new Button("Delet").addClassName("deletbtn");
