@@ -4,7 +4,6 @@ import org.dwcj.App;
 import org.dwcj.annotation.AppTitle;
 import org.dwcj.annotation.InlineStyleSheet;
 import org.dwcj.component.button.Button;
-import org.dwcj.component.textarea.TextArea;
 import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Frame;
 import org.dwcj.component.window.Panel;
@@ -67,6 +66,12 @@ import org.dwcj.exceptions.DwcjException;
         display: flex;
     }
 
+    .title {
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+    }
+
     """)
 @AppTitle("DWCJ Hello World")
 public class HelloWorldJava extends App {
@@ -82,10 +87,18 @@ public class HelloWorldJava extends App {
     private Button feedbackbtn;
     private Button mitarbeiterbtn;
     private Label menüIcon;
+    private Label title;
+    private Label basisicon;
+
 
     @Override
     public void run() throws DwcjException {
         App.setTheme("dark-pure");
+
+        title = new Label("Feedback").addClassName("title");
+
+        basisicon = new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("firmicon");
+
         tabelleP = new Panel().addClassName("tabelleP");
 
         menüIcon = new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIcon");
@@ -94,7 +107,7 @@ public class HelloWorldJava extends App {
 
         frame = new Frame().addClassName("frame");
 
-        navbarP = new Panel().addClassName("navbarP");
+        navbarP = new Panel().addClassName("navbarP").add(basisicon, title);
 
         profilMenüP = new Panel().addClassName("profilMenüP")
         .add(menüIcon);
