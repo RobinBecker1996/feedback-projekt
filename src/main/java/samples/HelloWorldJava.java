@@ -69,8 +69,15 @@ import org.dwcj.exceptions.DwcjException;
     .title {
         display: flex;
         justify-content: center;
+        margin-top: -27px;
         font-size: 20px;
     }
+
+    .basisicon {
+        display: flex;
+        height: 31px;
+    }
+
 
     """)
 @AppTitle("DWCJ Hello World")
@@ -97,7 +104,7 @@ public class HelloWorldJava extends App {
 
         title = new Label("Feedback").addClassName("title");
 
-        basisicon = new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("firmicon");
+        basisicon = new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("basisicon");
 
         tabelleP = new Panel().addClassName("tabelleP");
 
