@@ -1,36 +1,56 @@
+
     .frame {
         display: inline;
 
     }
 
-    .navbarP{
+    .navbarP{ /*teil des Menüs*/
         background-color: #101418;
         height:32px;
         width: 100%;
     }
 
-    .profilMenüP{
+    .profilMenüP{ /*teil des Menüs*/
         display:flex;
         background-color: black;
         height: 60px;
         width: 100%;
     }
 
-    .menübarP{
+    .menübarP{ /*teil des Menüs*/
         background-color: #333F4D;
         height:80px;
     }
 
-    .übersichtsbtn, .feedbackbtn, .employeesbtn{
+    .übersichtsbtn, .feedbackbtn, .employeesbtn{ /*teil des Menüs*/
         height: 80px;
         padding-left: 2px;
         color: #d40f2f;
     }
 
-    .menüIcon{
+    .menüIcon{ /*teil des Menüs*/
         display: contents;
     }
 
+    .übersichtsP { /*teil des Menüs*/
+        display: flex;
+    }
+
+    .title { /*teil des Menüs*/
+        display: flex;
+        justify-content: center;
+        margin-top: -27px;
+        font-size: 20px;
+    }
+
+    .basisicon { /*teil des Menüs*/
+        display: flex;
+        height: 31px;
+    }
+
+/*Übersicht*/
+/*Übersicht*/
+/*Übersicht*/
     .tableP {
         height: 250px;
         background-color: white;
@@ -47,18 +67,25 @@
         margin-top: 20px;
     }
 
-    .übersichtsP {
+/*Mitarbeiter*/
+/*Mitarbeiter*/
+/*Mitarbeiter*/
+    .topP {
         display: flex;
+        height: 200px;
+        /* background-color: brown; */
     }
 
-    .title {
-        display: flex;
-        justify-content: center;
-        margin-top: -27px;
-        font-size: 20px;
+    .calendarMitP {
+        height: 400px;
+        background-color: aliceblue;
+        width: 30%;
+        margin-left: 147px;
+        margin-top: 40px;
     }
 
-    .basisicon {
-        display: flex;
-        height: 31px;
+    .tableMitP {
+        height: 500px;
+        background-color: antiquewhite;
+        width: 50%;
     }

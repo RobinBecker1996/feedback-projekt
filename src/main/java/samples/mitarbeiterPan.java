@@ -46,10 +46,10 @@ public class MitarbeiterPan {
 
 
 
-        insertP.add(employeesIDNF, terminDF, addedDF, zielTF, feedbackinfo);
-        buttonP.add(savebtn, deletbtn, createbtn);
         topP.add(tableMitP, calendarMitP);
         bottomP.add(insertP, buttonP);
+        // insertP.add(employeesIDNF, terminDF, addedDF, zielTF, feedbackinfo);
+        // buttonP.add(savebtn, deletbtn, createbtn);
         employeesMitP.add(topP, bottomP);
 
 
