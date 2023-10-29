@@ -30,7 +30,7 @@ public class HelloWorldJava extends App {
     private Label basisicon;
 
     // private Boolean empB;
-    private int countEmp;
+    private boolean countEmp;
 
     MitarbeiterPan mit = new MitarbeiterPan();
 
@@ -38,7 +38,7 @@ public class HelloWorldJava extends App {
     @Override
     public void run() throws DwcjException {
         App.setTheme("dark-pure");
-        countEmp = 0;
+        countEmp = false;
         frame = new Frame().addClassName("frame");
 
         title = new Label("Feedback").addClassName("title");
@@ -77,11 +77,17 @@ public class HelloWorldJava extends App {
 
         employeesbtn.onClick(e -> {
             overviewP.setVisible(false);
-            // changTab();
-            mit.run();
+            changTab();
             mit.employeesMitP.setVisible(true);
-            frame.add(mit.employeesMitP);
         });
+
+        // employeesbtn.onClick(e -> {
+        //     overviewP.setVisible(false);
+        //     // changTab();
+        //     mit.run();
+        //     mit.employeesMitP.setVisible(true);
+        //     frame.add(mit.employeesMitP);
+        // });
 
         overviewP.add(tableP, calendarP);
         frame.add(navbarP, profilMenüP, menübarP, overviewP);
@@ -89,10 +95,10 @@ public class HelloWorldJava extends App {
     }
 
     public void changTab(){
-        if (mit == null){
-
-
-                ;
+        if (countEmp == false){
+            mit.run();
+            frame.add(mit.employeesMitP);
+            countEmp = true;
             }
     }
 

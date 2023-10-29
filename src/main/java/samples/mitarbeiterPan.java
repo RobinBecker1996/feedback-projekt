@@ -29,16 +29,14 @@ public class MitarbeiterPan{
 
     public void run() {
         empB = true;
-        // public Panel employeesMitP;
-        employeesMitP = new Panel().addClassName("employeesMitP");
-        // employeesMitP.add(topP, bottomP);
 
-        tableMitP = new Panel().addClassName("tableMitP");
-        calendarMitP = new Panel().addClassName("calendarMitP");
-        insertP = new Panel().addClassName("insertP");
-        buttonP = new Panel().addClassName("buttonP");
-        topP = new Panel().addClassName("topP");
-        bottomP = new Panel().addClassName("bottomP");
+        employeesMitP = new Panel().addClassName("employeesMitP").setVisible(false);
+        tableMitP = new Panel().addClassName("tableMitP").setVisible(true);
+        calendarMitP = new Panel().addClassName("calendarMitP").setVisible(true);
+        insertP = new Panel().addClassName("insertP").setVisible(true);
+        buttonP = new Panel().addClassName("buttonP").setVisible(true);
+        topP = new Panel().addClassName("topP").setVisible(true);
+        bottomP = new Panel().addClassName("bottomP").setVisible(true);
 
         employeesIDNF = new NumberField("Employees ID:").addClassName("employeesIDNF");
         terminDF = new DateField("Termin:").addClassName("terminDF");
@@ -62,13 +60,13 @@ public class MitarbeiterPan{
     }
 
     public void destroyPanel() {
-        topP.destroy();;
-        bottomP.destroy();;
-        employeesMitP.destroy();;
-        tableMitP.destroy();;
-        calendarMitP.destroy();;
-        insertP.destroy();;
-        buttonP.destroy();;
+        topP.setVisible(true);
+        bottomP.setVisible(true);
+        employeesMitP.setVisible(true);
+        tableMitP.setVisible(true);
+        calendarMitP.setVisible(true);
+        insertP.setVisible(true);
+        buttonP.setVisible(true);
     }
 
     public Panel getPanel(){
