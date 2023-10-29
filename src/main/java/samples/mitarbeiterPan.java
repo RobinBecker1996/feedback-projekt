@@ -71,4 +71,8 @@ public class MitarbeiterPan{
         buttonP.destroy();;
     }
 
+    public Panel getPanel(){
+        return  employeesMitP;
+    }
+
 }

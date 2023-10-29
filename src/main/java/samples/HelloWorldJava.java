@@ -1,7 +1,5 @@
 package samples;
 
-import javax.swing.plaf.metal.MetalBorders.ScrollPaneBorder;
-
 import org.dwcj.App;
 import org.dwcj.annotation.AppTitle;
 import org.dwcj.annotation.InlineStyleSheet;
