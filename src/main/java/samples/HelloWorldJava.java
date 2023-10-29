@@ -29,16 +29,18 @@ public class HelloWorldJava extends App {
     private Label title;
     private Label basisicon;
 
-    // private Boolean empB;
-    private boolean countEmp;
+    // private Boolean empBEmployees
+    private boolean empTestB;
+    private boolean feedTestB;
 
-    MitarbeiterPan mit = new MitarbeiterPan();
+    EmployeesPan empl = new EmployeesPan();
 
 
     @Override
     public void run() throws DwcjException {
         App.setTheme("dark-pure");
-        countEmp = false;
+        empTestB = false;
+        feedTestB = false;
         frame = new Frame().addClassName("frame");
 
         title = new Label("Feedback").addClassName("title");
@@ -70,23 +72,23 @@ public class HelloWorldJava extends App {
         });
 
         overviewbtn.onClick(e -> {
-            mit.employeesMitP.setVisible(false);
+            empl.employeesMitP.setVisible(false);
             overviewP.setVisible(true);
-            App.consoleLog(mit.employeesMitP.isVisible().toString());
+            App.consoleLog(empl.employeesMitP.isVisible().toString());
         });
 
         employeesbtn.onClick(e -> {
             overviewP.setVisible(false);
             changTab();
-            mit.employeesMitP.setVisible(true);
+            empl.employeesMitP.setVisible(true);
         });
 
         // employeesbtn.onClick(e -> {
         //     overviewP.setVisible(false);
         //     // changTab();
-        //     mit.run();
-        //     mit.employeesMitP.setVisible(true);
-        //     frame.add(mit.employeesMitP);
+        //     empl.run();
+        //     empl.employeesMitP.setVisible(true);
+        //     frame.add(empl.employeesMitP);
         // });
 
         overviewP.add(tableP, calendarP);
@@ -95,11 +97,14 @@ public class HelloWorldJava extends App {
     }
 
     public void changTab(){
-        if (countEmp == false){
-            mit.run();
-            frame.add(mit.employeesMitP);
-            countEmp = true;
-            }
+        if (empTestB == false){
+            empl.run();
+            frame.add(empl.employeesMitP);
+            empTestB = true;
+        }
+        if(feedTestB == false){
+
+        }
     }
 
 }

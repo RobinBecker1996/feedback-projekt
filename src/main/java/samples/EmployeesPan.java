@@ -6,7 +6,7 @@ import org.dwcj.component.field.NumberField;
 import org.dwcj.component.field.TextField;
 import org.dwcj.component.window.Panel;
 
-public class MitarbeiterPan{
+public class EmployeesPan{
     private Panel topP;
     private Panel bottomP;
     public Panel employeesMitP; // alle panel
