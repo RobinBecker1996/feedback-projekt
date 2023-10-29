@@ -25,8 +25,14 @@ public class MitarbeiterPan{
     private Button deletbtn;
     private Button createbtn;
 
+    public boolean empB = false;
+
     public void run() {
+        empB = true;
+        // public Panel employeesMitP;
         employeesMitP = new Panel().addClassName("employeesMitP");
+        // employeesMitP.add(topP, bottomP);
+
         tableMitP = new Panel().addClassName("tableMitP");
         calendarMitP = new Panel().addClassName("calendarMitP");
         insertP = new Panel().addClassName("insertP");
@@ -53,6 +59,16 @@ public class MitarbeiterPan{
         buttonP.add(savebtn, deletbtn, createbtn);
         employeesMitP.add(topP, bottomP);
 
+    }
+
+    public void destroyPanel() {
+        topP.destroy();;
+        bottomP.destroy();;
+        employeesMitP.destroy();;
+        tableMitP.destroy();;
+        calendarMitP.destroy();;
+        insertP.destroy();;
+        buttonP.destroy();;
     }
 
 }

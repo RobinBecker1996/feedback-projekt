@@ -15,13 +15,14 @@ import org.dwcj.exceptions.DwcjException;
 @AppTitle("DWCJ Hello World")
 
 public class HelloWorldJava extends App {
+    private Frame frame;
     private Panel navbarP;
     private Panel profilMenüP;
     private Panel menübarP;
     private Panel overviewP;
     private Panel tableP;
     private Panel calendarP;
-    private Frame frame;
+
 
     private Button overviewbtn;
     private Button feedbackbtn;
@@ -29,15 +30,18 @@ public class HelloWorldJava extends App {
     private Label menüIcon;
     private Label title;
     private Label basisicon;
-    ScrollPaneBorder scroll;
 
-    MitarbeiterPan mit;
+    // private Boolean empB;
+    private int countEmp;
+
+    MitarbeiterPan mit = new MitarbeiterPan();
+
 
     @Override
     public void run() throws DwcjException {
         App.setTheme("dark-pure");
-
-        mit = new MitarbeiterPan();
+        countEmp = 0;
+        frame = new Frame().addClassName("frame");
 
         title = new Label("Feedback").addClassName("title");
 
@@ -48,8 +52,6 @@ public class HelloWorldJava extends App {
         menüIcon = new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIcon");
 
         calendarP = new Panel().addClassName("calendarP");
-
-        frame = new Frame().addClassName("frame");
 
 
         navbarP = new Panel().addClassName("navbarP").add(basisicon, title);
@@ -64,22 +66,20 @@ public class HelloWorldJava extends App {
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
         employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");
 
-        // menüIcon.onMouseEnter(e -> {
-        //     if (!menübarP.isVisible()){
-        //         menübarP.setVisible(true);
-        //     }else{
-        //         menübarP.setVisible(false);
-        //     }
-        // });
+        menüIcon.onMouseEnter(e -> {
+            menübarP.setVisible(true);
+            menübarP.setVisible(false);
+        });
 
         overviewbtn.onClick(e -> {
             mit.employeesMitP.setVisible(false);
             overviewP.setVisible(true);
+            App.consoleLog(mit.employeesMitP.isVisible().toString());
         });
-
 
         employeesbtn.onClick(e -> {
             overviewP.setVisible(false);
+            // changTab();
             mit.run();
             mit.employeesMitP.setVisible(true);
             frame.add(mit.employeesMitP);
@@ -90,8 +90,12 @@ public class HelloWorldJava extends App {
         menübarP.add(overviewbtn, employeesbtn, feedbackbtn);
     }
 
-    public void changtab(){
+    public void changTab(){
+        if (mit == null){
 
+
+                ;
+            }
     }
 
 }
