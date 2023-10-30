@@ -192,3 +192,57 @@ html { */
     display: flex;
     align-items: center;
 }
+
+/*Mitarbeiter Frame*/
+/*Mitarbeiter Frame*/
+/*Mitarbeiter Frame*/
+.frameEmp {
+    display: inline;
+}
+
+.navbarEmpP {
+    /*teil des Menüs*/
+    background-color: #101418;
+    height: 32px;
+    width: 100%;
+}
+
+.profilMenüEmpP {
+    /*teil des Menüs*/
+    display: flex;
+    background-color: black;
+    height: 60px;
+    width: 100%;
+}
+
+.menübarEmpP {
+    /*teil des Menüs*/
+    background-color: #333F4D;
+    height: 80px;
+}
+
+.overviewbtn,
+.feedbackbtn {
+    /*teil des Menüs*/
+    height: 80px;
+    padding-left: 2px;
+    color: #d40f2f;
+}
+
+.overviewEmpP {
+    /*teil des Menüs*/
+    display: flex;
+}
+
+.titleEmp {
+    display: flex;
+    justify-content: center;
+    margin-top: -29px;
+    font-size: 20px;
+}
+
+.basisiconEmp {
+    /*teil des Menüs*/
+    display: flex;
+    height: 31px;
+}

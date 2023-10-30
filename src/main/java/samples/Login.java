@@ -12,12 +12,16 @@ import org.dwcj.component.field.TextField;
 import org.dwcj.component.window.Frame;
 import org.dwcj.component.window.Panel;
 import org.dwcj.exceptions.DwcjAppInitializeException;
+import org.dwcj.exceptions.DwcjException;
 
 public class Login {
     private TextField NameTF;
     private TextField tf_Passwort;
     private String name = "";
     private final Frame frame;
+
+    Button empbtn;
+    EmployeesOverviewPan empover;
 
     private final EventDispatcher dispatcher = new EventDispatcher();
 
@@ -37,6 +41,7 @@ public class Login {
         tf_Passwort = new TextField("Password").addClassName("PasswordTF");
 
         Button loginBtn = new Button("Login");
+        empbtn = new Button("empbtn");
 
         loginBtn.setTheme(ButtonTheme.PRIMARY)
                 .onClick(e -> {
@@ -50,9 +55,20 @@ public class Login {
                     }
                 });
 
+        empbtn.onClick(e -> {
+            try {
+                empover = new EmployeesOverviewPan();
+                frame.destroy();
+                empover.run();
+            } catch (DwcjException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        });
+
 
         frame.add(panel);
-        panel.add( NameTF, tf_Passwort, loginBtn);
+        panel.add( NameTF, tf_Passwort, loginBtn, empbtn);
     }
 
     private void onLoginEvent(LoginEvent event) {

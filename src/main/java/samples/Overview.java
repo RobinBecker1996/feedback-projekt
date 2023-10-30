@@ -53,18 +53,13 @@ public class Overview extends App{
         tableP = new Panel().addClassName("tableP");
 
         menüIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIconbtn");
-        // menüIcon = new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIcon");
-
 
         calendarP = new Panel().addClassName("calendarP");
-
 
         navbarP = new Panel().addClassName("navbarP").add(basisicon, title);
 
         profilMenüP = new Panel().addClassName("profilMenüP")
         .add(menüIconbtn);
-        // profilMenüP = new Panel().addClassName("profilMenüP")
-        // .add(menüIcon);
 
         overviewP = new Panel().addClassName("übersichtsP");
 
@@ -76,9 +71,6 @@ public class Overview extends App{
         menüIconbtn.onClick(e -> {
             menütest();
         });
-        // menüIcon.addMouseEnterListener(e -> {
-        //     menütest();
-        // });
 
         overviewbtn.onClick(e ->{
             runtest();
