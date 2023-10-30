@@ -13,9 +13,14 @@ public class EmployeesOverviewPan extends App{
     private Panel navbarEmpP;
     private Panel profilMenüEmpP;
     private Panel menübarEmpP;
-    private Panel overviewEmpP;
-    private Panel tableEmpP;
-    private Panel calendarEmpP;
+
+
+    private Panel empOverBackP;
+    private Panel empOverTopP;
+    private Panel empOverTableP;
+    private Panel empOverCalendarP;
+    private Panel empOverBottomP;
+    private Panel empOverTextAreaP;
 
 
     private Button overviewbtn;
@@ -42,26 +47,29 @@ public class EmployeesOverviewPan extends App{
 
         frameEmp = new Frame().addClassName("frameEmp");
 
-        titleEmp = new Label("Feedback").addClassName("titleEmp");
-
+        titleEmp = new Label("Employees").addClassName("titleEmp");
         basisiconEmp = new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("basisiconEmp");
 
         menüIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIconbtn");
 
-        calendarEmpP = new Panel().addClassName("calendarEmpP");
-
-        tableEmpP = new Panel().addClassName("tableEmpP");
-
+        // calendarEmpP = new Panel().addClassName("calendarEmpP");
+        // tableEmpP = new Panel().addClassName("tableEmpP");
         navbarEmpP = new Panel().addClassName("navbarEmpP");
-
         profilMenüEmpP = new Panel().addClassName("profilMenüEmpP")
         .add(menüIconbtn);
-
-        overviewEmpP = new Panel().addClassName("übersichtsP");
-
         menübarEmpP = new Panel().addClassName("menübarEmpP");
+
+        empOverBackP = new Panel().addClassName("empOverBackP");
+        empOverTopP = new Panel().addClassName("empOverTopP");
+        empOverTableP = new Panel().addClassName("empOverTableP");
+        empOverCalendarP = new Panel().addClassName("empOverCalendarP");
+        empOverBottomP = new Panel().addClassName("empOverBottomP");
+        empOverTextAreaP = new Panel().addClassName("empOverTextAreaP");
+
         overviewbtn = new Button("Übersicht").addClassName("overviewbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
+
+
 
 
         menüIconbtn.onClick(e -> {
@@ -76,14 +84,18 @@ public class EmployeesOverviewPan extends App{
 
         feedbackbtn.onClick(e -> {
             runtest();
-            overviewEmpP.setVisible(false);
 
         });
 
         navbarEmpP.add(basisiconEmp, titleEmp);
-        overviewEmpP.add(tableEmpP, calendarEmpP);
-        frameEmp.add(navbarEmpP, profilMenüEmpP, menübarEmpP, overviewEmpP);
+        // overviewEmpP.add(tableEmpP, calendarEmpP);
+        frameEmp.add(navbarEmpP, profilMenüEmpP, menübarEmpP, empOverBackP);
         menübarEmpP.add(overviewbtn, feedbackbtn);
+
+
+        empOverBackP.add(empOverTopP, empOverBottomP);
+        empOverTopP.add(empOverTableP,empOverCalendarP);
+        empOverBottomP.add(empOverTextAreaP);
 
         zielTA = new TextArea().addClassName("zielTA").setAttribute("label", "Meine Ziele");
 

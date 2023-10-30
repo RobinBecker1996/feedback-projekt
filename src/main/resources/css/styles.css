@@ -246,3 +246,33 @@ html { */
     display: flex;
     height: 31px;
 }
+
+/*Employees login frame*/
+/*Employees login frame*/
+/*Employees login frame*/
+.empOverTableP {
+    height: 100px;
+    background-color: azure;
+    width: 900px;
+    margin: 5px;
+}
+
+.empOverCalendarP {
+    height: 400px;
+    width: 321px;
+    background-color: black;
+    margin-left: 147px;
+    margin-top: 35px;
+}
+
+.empOverTopP {
+    display: flex;
+}
+
+.empOverTextAreaP {
+    background-color: aliceblue;
+    height: 100px;
+    width: 200px;
+    margin-top: -105px;
+    margin-left: 150px;
+}
