@@ -16,7 +16,7 @@ public class HelloWorldJava extends App {
     @Override
     public void run() throws DwcjException {
         over = new Overview();
-        App.setTheme("dark-pure");
+        // App.setTheme("dark-pure");
         final Login login = new Login();
         login.run();
         login.onLogin(this::login);

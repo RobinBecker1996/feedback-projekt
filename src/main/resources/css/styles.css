@@ -38,11 +38,6 @@ html { */
     color: #d40f2f;
 }
 
-.menüIcon {
-    /*teil des Menüs*/
-    display: contents;
-}
-
 .übersichtsP {
     /*teil des Menüs*/
     display: flex;

@@ -20,7 +20,8 @@ public class Overview extends App{
     private Button overviewbtn;
     private Button feedbackbtn;
     private Button employeesbtn;
-    private Label menüIcon;
+    // private Label menüIcon;
+    private Button menüIconbtn;
     private Label title;
     private Label basisicon;
 
@@ -28,6 +29,7 @@ public class Overview extends App{
     private boolean empTestB;
     private boolean feedTestB;
     private boolean overviewB;
+    private boolean menüBarB;
 
     private EmployeesPan empl = new EmployeesPan();
     private FeedbackPan feed = new FeedbackPan();
@@ -40,6 +42,7 @@ public class Overview extends App{
         empTestB = false;
         feedTestB = false;
         overviewB = false;
+        menüBarB = true;
 
         frame = new Frame().addClassName("frame");
 
@@ -49,7 +52,9 @@ public class Overview extends App{
 
         tableP = new Panel().addClassName("tableP");
 
-        menüIcon = new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIcon");
+        menüIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIconbtn");
+        // menüIcon = new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIcon");
+
 
         calendarP = new Panel().addClassName("calendarP");
 
@@ -57,7 +62,9 @@ public class Overview extends App{
         navbarP = new Panel().addClassName("navbarP").add(basisicon, title);
 
         profilMenüP = new Panel().addClassName("profilMenüP")
-        .add(menüIcon);
+        .add(menüIconbtn);
+        // profilMenüP = new Panel().addClassName("profilMenüP")
+        // .add(menüIcon);
 
         overviewP = new Panel().addClassName("übersichtsP");
 
@@ -66,10 +73,12 @@ public class Overview extends App{
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
         employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");
 
-        menüIcon.onMouseEnter(e -> {
-            menübarP.setVisible(true);
-            menübarP.setVisible(false);
+        menüIconbtn.onClick(e -> {
+            menütest();
         });
+        // menüIcon.addMouseEnterListener(e -> {
+        //     menütest();
+        // });
 
         overviewbtn.onClick(e ->{
             runtest();
@@ -110,14 +119,13 @@ public class Overview extends App{
         }
     }
 
-
-    public void overviewVisible() {
-        if(overviewP.isVisible() == false){
-            tableP.setVisible(false);
-            calendarP.setVisible(false);
-        }else{
-            tableP.setVisible(true);
-            calendarP.setVisible(true);
+    public void  menütest(){
+        if (menüBarB == true){
+            menübarP.setVisible(false);
+            menüBarB = false;
+        }else if (menüBarB == false){
+            menübarP.setVisible(true);
+            menüBarB = true;
         }
     }
 }
