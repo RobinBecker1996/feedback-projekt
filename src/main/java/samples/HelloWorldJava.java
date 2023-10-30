@@ -3,129 +3,31 @@ package samples;
 import org.dwcj.App;
 import org.dwcj.annotation.AppTitle;
 import org.dwcj.annotation.InlineStyleSheet;
-import org.dwcj.component.button.Button;
-import org.dwcj.component.texts.Label;
-import org.dwcj.component.window.Frame;
-import org.dwcj.component.window.Panel;
+
 import org.dwcj.exceptions.DwcjException;
 
 @InlineStyleSheet("context://css/styles.css")
 @AppTitle("DWCJ Hello World")
 
 public class HelloWorldJava extends App {
-    private Frame frame;
-    private Panel navbarP;
-    private Panel profilMenüP;
-    private Panel menübarP;
-    private Panel overviewP;
-    private Panel tableP;
-    private Panel calendarP;
-
-
-    private Button overviewbtn;
-    private Button feedbackbtn;
-    private Button employeesbtn;
-    private Label menüIcon;
-    private Label title;
-    private Label basisicon;
-
-    // private Boolean empBEmployees
-    private boolean empTestB;
-    private boolean feedTestB;
-
-    private EmployeesPan empl = new EmployeesPan();
-    private FeedbackPan feed = new FeedbackPan();
+    Overview over;
 
 
     @Override
     public void run() throws DwcjException {
+        over = new Overview();
         App.setTheme("dark-pure");
-
-        empTestB = false;
-        feedTestB = false;
-
-        frame = new Frame().addClassName("frame");
-
-        title = new Label("Feedback").addClassName("title");
-
-        basisicon = new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("basisicon");
-
-        tableP = new Panel().addClassName("tableP");
-
-        menüIcon = new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIcon");
-
-        calendarP = new Panel().addClassName("calendarP");
-
-
-        navbarP = new Panel().addClassName("navbarP").add(basisicon, title);
-
-        profilMenüP = new Panel().addClassName("profilMenüP")
-        .add(menüIcon);
-
-        overviewP = new Panel().addClassName("übersichtsP");
-
-        menübarP = new Panel().addClassName("menübarP");
-        overviewbtn = new Button("Übersicht").addClassName("übersichtsbtn");
-        feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
-        employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");
-
-        menüIcon.onMouseEnter(e -> {
-            menübarP.setVisible(true);
-            menübarP.setVisible(false);
-        });
-
-        overviewbtn.onClick(e -> {
-            runtest();
-            overviewP.setVisible(true);
-            empl.employeesMitP.setVisible(false);
-            feed.feedbackP.setVisible(false);
-            overviewVisible();
-            App.consoleLog(empl.employeesMitP.isVisible().toString());
-        });
-
-        employeesbtn.onClick(e -> {
-            runtest();
-            overviewP.setVisible(false);
-            feed.feedbackP.setVisible(false);
-            overviewVisible();
-            empl.employeesMitP.setVisible(true);
-        });
-
-        feedbackbtn.onClick(e -> {
-            runtest();
-            overviewP.setVisible(false);
-            overviewVisible();
-            empl.employeesMitP.setVisible(false);
-            feed.feedbackP.setVisible(true);
-        });
-
-        overviewP.add(tableP, calendarP);
-        frame.add(navbarP, profilMenüP, menübarP, overviewP);
-        menübarP.add(overviewbtn, employeesbtn, feedbackbtn);
+        final Login login = new Login();
+        login.run();
+        login.onLogin(this::login);
     }
 
-    public void runtest(){
-        if (empTestB == false){
-            empl.run();
-            frame.add(empl.employeesMitP);
-            empTestB = true;
-        }
-        if(feedTestB == false){
-            feed.run();
-            frame.add(feed.feedbackP);
-            feedTestB = true;
+    public void login(LoginEvent event) {
+        try {
+            over.run();
+        } catch (Exception e) {
+
         }
     }
-
-
-    public void overviewVisible() {
-        if(overviewP.isVisible() == false){
-            tableP.setVisible(false);
-            calendarP.setVisible(false);
-        }else{
-            tableP.setVisible(true);
-            calendarP.setVisible(true);
-        }
-    }
-
 }
+

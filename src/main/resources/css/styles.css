@@ -178,3 +178,22 @@ html { */
     margin: 10px;
 }
 
+/*Login*/
+/*Login*/
+/*Login*/
+/* div {
+    display: flex;
+    justify-content: center;
+} */
+
+.loginP {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.loginF {
+    display: flex;
+    align-items: center;
+}
