@@ -33,14 +33,17 @@ public class HelloWorldJava extends App {
     private boolean empTestB;
     private boolean feedTestB;
 
-    EmployeesPan empl = new EmployeesPan();
+    private EmployeesPan empl = new EmployeesPan();
+    private FeedbackPan feed = new FeedbackPan();
 
 
     @Override
     public void run() throws DwcjException {
         App.setTheme("dark-pure");
+
         empTestB = false;
         feedTestB = false;
+
         frame = new Frame().addClassName("frame");
 
         title = new Label("Feedback").addClassName("title");
@@ -72,38 +75,56 @@ public class HelloWorldJava extends App {
         });
 
         overviewbtn.onClick(e -> {
-            empl.employeesMitP.setVisible(false);
+            runtest();
             overviewP.setVisible(true);
+            empl.employeesMitP.setVisible(false);
+            feed.feedbackP.setVisible(false);
+            overviewVisible();
             App.consoleLog(empl.employeesMitP.isVisible().toString());
         });
 
         employeesbtn.onClick(e -> {
+            runtest();
             overviewP.setVisible(false);
-            changTab();
+            feed.feedbackP.setVisible(false);
+            overviewVisible();
             empl.employeesMitP.setVisible(true);
         });
 
-        // employeesbtn.onClick(e -> {
-        //     overviewP.setVisible(false);
-        //     // changTab();
-        //     empl.run();
-        //     empl.employeesMitP.setVisible(true);
-        //     frame.add(empl.employeesMitP);
-        // });
+        feedbackbtn.onClick(e -> {
+            runtest();
+            overviewP.setVisible(false);
+            overviewVisible();
+            empl.employeesMitP.setVisible(false);
+            feed.feedbackP.setVisible(true);
+        });
 
         overviewP.add(tableP, calendarP);
         frame.add(navbarP, profilMenüP, menübarP, overviewP);
         menübarP.add(overviewbtn, employeesbtn, feedbackbtn);
     }
 
-    public void changTab(){
+    public void runtest(){
         if (empTestB == false){
             empl.run();
             frame.add(empl.employeesMitP);
             empTestB = true;
         }
         if(feedTestB == false){
+            feed.run();
+            frame.add(feed.feedbackP);
+            feedTestB = true;
+        }
+    }
 
+
+    public void overviewVisible() {
+        if(overviewP.isVisible() == false){
+            tableP.setVisible(false);
+            calendarP.setVisible(false);
+        }else{
+            tableP.setVisible(true);
+            calendarP.setVisible(true);
         }
     }
 

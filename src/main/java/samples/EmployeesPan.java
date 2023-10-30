@@ -59,18 +59,5 @@ public class EmployeesPan{
 
     }
 
-    public void destroyPanel() {
-        topP.setVisible(true);
-        bottomP.setVisible(true);
-        employeesMitP.setVisible(true);
-        tableMitP.setVisible(true);
-        calendarMitP.setVisible(true);
-        insertP.setVisible(true);
-        buttonP.setVisible(true);
-    }
-
-    public Panel getPanel(){
-        return  employeesMitP;
-    }
 
 }
