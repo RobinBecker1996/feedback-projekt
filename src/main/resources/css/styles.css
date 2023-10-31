@@ -73,7 +73,7 @@ html { */
     height: 250px;
     background-color: white;
     width: 50%;
-    margin: 5px;
+    margin: 10px;
 }
 
 .calendarP {
@@ -113,6 +113,7 @@ html { */
     background-color: antiquewhite;
     width: 50%;
     display: flex;
+    margin: 10px;
     justify-content: center;
     align-items: center;
 }
@@ -151,6 +152,7 @@ html { */
     height: 200px;
     background-color: white;
     width: 900px;
+    margin: 10px;
 }
 
 .centerP {
@@ -273,7 +275,7 @@ html { */
     height: 100px;
     background-color: azure;
     width: 900px;
-    margin: 5px;
+    margin: 10px;
 }
 
 .empOverCalendarP {
@@ -290,7 +292,7 @@ html { */
 
 .empOverTextAreaP {
     background-color: rgb(10, 136, 247);
-
+    justify-content: center;
     height: 100px;
     width: 200px;
     margin-top: -105px;
