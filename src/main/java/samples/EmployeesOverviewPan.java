@@ -30,9 +30,7 @@ public class EmployeesOverviewPan extends App{
     private Label titleEmp;
     private Label basisiconEmp;
 
-    private boolean empTestB;
     private boolean empFeedTestB;
-    private boolean overviewB;
     private boolean menüBarB;
 
     private TextArea zielTA;
@@ -44,9 +42,7 @@ public class EmployeesOverviewPan extends App{
         App.setTheme("dark-pure");
 
         log = new Login();
-        empTestB = false;
         empFeedTestB = false;
-        overviewB = false;
         menüBarB = true;
 
         frameEmp = new Frame().addClassName("frameEmp");
