@@ -4,7 +4,7 @@ import org.dwcj.component.button.Button;
 import org.dwcj.component.window.Panel;
 
 public class EmpFeedbackPan {
-    private Panel empFeedbackBackP;
+    public Panel empFeedbackBackP;
     private Panel empFeedbackTopP;
     private Panel empFeedbackTableEmpP;
     private Panel empFeedbackCenterP;

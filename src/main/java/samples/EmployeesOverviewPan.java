@@ -30,18 +30,19 @@ public class EmployeesOverviewPan extends App{
     private Label basisiconEmp;
 
     private boolean empTestB;
-    private boolean feedTestB;
+    private boolean empFeedTestB;
     private boolean overviewB;
     private boolean menüBarB;
 
     private TextArea zielTA;
 
+    EmpFeedbackPan empFeed = new EmpFeedbackPan();
 
     public void run() throws DwcjException{
         App.setTheme("dark-pure");
 
         empTestB = false;
-        feedTestB = false;
+        empFeedTestB = false;
         overviewB = false;
         menüBarB = true;
 
@@ -52,8 +53,6 @@ public class EmployeesOverviewPan extends App{
 
         menüIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIconbtn");
 
-        // calendarEmpP = new Panel().addClassName("calendarEmpP");
-        // tableEmpP = new Panel().addClassName("tableEmpP");
         navbarEmpP = new Panel().addClassName("navbarEmpP");
         profilMenüEmpP = new Panel().addClassName("profilMenüEmpP")
         .add(menüIconbtn);
@@ -79,16 +78,17 @@ public class EmployeesOverviewPan extends App{
 
         overviewbtn.onClick(e ->{
             runtest();
-
+            empFeed.empFeedbackBackP.setVisible(false);
+            empOverBackP.setVisible(true);
         });
 
         feedbackbtn.onClick(e -> {
             runtest();
-
+            empOverBackP.setVisible(false);
+            empFeed.empFeedbackBackP.setVisible(true);
         });
 
         navbarEmpP.add(basisiconEmp, titleEmp);
-        // overviewEmpP.add(tableEmpP, calendarEmpP);
         frameEmp.add(navbarEmpP, profilMenüEmpP, menübarEmpP, empOverBackP);
         menübarEmpP.add(overviewbtn, feedbackbtn);
 
@@ -104,10 +104,10 @@ public class EmployeesOverviewPan extends App{
     }
 
     public void runtest(){
-        if(feedTestB == false){
-            // feed.run();
-            // frame.add(feed.feedbackP);
-            feedTestB = true;
+        if(empFeedTestB == false){
+            empFeed.run();
+            frameEmp.add(empFeed.empFeedbackBackP);
+            empFeedTestB = true;
         }
     }
 
