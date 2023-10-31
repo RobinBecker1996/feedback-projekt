@@ -15,6 +15,16 @@ public class EmployeesPan{
     private Panel insertP; // Formular + Button
     private Panel buttonP;
 
+    public Panel backP;
+    private Panel twoTopP;
+    private Panel oneEmptableP;
+    private Panel empCenterP;
+    private Panel empFormP;
+    private Panel schwerpunkP;
+    private Panel twocalendarP;
+    private Panel twoBottomP;
+    private Panel twoBtnP;
+
     private NumberField employeesIDNF;
     private DateField terminDF;
     private DateField addedDF;
@@ -25,10 +35,11 @@ public class EmployeesPan{
     private Button deletbtn;
     private Button createbtn;
 
-    public boolean empB = false;
+    private Button testEmpTablebtn;
+    private Button editbtn;
+
 
     public void run() {
-        empB = true;
 
         employeesMitP = new Panel().addClassName("employeesMitP").setVisible(false);
         tableMitP = new Panel().addClassName("tableMitP").setVisible(true);
@@ -45,6 +56,26 @@ public class EmployeesPan{
         feedbackinfo = new TextField("Feedback infos:").addClassName("feedbackinfo");
 
 
+        backP = new Panel().addClassName("backP").setVisible(false);
+        twoTopP = new Panel().addClassName("twoTopP");
+        oneEmptableP = new Panel().addClassName("oneEmptableP");
+        empCenterP = new Panel().addClassName("empCenterP");
+        empFormP = new Panel().addClassName("empFormP");
+        schwerpunkP = new Panel().addClassName("schwerpunkP");
+        twocalendarP = new Panel().addClassName("twocalendarP");
+        twoBottomP = new Panel().addClassName("twoBottomP");
+        twoBtnP = new Panel().addClassName("twoBtnP");
+
+
+        editbtn = new Button("Edit");
+
+        testEmpTablebtn = new Button("test")
+                    .onClick(e -> {
+                        employeesMitP.setVisible(false);
+                        backP.setVisible(true);
+                    });
+
+
         savebtn = new Button("Save").addClassName("savebtn");
         deletbtn = new Button("Delet").addClassName("deletbtn");
         createbtn = new Button("Create").addClassName("createbtn");
@@ -53,9 +84,18 @@ public class EmployeesPan{
 
         topP.add(tableMitP, calendarMitP);
         bottomP.add(insertP, buttonP);
+        tableMitP.add(testEmpTablebtn);
         insertP.add(employeesIDNF, terminDF, addedDF, zielTF, feedbackinfo);
         buttonP.add(savebtn, deletbtn, createbtn);
         employeesMitP.add(topP, bottomP);
+
+        // Info Panel für die genauen infos des Mitarbeiter
+        backP.add(twoTopP, empCenterP, twoBottomP);
+        twoTopP.add(oneEmptableP);
+        empCenterP.add(empFormP, schwerpunkP, twocalendarP);
+        twoBottomP.add(twoBtnP);
+        twoBtnP.add(editbtn);
+
 
     }
 

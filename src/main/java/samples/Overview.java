@@ -2,6 +2,7 @@ package samples;
 
 import org.dwcj.App;
 import org.dwcj.component.button.Button;
+import org.dwcj.component.button.ButtonTheme;
 import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Frame;
 import org.dwcj.component.window.Panel;
@@ -16,16 +17,14 @@ public class Overview extends App{
     private Panel tableP;
     private Panel calendarP;
 
-
+    private Button logoutBtn;
     private Button overviewbtn;
     private Button feedbackbtn;
     private Button employeesbtn;
-    // private Label menüIcon;
     private Button menüIconbtn;
     private Label title;
     private Label basisicon;
 
-    // private Boolean empBEmployees
     private boolean empTestB;
     private boolean feedTestB;
     private boolean overviewB;
@@ -33,11 +32,13 @@ public class Overview extends App{
 
     private EmployeesPan empl = new EmployeesPan();
     private FeedbackPan feed = new FeedbackPan();
+    private Login log;
 
 
     @Override
     public void run() throws DwcjException {
     App.setTheme("dark-pure");
+    log = new Login();
 
         empTestB = false;
         feedTestB = false;
@@ -63,10 +64,18 @@ public class Overview extends App{
 
         overviewP = new Panel().addClassName("übersichtsP");
 
-        menübarP = new Panel().addClassName("menübarP");
+        menübarP = new Panel().addClassName("menübarEmpP");
+
         overviewbtn = new Button("Übersicht").addClassName("übersichtsbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
         employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");
+        logoutBtn = new Button("Logout").addClassName("logoutBtn").setTheme(ButtonTheme.DANGER);
+
+        logoutBtn.onClick(e -> {
+            frame.destroy();
+            log.run();
+        });
+
 
         menüIconbtn.onClick(e -> {
             menütest();
@@ -95,13 +104,13 @@ public class Overview extends App{
 
         overviewP.add(tableP, calendarP);
         frame.add(navbarP, profilMenüP, menübarP, overviewP);
-        menübarP.add(overviewbtn, employeesbtn, feedbackbtn);
+        menübarP.add(overviewbtn, employeesbtn, feedbackbtn, logoutBtn);
     }
 
     public void runtest(){
         if (empTestB == false){
             empl.run();
-            frame.add(empl.employeesMitP);
+            frame.add(empl.employeesMitP, empl.backP);
             empTestB = true;
         }
         if(feedTestB == false){

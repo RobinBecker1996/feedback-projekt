@@ -2,6 +2,7 @@ package samples;
 
 import org.dwcj.App;
 import org.dwcj.component.button.Button;
+import org.dwcj.component.button.ButtonTheme;
 import org.dwcj.component.textarea.TextArea;
 import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Frame;
@@ -22,7 +23,7 @@ public class EmployeesOverviewPan extends App{
     private Panel empOverBottomP;
     private Panel empOverTextAreaP;
 
-
+    private Button logoutBtn;
     private Button overviewbtn;
     private Button feedbackbtn;
     private Button menüIconbtn;
@@ -37,10 +38,12 @@ public class EmployeesOverviewPan extends App{
     private TextArea zielTA;
 
     EmpFeedbackPan empFeed = new EmpFeedbackPan();
+    Login log;
 
     public void run() throws DwcjException{
         App.setTheme("dark-pure");
 
+        log = new Login();
         empTestB = false;
         empFeedTestB = false;
         overviewB = false;
@@ -67,9 +70,13 @@ public class EmployeesOverviewPan extends App{
 
         overviewbtn = new Button("Übersicht").addClassName("overviewbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
+        logoutBtn = new Button("Logout").addClassName("logoutBtn").setTheme(ButtonTheme.DANGER);
 
 
-
+        logoutBtn.onClick(e -> {
+            frameEmp.destroy();
+            log.run();
+        });
 
         menüIconbtn.onClick(e -> {
             menütest();
@@ -90,7 +97,7 @@ public class EmployeesOverviewPan extends App{
 
         navbarEmpP.add(basisiconEmp, titleEmp);
         frameEmp.add(navbarEmpP, profilMenüEmpP, menübarEmpP, empOverBackP);
-        menübarEmpP.add(overviewbtn, feedbackbtn);
+        menübarEmpP.add(overviewbtn, feedbackbtn, logoutBtn);
 
 
         empOverBackP.add(empOverTopP, empOverBottomP);

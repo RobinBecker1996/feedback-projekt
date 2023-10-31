@@ -3,6 +3,15 @@ html { */
 /* :root{
     overflow: hidden;
 } */
+#window-34, #window-80, #window-45 {
+    display: flex;
+    justify-content: center;
+}
+
+#window-80 {
+    display: flex;
+    justify-content: center;
+}
 
 .frame {
     display: inline;
@@ -103,6 +112,9 @@ html { */
     height: 500px;
     background-color: antiquewhite;
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .insertP {
@@ -217,16 +229,23 @@ html { */
 
 .menübarEmpP {
     /*teil des Menüs*/
+    display: flex;
     background-color: #333F4D;
     height: 80px;
 }
 
 .overviewbtn,
-.feedbackbtn {
+.feedbackbtn{
     /*teil des Menüs*/
     height: 80px;
     padding-left: 2px;
     color: #d40f2f;
+}
+
+.logoutBtn{
+    height: 80px;
+    padding-left: 2px;
+    margin-inline-start: auto;
 }
 
 .overviewEmpP {
@@ -314,4 +333,48 @@ html { */
     height: 100px;
     width: 700px;
     background-color: white;
+}
+
+.empFeedbackBtnP {
+    width: 80px;
+    margin-left: 268px;
+}
+
+/*Zweites Panel von EmployeesPan*/
+/*Zweites Panel von EmployeesPan*/
+/*Zweites Panel von EmployeesPan*/
+.backP {
+    display: inline;
+}
+
+.oneEmptableP {
+    height: 100px;
+    width: 800px;
+    margin: 10px;
+    background-color: white;
+}
+
+.empFormP {
+    height: 500px;
+    width: 350px;
+    background-color: aliceblue;
+}
+
+.schwerpunkP {
+    height: 190px;
+    width: 320px;
+    background-color: azure;
+}
+
+.twocalendarP {
+    height: 300px;
+    width: 300px;
+    background-color: azure;
+}
+
+.empCenterP {
+    display: flex;
+    height: 500px;
+    margin: 10px;
+    gap: 183px;
 }
