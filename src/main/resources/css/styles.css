@@ -276,3 +276,42 @@ html { */
     margin-top: -105px;
     margin-left: 150px;
 }
+
+
+/*EmpFeedPan*/
+/*EmpFeedPan*/
+/*EmpFeedPan*/
+.empFeedbackBackP {
+    display: inline;
+}
+
+.empFeedbackFormP {
+    height: 500px;
+    width: 400px;
+    background-color: aliceblue;
+    margin: 20px;
+    margin-left: 112px;
+}
+
+.empFeedbackCalendarP {
+    height: 290px;
+    width: 270px;
+    background-color: antiquewhite;
+}
+
+.empFeedbackTableFeedP {
+    height: 200px;
+    width: 400px;
+    background-color: aqua;
+    margin: 94px;
+}
+
+.empFeedbackCenterP {
+    display: flex;
+}
+
+.empFeedbackTableEmpP {
+    height: 100px;
+    width: 700px;
+    background-color: white;
+}
