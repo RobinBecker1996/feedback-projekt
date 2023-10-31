@@ -291,10 +291,12 @@ html { */
 }
 
 .empOverTextAreaP {
+    display: flex;
     background-color: rgb(10, 136, 247);
     justify-content: center;
-    height: 100px;
-    width: 200px;
+    padding: 10px;
+    height: 150px;
+    width: 250px;
     margin-top: -105px;
     margin-left: 150px;
 }
