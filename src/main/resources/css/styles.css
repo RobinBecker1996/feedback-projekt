@@ -289,7 +289,8 @@ html { */
 }
 
 .empOverTextAreaP {
-    background-color: aliceblue;
+    background-color: rgb(10, 136, 247);
+
     height: 100px;
     width: 200px;
     margin-top: -105px;

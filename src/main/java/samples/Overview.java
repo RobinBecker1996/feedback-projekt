@@ -27,7 +27,6 @@ public class Overview extends App{
 
     private boolean empTestB;
     private boolean feedTestB;
-    private boolean overviewB;
     private boolean menüBarB;
 
     private EmployeesPan empl = new EmployeesPan();
@@ -39,10 +38,8 @@ public class Overview extends App{
     public void run() throws DwcjException {
     App.setTheme("dark-pure");
     log = new Login();
-
         empTestB = false;
         feedTestB = false;
-        overviewB = false;
         menüBarB = true;
 
         frame = new Frame().addClassName("frame");

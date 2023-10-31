@@ -56,6 +56,8 @@ public class EmployeesOverviewPan extends App{
 
         menüIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIconbtn");
 
+        zielTA = new TextArea().setAttribute("label", "Meine Ziele:");
+
         navbarEmpP = new Panel().addClassName("navbarEmpP");
         profilMenüEmpP = new Panel().addClassName("profilMenüEmpP")
         .add(menüIconbtn);
@@ -66,7 +68,7 @@ public class EmployeesOverviewPan extends App{
         empOverTableP = new Panel().addClassName("empOverTableP");
         empOverCalendarP = new Panel().addClassName("empOverCalendarP");
         empOverBottomP = new Panel().addClassName("empOverBottomP");
-        empOverTextAreaP = new Panel().addClassName("empOverTextAreaP");
+        empOverTextAreaP = new Panel().addClassName("empOverTextAreaP").add(zielTA);
 
         overviewbtn = new Button("Übersicht").addClassName("overviewbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
