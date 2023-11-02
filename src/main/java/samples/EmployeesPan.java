@@ -7,9 +7,9 @@ import org.dwcj.component.field.TextField;
 import org.dwcj.component.window.Panel;
 
 public class EmployeesPan{
+    public Panel employeesMitP; // alle panel
     private Panel topP;
     private Panel bottomP;
-    public Panel employeesMitP; // alle panel
     private Panel tableMitP; //Tabelle
     private Panel calendarMitP; //Kaledner und TextArea
     private Panel insertP; // Formular + Button
@@ -24,6 +24,7 @@ public class EmployeesPan{
     private Panel twocalendarP;
     private Panel twoBottomP;
     private Panel twoBtnP;
+    private Panel backBtnP;
 
     private NumberField employeesIDNF;
     private DateField terminDF;
@@ -37,6 +38,7 @@ public class EmployeesPan{
 
     private Button testEmpTablebtn;
     private Button editbtn;
+    private Button backBtn;
 
 
     public void run() {
@@ -65,9 +67,16 @@ public class EmployeesPan{
         twocalendarP = new Panel().addClassName("twocalendarP");
         twoBottomP = new Panel().addClassName("twoBottomP");
         twoBtnP = new Panel().addClassName("twoBtnP");
+        backBtnP = new Panel().addClassName("backBtnP");
 
 
         editbtn = new Button("Edit");
+        backBtn = new Button("<<");
+
+        backBtn.onClick(e -> {
+            backP.setVisible(false);
+            employeesMitP.setVisible(true);
+        });
 
         testEmpTablebtn = new Button("test")
                     .onClick(e -> {
@@ -89,11 +98,13 @@ public class EmployeesPan{
         buttonP.add(savebtn, deletbtn, createbtn);
         employeesMitP.add(topP, bottomP);
 
-        // Info Panel für die genauen infos des Mitarbeiter
+        // Zweites Panel "info Panel"
         backP.add(twoTopP, empCenterP, twoBottomP);
         twoTopP.add(oneEmptableP);
         empCenterP.add(empFormP, schwerpunkP, twocalendarP);
-        twoBottomP.add(twoBtnP);
+        // twoBottomP.add(editbtn);
+        twoBottomP.add(twoBtnP, backBtnP);
+        backBtnP.add(backBtn);
         twoBtnP.add(editbtn);
 
 

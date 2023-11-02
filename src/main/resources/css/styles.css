@@ -360,7 +360,7 @@ html { */
 }
 
 .empFormP {
-    height: 500px;
+    height: 450px;
     width: 350px;
     background-color: aliceblue;
 }
@@ -379,7 +379,12 @@ html { */
 
 .empCenterP {
     display: flex;
-    height: 500px;
     margin: 10px;
     gap: 183px;
+}
+
+.twoBtnP {
+    height: auto;
+    width: auto;
+    margin-left: 150px;
 }
