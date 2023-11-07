@@ -4,7 +4,10 @@ import org.dwcj.component.button.Button;
 import org.dwcj.component.field.DateField;
 import org.dwcj.component.field.NumberField;
 import org.dwcj.component.field.TextField;
+import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Panel;
+import org.dwcj.ui5.calendar.UI5Calendar;
+import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
 
 public class EmployeesPan{
     public Panel employeesMitP; // alle panel
@@ -41,6 +44,7 @@ public class EmployeesPan{
     private Button backBtn;
 
 
+
     public void run() {
 
         employeesMitP = new Panel().addClassName("employeesMitP").setVisible(false);
@@ -64,11 +68,16 @@ public class EmployeesPan{
         empCenterP = new Panel().addClassName("empCenterP");
         empFormP = new Panel().addClassName("empFormP");
         schwerpunkP = new Panel().addClassName("schwerpunkP");
-        twocalendarP = new Panel().addClassName("twocalendarP");
+        twocalendarP = new Panel().addClassName("calendarP");
         twoBottomP = new Panel().addClassName("twoBottomP");
         twoBtnP = new Panel().addClassName("twoBtnP");
         backBtnP = new Panel().addClassName("backBtnP");
 
+
+        UI5Calendar calendar = new UI5Calendar();
+
+        calendar.setSelectionMode(SelectionMode.MULTIPLE);
+        calendar.setHideWeekNumbers(true);
 
         editbtn = new Button("Edit");
         backBtn = new Button("<<");
@@ -90,7 +99,7 @@ public class EmployeesPan{
         createbtn = new Button("Create").addClassName("createbtn");
 
 
-
+        calendarMitP.add(calendar);
         topP.add(tableMitP, calendarMitP);
         bottomP.add(insertP, buttonP);
         tableMitP.add(testEmpTablebtn);

@@ -26,6 +26,13 @@
             <artifactId>dwcj-engine</artifactId>
             <version>23.04</version>
         </dependency>
+        <dependency>
+            <groupId>org.dwcj.bbjplugins</groupId>
+            <artifactId>dwcj-plugin-proxies</artifactId>
+            <version>0.1.5</version>
+            <scope>system</scope>
+            <systemPath>C:/ui5/target/UI5Demo.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>
@@ -44,7 +51,7 @@
                 </executions>
                 <configuration>
                     <!-- see https://github.com/DwcJava/dwcj-install-maven-plugin for options -->
-                    <deployurl>http://localhost:7888/dwcj-install</deployurl>
+                    <deployurl>http://localhost:8888/dwcj-install</deployurl>
                     <classname>samples.HelloWorldJava</classname>
                     <publishname>hworld</publishname>
                     <debug>true</debug>

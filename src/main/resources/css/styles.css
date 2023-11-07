@@ -18,42 +18,49 @@ html { */
 }
 
 .navbarP {
-    /*teil des Menüs*/
+    /*teil des Menus*/
     background-color: #101418;
     height: 32px;
     width: 100%;
 }
 
-.profilMenüP {
-    /*teil des Menüs*/
+.profilMenuP {
+    /*teil des Menus*/
     display: flex;
     background-color: black;
     height: 60px;
     width: 100%;
 }
 
-.menübarP {
-    /*teil des Menüs*/
+.menubarP {
+    /*teil des Menus*/
     background-color: #333F4D;
-    height: 80px;
+    display:flex;
+    height: 70px;
 }
 
-.übersichtsbtn,
-.feedbackbtn,
-.employeesbtn {
-    /*teil des Menüs*/
-    height: 80px;
+.employeesbtn::part(control), .feedbackbtn::part(control), .ubersichtsbtn::part(control){
+    /*teil des Menus*/
+    height: 70px;
+    padding-left: 3px;
+    background-color:#37587B;
+    color:white;
+}
+
+.logoutBtn{
+    height: 70px;
     padding-left: 2px;
-    color: #d40f2f;
+    margin-inline-start: auto;
+    transform: rotate(180deg);
 }
 
-.übersichtsP {
-    /*teil des Menüs*/
+.ubersichtsP {
+    /*teil des Menus*/
     display: flex;
 }
 
 .title {
-    /*teil des Menüs*/
+    /*teil des Menus*/
     display: flex;
     justify-content: center;
     margin-top: -27px;
@@ -61,14 +68,14 @@ html { */
 }
 
 .basisicon {
-    /*teil des Menüs*/
+    /*teil des Menus*/
     display: flex;
     height: 31px;
 }
 
-/*Übersicht*/
-/*Übersicht*/
-/*Übersicht*/
+/*ubersicht*/
+/*ubersicht*/
+/*ubersicht*/
 .tableP {
     height: 250px;
     background-color: white;
@@ -78,21 +85,9 @@ html { */
 
 .calendarP {
     display: flex;
-    height: 388px;
-    background-color: blue;
-    width: 30%;
-    margin-left: 149px;
-    margin-top: 20px;
+    margin-left: 263px;
+    margin-top: 60px;
 }
-
-/*Mitarbeiter*/
-/*Mitarbeiter*/
-/*Mitarbeiter*/
-/* employeesMitP {
-    overflow-y: auto;
-    overflow: auto;
-
-} */
 
 .topP {
     display: flex;
@@ -101,11 +96,8 @@ html { */
 }
 
 .calendarMitP {
-    height: 400px;
-    background-color: aliceblue;
-    width: 30%;
-    margin-left: 147px;
-    margin-top: 40px;
+    margin-left: 263px;
+    margin-top: 60px;
 }
 
 .tableMitP {
@@ -175,9 +167,7 @@ html { */
 }
 
 .calendarFeedP {
-    height: 240px;
-    width: 250px;
-    background-color: aqua;
+    margin-top: -40px;
 }
 
 .feedbottomP {
@@ -203,8 +193,9 @@ html { */
 }
 
 .loginF {
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 15%;
 }
 
 /*Mitarbeiter Frame*/
@@ -215,22 +206,22 @@ html { */
 }
 
 .navbarEmpP {
-    /*teil des Menüs*/
+    /*teil des Menus*/
     background-color: #101418;
     height: 32px;
     width: 100%;
 }
 
-.profilMenüEmpP {
-    /*teil des Menüs*/
+.profilMenuEmpP {
+    /*teil des Menus*/
     display: flex;
     background-color: black;
     height: 60px;
     width: 100%;
 }
 
-.menübarEmpP {
-    /*teil des Menüs*/
+.menubarEmpP {
+    /*teil des Menus*/
     display: flex;
     background-color: #333F4D;
     height: 80px;
@@ -238,20 +229,15 @@ html { */
 
 .overviewbtn,
 .feedbackbtn{
-    /*teil des Menüs*/
+    /*teil des Menus*/
     height: 80px;
     padding-left: 2px;
-    color: #d40f2f;
-}
-
-.logoutBtn{
-    height: 80px;
-    padding-left: 2px;
-    margin-inline-start: auto;
+    /* color: #d40f2f; */
+    color:#47719E;
 }
 
 .overviewEmpP {
-    /*teil des Menüs*/
+    /*teil des Menus*/
     display: flex;
 }
 
@@ -263,7 +249,7 @@ html { */
 }
 
 .basisiconEmp {
-    /*teil des Menüs*/
+    /*teil des Menus*/
     display: flex;
     height: 31px;
 }
@@ -276,14 +262,6 @@ html { */
     background-color: azure;
     width: 900px;
     margin: 10px;
-}
-
-.empOverCalendarP {
-    height: 400px;
-    width: 321px;
-    background-color: black;
-    margin-left: 147px;
-    margin-top: 35px;
 }
 
 .empOverTopP {
@@ -317,12 +295,6 @@ html { */
     margin-left: 112px;
 }
 
-.empFeedbackCalendarP {
-    height: 290px;
-    width: 270px;
-    background-color: antiquewhite;
-}
-
 .empFeedbackTableFeedP {
     height: 200px;
     width: 400px;
@@ -338,6 +310,7 @@ html { */
     height: 100px;
     width: 700px;
     background-color: white;
+    margin: 10px;
 }
 
 .empFeedbackBtnP {
@@ -388,3 +361,13 @@ html { */
     width: auto;
     margin-left: 150px;
 }
+
+.meeting::part(label){
+    color: black;
+}
+
+.menuIconbtn::part(control) {
+    background-color: black;
+    color: white;
+}
+

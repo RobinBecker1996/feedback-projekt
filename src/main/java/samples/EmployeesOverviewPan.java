@@ -8,12 +8,14 @@ import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Frame;
 import org.dwcj.component.window.Panel;
 import org.dwcj.exceptions.DwcjException;
+import org.dwcj.ui5.calendar.UI5Calendar;
+import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
 
 public class EmployeesOverviewPan extends App{
     private Frame frameEmp;
     private Panel navbarEmpP;
-    private Panel profilMenüEmpP;
-    private Panel menübarEmpP;
+    private Panel profilMenuEmpP;
+    private Panel menubarEmpP;
 
 
     private Panel empOverBackP;
@@ -26,12 +28,12 @@ public class EmployeesOverviewPan extends App{
     private Button logoutBtn;
     private Button overviewbtn;
     private Button feedbackbtn;
-    private Button menüIconbtn;
+    private Button menuIconbtn;
     private Label titleEmp;
     private Label basisiconEmp;
 
     private boolean empFeedTestB;
-    private boolean menüBarB;
+    private boolean menuBarB;
 
     private TextArea zielTA;
 
@@ -41,34 +43,39 @@ public class EmployeesOverviewPan extends App{
     public void run() throws DwcjException{
         App.setTheme("dark-pure");
 
+        UI5Calendar calendar = new UI5Calendar();
+
+        calendar.setSelectionMode(SelectionMode.MULTIPLE);
+        calendar.setHideWeekNumbers(true);
+
         log = new Login();
         empFeedTestB = false;
-        menüBarB = true;
+        menuBarB = true;
 
         frameEmp = new Frame().addClassName("frameEmp");
 
         titleEmp = new Label("Employees").addClassName("titleEmp");
         basisiconEmp = new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("basisiconEmp");
 
-        menüIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIconbtn");
+        menuIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menuIconbtn");
 
         zielTA = new TextArea().setAttribute("label", "Meine Ziele:");
 
         navbarEmpP = new Panel().addClassName("navbarEmpP");
-        profilMenüEmpP = new Panel().addClassName("profilMenüEmpP")
-        .add(menüIconbtn);
-        menübarEmpP = new Panel().addClassName("menübarEmpP");
+        profilMenuEmpP = new Panel().addClassName("profilMenuEmpP")
+        .add(menuIconbtn);
+        menubarEmpP = new Panel().addClassName("menubarP");
 
         empOverBackP = new Panel().addClassName("empOverBackP");
         empOverTopP = new Panel().addClassName("empOverTopP");
         empOverTableP = new Panel().addClassName("empOverTableP");
-        empOverCalendarP = new Panel().addClassName("empOverCalendarP");
+        empOverCalendarP = new Panel().addClassName("calendarP");
         empOverBottomP = new Panel().addClassName("empOverBottomP");
         empOverTextAreaP = new Panel().addClassName("empOverTextAreaP").add(zielTA);
 
-        overviewbtn = new Button("Übersicht").addClassName("overviewbtn");
+        overviewbtn = new Button("Übersicht").addClassName("ubersichtsbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
-        logoutBtn = new Button("Logout").addClassName("logoutBtn").setTheme(ButtonTheme.DANGER);
+        logoutBtn = new Button("<html><bbj-icon name='logout'></bbj-icon></html>").addClassName("logoutBtn").setTheme(ButtonTheme.DANGER);
 
 
         logoutBtn.onClick(e -> {
@@ -76,8 +83,8 @@ public class EmployeesOverviewPan extends App{
             log.run();
         });
 
-        menüIconbtn.onClick(e -> {
-            menütest();
+        menuIconbtn.onClick(e -> {
+            menutest();
         });
 
 
@@ -94,12 +101,13 @@ public class EmployeesOverviewPan extends App{
         });
 
         navbarEmpP.add(basisiconEmp, titleEmp);
-        frameEmp.add(navbarEmpP, profilMenüEmpP, menübarEmpP, empOverBackP);
-        menübarEmpP.add(overviewbtn, feedbackbtn, logoutBtn);
+        frameEmp.add(navbarEmpP, profilMenuEmpP, menubarEmpP, empOverBackP);
+        menubarEmpP.add(overviewbtn, feedbackbtn, logoutBtn);
 
 
         empOverBackP.add(empOverTopP, empOverBottomP);
         empOverTopP.add(empOverTableP,empOverCalendarP);
+        empOverCalendarP.add(calendar);
         empOverBottomP.add(empOverTextAreaP);
 
         zielTA = new TextArea().addClassName("zielTA").setAttribute("label", "Meine Ziele");
@@ -116,13 +124,13 @@ public class EmployeesOverviewPan extends App{
         }
     }
 
-    public void  menütest(){
-        if (menüBarB == true){
-            menübarEmpP.setVisible(false);
-            menüBarB = false;
-        }else if (menüBarB == false){
-            menübarEmpP.setVisible(true);
-            menüBarB = true;
+    public void  menutest(){
+        if (menuBarB == true){
+            menubarEmpP.setVisible(false);
+            menuBarB = false;
+        }else if (menuBarB == false){
+            menubarEmpP.setVisible(true);
+            menuBarB = true;
         }
     }
 

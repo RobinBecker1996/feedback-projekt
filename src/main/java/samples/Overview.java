@@ -1,5 +1,6 @@
 package samples;
 
+
 import org.dwcj.App;
 import org.dwcj.component.button.Button;
 import org.dwcj.component.button.ButtonTheme;
@@ -7,12 +8,14 @@ import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Frame;
 import org.dwcj.component.window.Panel;
 import org.dwcj.exceptions.DwcjException;
+import org.dwcj.ui5.calendar.UI5Calendar;
+import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
 
 public class Overview extends App{
     private Frame frame;
     private Panel navbarP;
-    private Panel profilMenüP;
-    private Panel menübarP;
+    private Panel profilMenuP;
+    private Panel menubarP;
     private Panel overviewP;
     private Panel tableP;
     private Panel calendarP;
@@ -21,13 +24,13 @@ public class Overview extends App{
     private Button overviewbtn;
     private Button feedbackbtn;
     private Button employeesbtn;
-    private Button menüIconbtn;
+    private Button menuIconbtn;
     private Label title;
     private Label basisicon;
 
     private boolean empTestB;
     private boolean feedTestB;
-    private boolean menüBarB;
+    private boolean menuBarB;
 
     private EmployeesPan empl = new EmployeesPan();
     private FeedbackPan feed = new FeedbackPan();
@@ -36,37 +39,41 @@ public class Overview extends App{
 
     @Override
     public void run() throws DwcjException {
-    App.setTheme("dark-pure");
-    log = new Login();
+        UI5Calendar calendar = new UI5Calendar();
+
+        App.setTheme("dark-pure");
+        log = new Login();
         empTestB = false;
         feedTestB = false;
-        menüBarB = true;
+        menuBarB = true;
+
+        calendar.setSelectionMode(SelectionMode.MULTIPLE);
+        calendar.setHideWeekNumbers(true);
 
         frame = new Frame().addClassName("frame");
 
         title = new Label("Feedback").addClassName("title");
-
         basisicon = new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("basisicon");
 
         tableP = new Panel().addClassName("tableP");
-
-        menüIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menüIconbtn");
-
+        menuIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menuIconbtn");
         calendarP = new Panel().addClassName("calendarP");
-
         navbarP = new Panel().addClassName("navbarP").add(basisicon, title);
+        profilMenuP = new Panel().addClassName("profilMenuP")
+        .add(menuIconbtn);
+        overviewP = new Panel().addClassName("ubersichtsP");
+        menubarP = new Panel().addClassName("menubarP");
 
-        profilMenüP = new Panel().addClassName("profilMenüP")
-        .add(menüIconbtn);
 
-        overviewP = new Panel().addClassName("übersichtsP");
-
-        menübarP = new Panel().addClassName("menübarEmpP");
-
-        overviewbtn = new Button("Übersicht").addClassName("übersichtsbtn");
+        overviewbtn = new Button("Übersicht").addClassName("ubersichtsbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
         employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");
-        logoutBtn = new Button("Logout").addClassName("logoutBtn").setTheme(ButtonTheme.DANGER);
+        try {
+            logoutBtn = new Button("<html><bbj-icon name='logout'></bbj-icon></html>").addClassName("logoutBtn").setTheme(ButtonTheme.DANGER);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+
 
         logoutBtn.onClick(e -> {
             frame.destroy();
@@ -74,14 +81,15 @@ public class Overview extends App{
         });
 
 
-        menüIconbtn.onClick(e -> {
-            menütest();
+        menuIconbtn.onClick(e -> {
+            menutest();
         });
 
         overviewbtn.onClick(e ->{
             runtest();
             feed.feedbackP.setVisible(false);
             empl.employeesMitP.setVisible(false);
+            empl.backP.setVisible(false);
             overviewP.setVisible(true);
         });
 
@@ -99,9 +107,10 @@ public class Overview extends App{
             feed.feedbackP.setVisible(true);
         });
 
+        calendarP.add(calendar);
         overviewP.add(tableP, calendarP);
-        frame.add(navbarP, profilMenüP, menübarP, overviewP);
-        menübarP.add(overviewbtn, employeesbtn, feedbackbtn, logoutBtn);
+        frame.add(navbarP, profilMenuP, menubarP, overviewP);
+        menubarP.add(overviewbtn, feedbackbtn, employeesbtn, logoutBtn);
     }
 
     public void runtest(){
@@ -117,13 +126,13 @@ public class Overview extends App{
         }
     }
 
-    public void  menütest(){
-        if (menüBarB == true){
-            menübarP.setVisible(false);
-            menüBarB = false;
-        }else if (menüBarB == false){
-            menübarP.setVisible(true);
-            menüBarB = true;
+    public void  menutest(){
+        if (menuBarB == true){
+            menubarP.setVisible(false);
+            menuBarB = false;
+        }else if (menuBarB == false){
+            menubarP.setVisible(true);
+            menuBarB = true;
         }
     }
 }
