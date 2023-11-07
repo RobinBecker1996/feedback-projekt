@@ -104,15 +104,12 @@ public class EmployeesOverviewPan extends App{
         frameEmp.add(navbarEmpP, profilMenuEmpP, menubarEmpP, empOverBackP);
         menubarEmpP.add(overviewbtn, feedbackbtn, logoutBtn);
 
+        zielTA = new TextArea().addClassName("zielTA").setAttribute("label", "Meine Ziele");
 
         empOverBackP.add(empOverTopP, empOverBottomP);
         empOverTopP.add(empOverTableP,empOverCalendarP);
         empOverCalendarP.add(calendar);
         empOverBottomP.add(empOverTextAreaP);
-
-        zielTA = new TextArea().addClassName("zielTA").setAttribute("label", "Meine Ziele");
-
-
 
     }
 

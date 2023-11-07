@@ -4,7 +4,6 @@ import org.dwcj.component.button.Button;
 import org.dwcj.component.field.DateField;
 import org.dwcj.component.field.NumberField;
 import org.dwcj.component.field.TextField;
-import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Panel;
 import org.dwcj.ui5.calendar.UI5Calendar;
 import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
@@ -46,6 +45,10 @@ public class EmployeesPan{
 
 
     public void run() {
+        UI5Calendar calendar = new UI5Calendar();
+
+        calendar.setSelectionMode(SelectionMode.MULTIPLE);
+        calendar.setHideWeekNumbers(true);
 
         employeesMitP = new Panel().addClassName("employeesMitP").setVisible(false);
         tableMitP = new Panel().addClassName("tableMitP").setVisible(true);
@@ -73,11 +76,6 @@ public class EmployeesPan{
         twoBtnP = new Panel().addClassName("twoBtnP");
         backBtnP = new Panel().addClassName("backBtnP");
 
-
-        UI5Calendar calendar = new UI5Calendar();
-
-        calendar.setSelectionMode(SelectionMode.MULTIPLE);
-        calendar.setHideWeekNumbers(true);
 
         editbtn = new Button("Edit");
         backBtn = new Button("<<");

@@ -1,7 +1,6 @@
 package samples;
 
 
-import java.util.Calendar;
 
 import org.dwcj.component.button.Button;
 import org.dwcj.component.window.Panel;
@@ -26,6 +25,11 @@ public class FeedbackPan {
 
 
     public void run() {
+        UI5Calendar calendar = new UI5Calendar();
+
+        calendar.setSelectionMode(SelectionMode.MULTIPLE);
+        calendar.setHideWeekNumbers(true);
+
         feedbackP = new Panel().addClassName("feedbackP").setVisible(false);
         formularP = new Panel().addClassName("formularP").setVisible(true);
         feedtableEmpP = new Panel().addClassName("feedtableEmpP").setVisible(true);
@@ -39,10 +43,6 @@ public class FeedbackPan {
         savefeedbtn = new Button("Save").addClassName("savefeedbtn");
         editfeedbtn = new Button("Edit").addClassName("editfeedbtn");
 
-        UI5Calendar calendar = new UI5Calendar();
-
-        calendar.setSelectionMode(SelectionMode.MULTIPLE);
-        calendar.setHideWeekNumbers(true);
 
 
         feedbackP.add(feedtopP, centerP, feedbottomP);

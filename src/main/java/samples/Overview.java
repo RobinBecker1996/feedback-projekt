@@ -39,13 +39,14 @@ public class Overview extends App{
 
     @Override
     public void run() throws DwcjException {
-        UI5Calendar calendar = new UI5Calendar();
-
         App.setTheme("dark-pure");
+
         log = new Login();
         empTestB = false;
         feedTestB = false;
         menuBarB = true;
+
+        UI5Calendar calendar = new UI5Calendar();
 
         calendar.setSelectionMode(SelectionMode.MULTIPLE);
         calendar.setHideWeekNumbers(true);
@@ -55,8 +56,8 @@ public class Overview extends App{
         title = new Label("Feedback").addClassName("title");
         basisicon = new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("basisicon");
 
+
         tableP = new Panel().addClassName("tableP");
-        menuIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menuIconbtn");
         calendarP = new Panel().addClassName("calendarP");
         navbarP = new Panel().addClassName("navbarP").add(basisicon, title);
         profilMenuP = new Panel().addClassName("profilMenuP")
@@ -65,6 +66,7 @@ public class Overview extends App{
         menubarP = new Panel().addClassName("menubarP");
 
 
+        menuIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menuIconbtn");
         overviewbtn = new Button("Übersicht").addClassName("ubersichtsbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
         employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");
@@ -106,6 +108,7 @@ public class Overview extends App{
             empl.employeesMitP.setVisible(false);
             feed.feedbackP.setVisible(true);
         });
+
 
         calendarP.add(calendar);
         overviewP.add(tableP, calendarP);
