@@ -60,13 +60,13 @@ public class Overview extends App{
         tableP = new Panel().addClassName("tableP");
         calendarP = new Panel().addClassName("calendarP");
         navbarP = new Panel().addClassName("navbarP").add(basisicon, title);
+        menuIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menuIconbtn");
         profilMenuP = new Panel().addClassName("profilMenuP")
         .add(menuIconbtn);
         overviewP = new Panel().addClassName("ubersichtsP");
         menubarP = new Panel().addClassName("menubarP");
 
 
-        menuIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menuIconbtn");
         overviewbtn = new Button("Übersicht").addClassName("ubersichtsbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
         employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");

@@ -1,10 +1,9 @@
 package samples;
 
-
-
 import org.dwcj.component.button.Button;
 import org.dwcj.component.window.Panel;
 import org.dwcj.ui5.calendar.UI5Calendar;
+import org.dwcj.ui5.calendar.UI5CalendarDate;
 import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
 
 public class FeedbackPan {
@@ -25,7 +24,14 @@ public class FeedbackPan {
 
 
     public void run() {
+        PDFShow pdf = new PDFShow();
         UI5Calendar calendar = new UI5Calendar();
+        UI5CalendarDate ui5CalendarDate = new UI5CalendarDate().setValue("Dec 15, 2012");
+        UI5CalendarDate ui5CalendarDate2 = new UI5CalendarDate().setValue("Dec 20, 2012");
+        calendar.setDate(ui5CalendarDate);
+        calendar.setDate(ui5CalendarDate2);
+            
+
 
         calendar.setSelectionMode(SelectionMode.MULTIPLE);
         calendar.setHideWeekNumbers(true);
@@ -42,13 +48,23 @@ public class FeedbackPan {
         newFormularbtn = new Button("New Formular").addClassName("newFormular");
         savefeedbtn = new Button("Save").addClassName("savefeedbtn");
         editfeedbtn = new Button("Edit").addClassName("editfeedbtn");
+        
 
+        Button pdftestbtn = new Button("\u00d6ffnen");
+
+        pdftestbtn.onClick(e -> {
+                pdf.pdfShow();
+            });
 
 
         feedbackP.add(feedtopP, centerP, feedbottomP);
         feedtopP.add(feedtableEmpP);
         calendarFeedP.add(calendar);
+        formularP.add(pdftestbtn);
         centerP.add(formularP, feedtableP, calendarFeedP);
         feedbottomP.add(newFormularbtn, editfeedbtn, savefeedbtn);
     }
+
+
+   
 }

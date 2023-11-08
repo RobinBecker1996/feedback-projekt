@@ -32,7 +32,7 @@ public class Login {
 
     public void run() {
 
-        Panel panel = new Panel()
+        Panel p = new Panel()
         .addClassName("loginP");
 
 
@@ -67,8 +67,8 @@ public class Login {
         });
 
 
-        frame.add(panel);
-        panel.add( NameTF, tf_Passwort, loginBtn, empbtn);
+        frame.add(p);
+        p.add( NameTF, tf_Passwort, loginBtn, empbtn);
     }
 
     private void onLoginEvent(LoginEvent event) {
