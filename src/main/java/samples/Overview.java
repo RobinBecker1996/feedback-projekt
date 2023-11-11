@@ -1,6 +1,8 @@
 package samples;
 
 
+import java.sql.SQLException;
+
 import org.dwcj.App;
 import org.dwcj.component.button.Button;
 import org.dwcj.component.button.ButtonTheme;
@@ -28,6 +30,12 @@ public class Overview extends App{
     private Label title;
     private Label basisicon;
 
+    public String _Ä, ä, _Ö, ö, _Ü, ü, ß;
+//     Ä, ä 		\u00c4, \u00e4
+// Ö, ö 		\u00d6, \u00f6
+// Ü, ü 		\u00dc, \u00fc
+// ß 		\u00df
+
     private boolean empTestB;
     private boolean feedTestB;
     private boolean menuBarB;
@@ -35,7 +43,7 @@ public class Overview extends App{
     private EmployeesPan empl = new EmployeesPan();
     private FeedbackPan feed = new FeedbackPan();
     private Login log;
-
+    private SingletonClass sing =  SingletonClass.getInstance();
 
     @Override
     public void run() throws DwcjException {
@@ -45,6 +53,13 @@ public class Overview extends App{
         empTestB = false;
         feedTestB = false;
         menuBarB = true;
+        _Ä = "Ä";
+        _Ü = "Ü";
+        _Ö = "Ö";
+        ä = "ä";
+        ü = "ü";
+        ö = "ö";
+        ß = "ß";
 
         UI5Calendar calendar = new UI5Calendar();
 
@@ -67,7 +82,7 @@ public class Overview extends App{
         menubarP = new Panel().addClassName("menubarP");
 
 
-        overviewbtn = new Button("Übersicht").addClassName("ubersichtsbtn");
+        overviewbtn = new Button(_Ü + "bersicht").addClassName("ubersichtsbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
         employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");
         try {
@@ -79,7 +94,13 @@ public class Overview extends App{
 
         logoutBtn.onClick(e -> {
             frame.destroy();
-            log.run();
+            try {
+                sing.closConnection();
+                log.run();
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                App.consoleLog("Logoutbtn -> " + e1.getMessage());
+            }
         });
 
 
@@ -103,6 +124,7 @@ public class Overview extends App{
         });
 
         feedbackbtn.onClick(e -> {
+            feedbackbtn.focus();
             runtest();
             overviewP.setVisible(false);
             empl.employeesMitP.setVisible(false);

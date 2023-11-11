@@ -14,7 +14,16 @@ html { */
 }
 
 .frame {
-    display: inline;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+.employeesMitP{
+    overflow: scroll !important;
+}
+
+.feedbackP{
+    overflow: scroll !important;
 }
 
 .navbarP {
@@ -39,10 +48,12 @@ html { */
     height: 70px;
 }
 
+.employeesbtn, .feedbackbtn, .ubersichtsbtn {
+    display: flex;
+    margin-left: 2px;
+}
+
 .employeesbtn::part(control), .feedbackbtn::part(control), .ubersichtsbtn::part(control){
-    /*teil des Menus*/
-    height: 70px;
-    padding-left: 3px;
     background-color:#37587B;
     color:white;
 }
@@ -202,7 +213,9 @@ html { */
 /*Mitarbeiter Frame*/
 /*Mitarbeiter Frame*/
 .frameEmp {
-    display: inline;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
 }
 
 .navbarEmpP {
@@ -227,14 +240,14 @@ html { */
     height: 80px;
 }
 
-.overviewbtn,
+/* .overviewbtn,
 .feedbackbtn{
     /*teil des Menus*/
-    height: 80px;
-    padding-left: 2px;
+    /* height: 80px; */
+    /* padding-left: 2px; */
     /* color: #d40f2f; */
-    color:#47719E;
-}
+    /* color:#47719E; */
+/* } */ 
 
 .overviewEmpP {
     /*teil des Menus*/
@@ -279,12 +292,17 @@ html { */
     margin-left: 150px;
 }
 
+.empFeedbackCalendarP{
+    display: flex;
+    margin: 10px;
+}
 
 /*EmpFeedPan*/
 /*EmpFeedPan*/
 /*EmpFeedPan*/
 .empFeedbackBackP {
-    display: inline;
+    /* display: inline; */
+    overflow: scroll !important;
 }
 
 .empFeedbackFormP {
@@ -322,7 +340,8 @@ html { */
 /*Zweites Panel von EmployeesPan*/
 /*Zweites Panel von EmployeesPan*/
 .backP {
-    display: inline;
+    /* display: flex; */
+    overflow: scroll !important; 
 }
 
 .oneEmptableP {

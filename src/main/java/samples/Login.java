@@ -22,6 +22,7 @@ public class Login {
 
     Button empbtn;
     EmployeesOverviewPan empover;
+    SingletonClass sing = SingletonClass.getInstance();
 
     private final EventDispatcher dispatcher = new EventDispatcher();
 
@@ -46,6 +47,7 @@ public class Login {
         loginBtn.setTheme(ButtonTheme.PRIMARY)
                 .onClick(e -> {
                     try {
+                        sing.connect();
                         HashMap<String, Object> payload = new HashMap<>();
                         payload.put("user", name);
                         onLoginEvent(new LoginEvent(loginBtn, payload));
