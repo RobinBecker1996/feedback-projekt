@@ -1,17 +1,22 @@
 package samples;
 
 
+
 import java.sql.SQLException;
 
 import org.dwcj.App;
+import org.dwcj.bbjplugins.gridexwidget.GridExWidget;
 import org.dwcj.component.button.Button;
 import org.dwcj.component.button.ButtonTheme;
+import org.dwcj.component.textarea.TextArea;
 import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Frame;
 import org.dwcj.component.window.Panel;
 import org.dwcj.exceptions.DwcjException;
 import org.dwcj.ui5.calendar.UI5Calendar;
 import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
+
+import com.basiscomponents.db.ResultSet;
 
 public class Overview extends App{
     private Frame frame;
@@ -30,12 +35,6 @@ public class Overview extends App{
     private Label title;
     private Label basisicon;
 
-    public String _Ä, ä, _Ö, ö, _Ü, ü, ß;
-//     Ä, ä 		\u00c4, \u00e4
-// Ö, ö 		\u00d6, \u00f6
-// Ü, ü 		\u00dc, \u00fc
-// ß 		\u00df
-
     private boolean empTestB;
     private boolean feedTestB;
     private boolean menuBarB;
@@ -43,28 +42,63 @@ public class Overview extends App{
     private EmployeesPan empl = new EmployeesPan();
     private FeedbackPan feed = new FeedbackPan();
     private Login log;
-    private SingletonClass sing =  SingletonClass.getInstance();
+    private SingletonClass sing;
+    private GridExWidget grid;  
 
     @Override
     public void run() throws DwcjException {
         App.setTheme("dark-pure");
-
+        grid = new GridExWidget();
+        sing = SingletonClass.getInstance();
         log = new Login();
+
         empTestB = false;
         feedTestB = false;
         menuBarB = true;
-        _Ä = "Ä";
-        _Ü = "Ü";
-        _Ö = "Ö";
-        ä = "ä";
-        ü = "ü";
-        ö = "ö";
-        ß = "ß";
+        // Ä = "/u00c4";
+        // Ü = "/u00dc";
+        // Ö = "/u00d6";
+        // ü = "/u00fc";
+        // ä = "/u00e4";
+        // ö = "/u00f6";
+        // ß = "/u00df";
 
         UI5Calendar calendar = new UI5Calendar();
-
         calendar.setSelectionMode(SelectionMode.MULTIPLE);
         calendar.setHideWeekNumbers(true);
+
+        Button dbtest = new Button("dbtest");
+        dbtest.onClick(e -> {
+            // ResultSet rs;
+            try {
+                ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
+                rs.first();
+                grid.setData(rs, 1 , true)
+                    .autoSizeColumns();
+                dbtest.setVisible(false);
+                tableP.add(grid);
+            } catch (SQLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        });
+
+
+        // dbtest.onClick(e -> {
+        //     try {
+        //         ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
+        //         rs.first();
+        //         // grid.setData(rs, 1 , true)
+        //         //     .autoSizeColumns();
+        //         TextArea rsTAOverview = new TextArea().addClassName("rsTAOverview");
+        //         rsTAOverview.setText(rs.getString(1) + " | " + rs.getString(2) + " | " + rs.getString(3) + " | " + rs.getString(4) + " | " + rs.getString(5) + " | " + rs.getString(6));
+
+        //         tableP.add(rsTAOverview);
+        //     } catch (SQLException e1) {
+        //         App.consoleLog("ResultSet -> " + e1.getMessage());                
+        //     }
+        // });
+
 
         frame = new Frame().addClassName("frame");
 
@@ -81,14 +115,14 @@ public class Overview extends App{
         overviewP = new Panel().addClassName("ubersichtsP");
         menubarP = new Panel().addClassName("menubarP");
 
-
-        overviewbtn = new Button(_Ü + "bersicht").addClassName("ubersichtsbtn");
+        overviewbtn = new Button( "\u00dcbersicht").addClassName("ubersichtsbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
         employeesbtn = new Button("Mitarbeiter").addClassName("employeesbtn");
+
         try {
             logoutBtn = new Button("<html><bbj-icon name='logout'></bbj-icon></html>").addClassName("logoutBtn").setTheme(ButtonTheme.DANGER);
         } catch (Exception e) {
-            e.getMessage();
+            
         }
 
 
@@ -98,7 +132,6 @@ public class Overview extends App{
                 sing.closConnection();
                 log.run();
             } catch (SQLException e1) {
-                // TODO Auto-generated catch block
                 App.consoleLog("Logoutbtn -> " + e1.getMessage());
             }
         });
@@ -134,6 +167,8 @@ public class Overview extends App{
 
         calendarP.add(calendar);
         overviewP.add(tableP, calendarP);
+        tableP.add(dbtest);
+        // tableP.add(log.grid);
         frame.add(navbarP, profilMenuP, menubarP, overviewP);
         menubarP.add(overviewbtn, feedbackbtn, employeesbtn, logoutBtn);
     }
@@ -160,4 +195,5 @@ public class Overview extends App{
             menuBarB = true;
         }
     }
+
 }

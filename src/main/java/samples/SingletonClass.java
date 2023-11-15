@@ -3,20 +3,21 @@ package samples;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.dwcj.App;
+
+import com.basiscomponents.db.ResultSet;
 
 
 
 public class SingletonClass {
     
-    private String url;
-    private String username;
-    private String password;
-    private Connection con;
-    private PreparedStatement pstmt;
+    String url;
+    String username;
+    String password;
+    Connection con;
+    PreparedStatement pstmt;
     ResultSet rs;
 
     private static SingletonClass instance;
@@ -36,10 +37,7 @@ public class SingletonClass {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            // e.printStackTrace();
             App.consoleLog("con -> " + e.getMessage());
-            
         }
         url = "jdbc:mariadb://localhost:3306/Feedbackdb";
         username = "root";
@@ -48,12 +46,26 @@ public class SingletonClass {
         return con = DriverManager.getConnection(url, username, password);
     }
 
-    // public ResultSet readout(String sqlStatment) throws SQLException{
-    //     con.prepareStatement()
+    public ResultSet readout(String sqlStatment) throws SQLException{
+        rs = new ResultSet();
+        pstmt = con.prepareStatement("Select * From Mitarbeiter");
+        rs = new ResultSet(pstmt.executeQuery());
+        return rs;
+    }
+
+    public void update(String sqlStatment) throws SQLException{
+        pstmt = con.prepareStatement(sqlStatment);
+        pstmt.executeUpdate();
+    }
+
+    // public void delete(String sqlStatment) throws SQLException{
+    //     pstmt = con.prepareStatement(sqlStatment);
+    //     pstmt.executeQuery();
     // }
 
     public void closConnection() throws SQLException {
         App.consoleLog("close Connection");
+        pstmt.close();
         con.close();
     }
 }

@@ -21,7 +21,6 @@ public class FeedbackPan {
     private Button savefeedbtn;
     private Button editfeedbtn;
 
-    
 
 
     public void run() {

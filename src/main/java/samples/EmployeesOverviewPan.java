@@ -24,6 +24,9 @@ public class EmployeesOverviewPan extends App{
     private Panel empOverCalendarP;
     private Panel empOverBottomP;
     private Panel empOverTextAreaP;
+    private Panel zielSchwepunktBtnP;
+
+    private Button zielbtn;
 
     private Button logoutBtn;
     private Button overviewbtn;
@@ -36,6 +39,7 @@ public class EmployeesOverviewPan extends App{
     private boolean menuBarB;
 
     private TextArea zielTA;
+    private TextArea schwerpunktTA;
 
     EmpFeedbackPan empFeed = new EmpFeedbackPan();
     Login log;
@@ -44,7 +48,6 @@ public class EmployeesOverviewPan extends App{
         App.setTheme("dark-pure");
 
         UI5Calendar calendar = new UI5Calendar();
-
         calendar.setSelectionMode(SelectionMode.MULTIPLE);
         calendar.setHideWeekNumbers(true);
 
@@ -54,12 +57,18 @@ public class EmployeesOverviewPan extends App{
 
         frameEmp = new Frame().addClassName("frameEmp");
 
+        zielSchwepunktBtnP = new Panel().addClassName("zielSchwepunktBtnP");
+
+        zielbtn = new Button("add").addClassName("zielbtn");
+        
+
         titleEmp = new Label("Employees").addClassName("titleEmp");
         basisiconEmp = new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("basisiconEmp");
 
         menuIconbtn = new Button("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>").addClassName("menuIconbtn");
 
         zielTA = new TextArea().setAttribute("label", "Meine Ziele:");
+        schwerpunktTA = new TextArea().setAttribute("label", "Letzter schwerpunkt:");
 
         navbarEmpP = new Panel().addClassName("navbarEmpP");
         profilMenuEmpP = new Panel().addClassName("profilMenuEmpP")
@@ -71,9 +80,9 @@ public class EmployeesOverviewPan extends App{
         empOverTableP = new Panel().addClassName("empOverTableP");
         empOverCalendarP = new Panel().addClassName("calendarP");
         empOverBottomP = new Panel().addClassName("empOverBottomP");
-        empOverTextAreaP = new Panel().addClassName("empOverTextAreaP").add(zielTA);
+        empOverTextAreaP = new Panel().addClassName("empOverTextAreaP").add(zielTA, schwerpunktTA);
 
-        overviewbtn = new Button("Übersicht").addClassName("ubersichtsbtn");
+        overviewbtn = new Button("\u00dcbersicht").addClassName("ubersichtsbtn");
         feedbackbtn = new Button("Feedback").addClassName("feedbackbtn");
         logoutBtn = new Button("<html><bbj-icon name='logout'></bbj-icon></html>").addClassName("logoutBtn").setTheme(ButtonTheme.DANGER);
 
@@ -100,16 +109,17 @@ public class EmployeesOverviewPan extends App{
             empFeed.empFeedbackBackP.setVisible(true);
         });
 
+        zielSchwepunktBtnP.add(zielbtn);
+
         navbarEmpP.add(basisiconEmp, titleEmp);
         frameEmp.add(navbarEmpP, profilMenuEmpP, menubarEmpP, empOverBackP);
         menubarEmpP.add(overviewbtn, feedbackbtn, logoutBtn);
 
-        zielTA = new TextArea().addClassName("zielTA").setAttribute("label", "Meine Ziele");
 
         empOverBackP.add(empOverTopP, empOverBottomP);
         empOverTopP.add(empOverTableP,empOverCalendarP);
         empOverCalendarP.add(calendar);
-        empOverBottomP.add(empOverTextAreaP);
+        empOverBottomP.add(empOverTextAreaP, zielSchwepunktBtnP);
 
     }
 

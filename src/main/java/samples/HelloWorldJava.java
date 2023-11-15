@@ -21,8 +21,6 @@ public class HelloWorldJava extends App {
         login.onLogin(this::login);
     }
 
-
-
     public void login(LoginEvent event) {
         try {
             over.run();

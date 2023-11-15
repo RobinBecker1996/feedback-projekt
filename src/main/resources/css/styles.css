@@ -121,27 +121,13 @@ html { */
     align-items: center;
 }
 
-.insertP {
-    display: flex;
-    margin-top: 312px;
-    gap: 10px;
-    width: 900px;
-}
+
 
 .buttonP {
     display: flex;
     margin: 21px;
     margin-left: 200px;
     gap: 100px;
-}
-
-.employeesIDNF,
-.terminDF,
-.addedDF,
-.zielTF,
-.feedbackinfo {
-    display: flex;
-    width: 10px;
 }
 
 .emplyoeesMitP{
@@ -389,4 +375,36 @@ html { */
     background-color: black;
     color: white;
 }
+
+.feedbackTf::part(control), .terminDF::part(control), .hinzugefuegtField::part(control), .vornameTf::part(control), .nachnameTf::part(control), .employeesIDNF::part(control){
+    width: 250px;
+}
+
+.threeBtnP{
+    display:flex;
+    width: 900px;
+}
+
+.insertP {
+    display: flex;
+    margin-top: 312px;
+    width: 900px;
+}
+
+.rsTAOverview::part(control) {/*Später wieder entfernen*/
+    width: 340px;
+}
+
+.empOverTextAreaP {
+    display: flex;
+    width: 500px;
+    height: 146px;
+    gap: 10px;
+}
+
+.zielbtn {
+    margin-left: 370px;
+}
+
+
 

@@ -30,6 +30,12 @@
             <version>23.04</version>
         </dependency>
         <dependency>
+            <groupId>org.dwcj.bbjplugins</groupId>
+            <artifactId>dwcj-plugin-proxies</artifactId>
+            <version>0.1.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.dwcj</groupId>
             <artifactId>ui5</artifactId>
             <version>23.02</version>
