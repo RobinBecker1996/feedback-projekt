@@ -11,8 +11,8 @@ import org.dwcj.component.field.DateField;
 import org.dwcj.component.field.NumberField;
 import org.dwcj.component.window.Panel;
 
-import org.dwcj.ui5.calendar.UI5Calendar;
-import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
+// import org.dwcj.ui5.calendar.UI5Calendar;
+// import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
 
 import com.basiscomponents.db.DataRow;
 import com.basiscomponents.db.ResultSet;
@@ -21,7 +21,7 @@ public class EmployeesPan{
     public Panel employeesMitP; // alle panel
     private Panel topP;
     private Panel bottomP;
-    private Panel tableMitP; //Tabelle
+    public Panel tableMitP; //Tabelle
     private Panel calendarMitP; //Kaledner und TextArea
     private Panel insertP; // Formular + Button
     private Panel buttonP;
@@ -55,20 +55,17 @@ public class EmployeesPan{
     private Button editbtn;
     private Button backBtn;
 
-    // Double d ;
-    // int i; 
 
     SingletonClass sing;
     Query query;
-    // DataRow data;
-    // GridExWidget grid = new GridExWidget();
+    GridExWidget grid ;
     MitarbeiterClass mit;
 
     public void run() {
-        UI5Calendar calendar = new UI5Calendar();
+        // UI5Calendar calendar = new UI5Calendar();
 
-        calendar.setSelectionMode(SelectionMode.MULTIPLE);
-        calendar.setHideWeekNumbers(true);
+        // calendar.setSelectionMode(SelectionMode.MULTIPLE);
+        // calendar.setHideWeekNumbers(true);
 
         sing = SingletonClass.getInstance();
         query = new Query();
@@ -102,7 +99,6 @@ public class EmployeesPan{
         twoBottomP = new Panel().addClassName("twoBottomP");
         twoBtnP = new Panel().addClassName("twoBtnP");
         backBtnP = new Panel().addClassName("backBtnP");
-
         
         editbtn = new Button("Edit");
         backBtn = new Button("<<");
@@ -118,7 +114,6 @@ public class EmployeesPan{
                         backP.setVisible(true);
                     });
 
-
         savebtn = new Button("Save").addClassName("savebtn");
         savebtn.onClick(e -> {
                 update();
@@ -129,15 +124,13 @@ public class EmployeesPan{
             deleteDataRow();
         });
 
-
-
         createbtn = new Button("Create").addClassName("createbtn");
         createbtn.onClick(e -> {
                 create();
         });
 
 
-        calendarMitP.add(calendar);
+        // calendarMitP.add(calendar);
         topP.add(tableMitP, calendarMitP);
         bottomP.add(insertP, threeBtnP, buttonP);
         tableMitP.add(testEmpTablebtn);
@@ -154,21 +147,21 @@ public class EmployeesPan{
         twoBottomP.add(twoBtnP, backBtnP);
         backBtnP.add(backBtn);
         twoBtnP.add(editbtn);
-
-
     }
+
 
     public void update(){ 
         query.updateEmp(genDataRow()); 
     }
 
-    public void create() {
-        
+
+    public void create() {      
         query.create(genDataRow());
     }
 
+
     public void felderfuellen(){
-         ResultSet rs;
+        ResultSet rs;
         try {
             rs = sing.readout("Select * from Mitarbeiter");
             DataRow data = rs.get(0);
@@ -180,7 +173,7 @@ public class EmployeesPan{
         }
     }
 
-     public DataRow genDataRow() { 
+    public DataRow genDataRow() { 
         DataRow data = new DataRow();
         try {
             data.setFieldValue("MitarbeiterID", employeesIDNF.getText());
@@ -200,6 +193,18 @@ public class EmployeesPan{
         Double id = employeesIDNF.getValue();
         query.delete(id);
     }
+
+    public void gridsetup() {
+        try { 
+            grid = new GridExWidget();
+            ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
+            rs.first();
+            grid.setData(rs, 1, true)
+                .autoSizeColumns();
+       } catch (SQLException e) {
+           App.consoleLog("Gridsetup-> " + e.getMessage());
+       }
+   }
 
     
 }

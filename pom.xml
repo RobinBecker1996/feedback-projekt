@@ -35,13 +35,13 @@
             <version>0.1.5</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>org.dwcj</groupId>
             <artifactId>ui5</artifactId>
             <version>23.02</version>
             <scope>system</scope>
             <systemPath>C:/ui5/target/UI5Demo.jar</systemPath>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>

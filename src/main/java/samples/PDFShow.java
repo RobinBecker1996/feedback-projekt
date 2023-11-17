@@ -8,7 +8,7 @@ import java.io.IOException;
 public class PDFShow {
 
     public void pdfShow() {
-        File pdfFile = new File("C:/Robin/feedback-projekt/src/main/resources/Leistungsbeurteilung.pdf");
+        File pdfFile = new File("C:/Robin/Leistungsbeurteilung.pdf");
         try {
             Process process = new ProcessBuilder("cmd", "/c", "start", pdfFile.getAbsolutePath()).start();
             process.waitFor();

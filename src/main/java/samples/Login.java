@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 
 import org.dwcj.App;
-import org.dwcj.bbjplugins.gridexwidget.GridExWidget;
 import org.dwcj.component.button.Button;
 import org.dwcj.component.button.ButtonTheme;
 import org.dwcj.component.event.EventDispatcher;
@@ -16,7 +15,6 @@ import org.dwcj.component.window.Panel;
 import org.dwcj.exceptions.DwcjAppInitializeException;
 import org.dwcj.exceptions.DwcjException;
 
-import com.basiscomponents.db.ResultSet;
 
 public class Login {
     private TextField NameTF;
@@ -28,7 +26,6 @@ public class Login {
     Button empbtn;
     EmployeesOverviewPan empover;
     SingletonClass sing = SingletonClass.getInstance();
-    GridExWidget grid; 
 
     private final EventDispatcher dispatcher = new EventDispatcher();
 
@@ -38,7 +35,6 @@ public class Login {
     }
 
     public void run() {
-        // grid = new GridExWidget();
         Panel p = new Panel()
         .addClassName("loginP");
 
@@ -53,7 +49,6 @@ public class Login {
                 .onClick(e -> {
                     try {
                         sing.connect();
-                        // gridsetup();
                         HashMap<String, Object> payload = new HashMap<>();
                         payload.put("user", name);
                         onLoginEvent(new LoginEvent(loginBtn, payload));
@@ -89,18 +84,5 @@ public class Login {
         this.dispatcher.addEventListener(LoginEvent.class, listener);
         return this;
     }
-
-    public void gridsetup() {
-        try { 
-            sing.connect();
-            grid = new GridExWidget();
-            ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
-            rs.first();
-            grid.setData(rs, 0 , true)
-                .autoSizeColumns();
-       } catch (SQLException e) {
-           App.consoleLog("Gridsetup-> " + e.getMessage());
-       }
-   }
      
 }

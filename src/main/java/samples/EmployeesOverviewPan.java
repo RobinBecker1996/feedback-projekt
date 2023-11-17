@@ -8,8 +8,8 @@ import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Frame;
 import org.dwcj.component.window.Panel;
 import org.dwcj.exceptions.DwcjException;
-import org.dwcj.ui5.calendar.UI5Calendar;
-import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
+// import org.dwcj.ui5.calendar.UI5Calendar;
+// import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
 
 public class EmployeesOverviewPan extends App{
     private Frame frameEmp;
@@ -47,9 +47,9 @@ public class EmployeesOverviewPan extends App{
     public void run() throws DwcjException{
         App.setTheme("dark-pure");
 
-        UI5Calendar calendar = new UI5Calendar();
-        calendar.setSelectionMode(SelectionMode.MULTIPLE);
-        calendar.setHideWeekNumbers(true);
+        // UI5Calendar calendar = new UI5Calendar();
+        // calendar.setSelectionMode(SelectionMode.MULTIPLE);
+        // calendar.setHideWeekNumbers(true);
 
         log = new Login();
         empFeedTestB = false;
@@ -118,7 +118,7 @@ public class EmployeesOverviewPan extends App{
 
         empOverBackP.add(empOverTopP, empOverBottomP);
         empOverTopP.add(empOverTableP,empOverCalendarP);
-        empOverCalendarP.add(calendar);
+        // empOverCalendarP.add(calendar);
         empOverBottomP.add(empOverTextAreaP, zielSchwepunktBtnP);
 
     }

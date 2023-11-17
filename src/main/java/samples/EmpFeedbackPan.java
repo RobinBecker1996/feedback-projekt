@@ -3,8 +3,8 @@ package samples;
 
 import org.dwcj.component.button.Button;
 import org.dwcj.component.window.Panel;
-import org.dwcj.ui5.calendar.UI5Calendar;
-import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
+// import org.dwcj.ui5.calendar.UI5Calendar;
+// import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
 
 
 public class EmpFeedbackPan {
@@ -23,9 +23,9 @@ public class EmpFeedbackPan {
     public void run() {
         PDFShow pdf = new PDFShow();
 
-        UI5Calendar calendar = new UI5Calendar();
-        calendar.setSelectionMode(SelectionMode.MULTIPLE);
-        calendar.setHideWeekNumbers(true);
+        // UI5Calendar calendar = new UI5Calendar();
+        // calendar.setSelectionMode(SelectionMode.MULTIPLE);
+        // calendar.setHideWeekNumbers(true);
 
         testbtn = new Button("Test");
 
@@ -45,7 +45,7 @@ public class EmpFeedbackPan {
 
         empFeedbackBackP.add(empFeedbackTopP, empFeedbackCenterP, empFeedbackBtnP);
         empFeedbackTopP.add(empFeedbackTableEmpP);
-        empFeedbackCalendarP.add(calendar);
+        // empFeedbackCalendarP.add(calendar);
         empFeedbackFormP.add(testbtn);
         empFeedbackCenterP.add(empFeedbackFormP, empFeedbackTableFeedP, empFeedbackCalendarP);
         empFeedbackBtnP.add(sendbtn);
