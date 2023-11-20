@@ -1,0 +1,12 @@
+.loginP {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.loginF {
+    display: flex !important;
+    justify-content: center !important;
+    padding: 15%;
+}

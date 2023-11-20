@@ -1,0 +1,71 @@
+.menubarP {
+    /*teil des Menus*/
+    background-color: #333F4D;
+    display:flex;
+    height: 70px;
+}
+
+.navbarEmpP {
+    background-color: #101418;
+    height: 32px;
+    width: 100%;
+}
+
+.profilMenuEmpP {
+    display: flex;
+    background-color: black;
+    height: 60px;
+    width: 100%;
+}
+
+.menubarEmpP {
+    display: flex;
+    background-color: #333F4D;
+    height: 80px;
+}
+
+.logoutBtn{
+    height: 70px;
+    padding-left: 2px;
+    margin-inline-start: auto;
+    transform: rotate(180deg);
+}
+
+.ubersichtsP {
+    display: flex;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    margin-top: -27px;
+    font-size: 20px;
+}
+
+.basisicon {
+    display: flex;
+    height: 31px;
+}
+
+.profilMenuP {
+    display: flex;
+    background-color: black;
+    height: 60px;
+    width: 100%;
+}
+
+.employeesbtn::part(control), .feedbackbtn::part(control), .ubersichtsbtn::part(control){
+    background-color:#37587B;
+    color:white;
+}
+
+.employeesbtn, .feedbackbtn, .ubersichtsbtn {
+    display: flex;
+    margin-left: 2px;
+}
+
+.navbarP {
+    background-color: #101418;
+    height: 32px;
+    width: 100%;
+}

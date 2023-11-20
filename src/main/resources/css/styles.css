@@ -1,8 +1,3 @@
-/* body,
-html { */
-/* :root{
-    overflow: hidden;
-} */
 #window-34, #window-80, #window-45 {
     display: flex;
     justify-content: center;
@@ -26,66 +21,6 @@ html { */
     overflow: scroll !important;
 }
 
-.navbarP {
-    /*teil des Menus*/
-    background-color: #101418;
-    height: 32px;
-    width: 100%;
-}
-
-.profilMenuP {
-    /*teil des Menus*/
-    display: flex;
-    background-color: black;
-    height: 60px;
-    width: 100%;
-}
-
-.menubarP {
-    /*teil des Menus*/
-    background-color: #333F4D;
-    display:flex;
-    height: 70px;
-}
-
-.employeesbtn, .feedbackbtn, .ubersichtsbtn {
-    display: flex;
-    margin-left: 2px;
-}
-
-.employeesbtn::part(control), .feedbackbtn::part(control), .ubersichtsbtn::part(control){
-    background-color:#37587B;
-    color:white;
-}
-
-.logoutBtn{
-    height: 70px;
-    padding-left: 2px;
-    margin-inline-start: auto;
-    transform: rotate(180deg);
-}
-
-.ubersichtsP {
-    /*teil des Menus*/
-    display: flex;
-}
-
-.title {
-    /*teil des Menus*/
-    display: flex;
-    justify-content: center;
-    margin-top: -27px;
-    font-size: 20px;
-}
-
-.basisicon {
-    /*teil des Menus*/
-    display: flex;
-    height: 31px;
-}
-
-/*ubersicht*/
-/*ubersicht*/
 /*ubersicht*/
 .tableP {
     height: 250px;
@@ -120,8 +55,6 @@ html { */
     justify-content: center;
     align-items: center;
 }
-
-
 
 .buttonP {
     display: flex;
@@ -174,27 +107,6 @@ html { */
     margin: 10px;
 }
 
-/*Login*/
-/*Login*/
-/*Login*/
-/* div {
-    display: flex;
-    justify-content: center;
-} */
-
-.loginP {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.loginF {
-    display: flex !important;
-    justify-content: center !important;
-    padding: 15%;
-}
-
 /*Mitarbeiter Frame*/
 /*Mitarbeiter Frame*/
 /*Mitarbeiter Frame*/
@@ -204,39 +116,7 @@ html { */
     flex-direction: column;
 }
 
-.navbarEmpP {
-    /*teil des Menus*/
-    background-color: #101418;
-    height: 32px;
-    width: 100%;
-}
-
-.profilMenuEmpP {
-    /*teil des Menus*/
-    display: flex;
-    background-color: black;
-    height: 60px;
-    width: 100%;
-}
-
-.menubarEmpP {
-    /*teil des Menus*/
-    display: flex;
-    background-color: #333F4D;
-    height: 80px;
-}
-
-/* .overviewbtn,
-.feedbackbtn{
-    /*teil des Menus*/
-    /* height: 80px; */
-    /* padding-left: 2px; */
-    /* color: #d40f2f; */
-    /* color:#47719E; */
-/* } */ 
-
 .overviewEmpP {
-    /*teil des Menus*/
     display: flex;
 }
 
@@ -248,7 +128,6 @@ html { */
 }
 
 .basisiconEmp {
-    /*teil des Menus*/
     display: flex;
     height: 31px;
 }

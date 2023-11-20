@@ -48,8 +48,8 @@ public class SingletonClass {
 
     public ResultSet readout(String sqlStatment) throws SQLException{
         rs = new ResultSet();
-        pstmt = con.prepareStatement("Select * From Mitarbeiter");
-        rs = new ResultSet(pstmt.executeQuery());
+        // pstmt = con.prepareStatement("Select * From Mitarbeiter");
+        // rs = new ResultSet(pstmt.executeQuery());
         return rs;
     }
 

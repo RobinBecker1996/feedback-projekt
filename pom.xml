@@ -7,9 +7,10 @@
     <artifactId>hello-world-java</artifactId>
     <version>23.03</version>
 
-    <properties>
+   <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <jar-directory>C:/bbx/lib</jar-directory>
     </properties>
     <repositories>
         <repository>
@@ -35,20 +36,37 @@
             <version>0.1.5</version>
             <scope>provided</scope>
         </dependency>
-        <!-- <dependency>
-            <groupId>org.dwcj</groupId>
-            <artifactId>ui5</artifactId>
-            <version>23.02</version>
-            <scope>system</scope>
-            <systemPath>C:/ui5/target/UI5Demo.jar</systemPath>
-        </dependency> -->
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
             <version>3.3.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.basis.lib</groupId>
+            <artifactId>BBj</artifactId>
+            <scope>provided</scope>
+            <version>23.05</version>
+        </dependency>
+        <dependency>
+            <groupId>com.basis.lib</groupId>
+            <artifactId>BBjStartup</artifactId>
+            <scope>provided</scope>
+            <version>23.05</version>
+        </dependency>
+        <dependency>
+            <groupId>com.basis.lib</groupId>
+            <artifactId>BBjUtil</artifactId>
+            <scope>provided</scope>
+            <version>23.05</version>
+        </dependency>
+         <dependency>
+            <groupId>com.basiscomponents</groupId>
+            <artifactId>basiscomponents.jar</artifactId>
+            <scope>system</scope>
+            <version>1.0</version>
+            <systemPath>${jar-directory}/basiscomponents.jar</systemPath>
+        </dependency>
     </dependencies>
-
     <build>
         <finalName>HelloWorldJava</finalName>
         <plugins>
@@ -67,7 +85,7 @@
                     <!-- see https://github.com/DwcJava/dwcj-install-maven-plugin for options -->
                     <deployurl>http://localhost:8888/dwcj-install</deployurl>
                     <classname>samples.HelloWorldJava</classname>
-                    <publishname>hworld</publishname>
+                    <publishname>projekt</publishname>
                     <debug>true</debug>
                 </configuration>
             </plugin>

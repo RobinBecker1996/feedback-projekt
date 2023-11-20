@@ -11,6 +11,8 @@ import org.dwcj.exceptions.DwcjException;
 import com.basiscomponents.db.ResultSet;
 
 @InlineStyleSheet("context://css/styles.css")
+@InlineStyleSheet("context://css/menubar.css")
+@InlineStyleSheet("context://css/login.css")
 @AppTitle("DWCJ Hello World")
 
 public class HelloWorldJava extends App {
