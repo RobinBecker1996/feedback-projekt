@@ -1,0 +1,87 @@
+/*Mitarbeiter Frame*/
+/*Mitarbeiter Frame*/
+/*Mitarbeiter Frame*/
+.frameEmp {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.overviewEmpP {
+    display: flex;
+}
+
+.titleEmp {
+    display: flex;
+    justify-content: center;
+    margin-top: -29px;
+    font-size: 20px;
+}
+
+.basisiconEmp {
+    display: flex;
+    height: 31px;
+}
+
+/*Employees login frame*/
+/*Employees login frame*/
+/*Employees login frame*/
+.empOverTableP {
+    height: 110px;
+    width: 63%;
+    margin: 10px;
+}
+
+.empOverTopP {
+    display: flex;
+}
+
+.empOverTextAreaP {
+    display: flex;
+    background-color: rgb(10, 136, 247);
+    justify-content: center;
+    padding: 10px;
+    width: 500px;
+    height: 146px;
+    gap: 10px;
+    margin-left: 150px;
+    margin-top: 150px;
+
+}
+
+.empFeedbackCalendarP{
+    display: flex;
+    margin: 10px;
+}
+
+/*EmpFeedPan*/
+/*EmpFeedPan*/
+/*EmpFeedPan*/
+.empFeedbackBackP {
+    /* display: inline; */
+    overflow: scroll !important;
+}
+
+.empFeedbackFormP {
+    height: 500px;
+    width: 400px;
+    background-color: aliceblue;
+    margin: 20px;
+    margin-left: 112px;
+}
+
+.empFeedbackTableFeedP {
+    height: 200px;
+    width: 400px;
+    background-color: aqua;
+    margin: 94px;
+}
+
+.empFeedbackCenterP {
+    display: flex;
+}
+
+.empFeedbackBtnP {
+    width: 80px;
+    margin-left: 268px;
+}

@@ -48,8 +48,8 @@ public class SingletonClass {
 
     public ResultSet readout(String sqlStatment) throws SQLException{
         rs = new ResultSet();
-        // pstmt = con.prepareStatement("Select * From Mitarbeiter");
-        // rs = new ResultSet(pstmt.executeQuery());
+        pstmt = con.prepareStatement(sqlStatment);
+        rs = new ResultSet(pstmt.executeQuery());
         return rs;
     }
 
@@ -58,10 +58,10 @@ public class SingletonClass {
         pstmt.executeUpdate();
     }
 
-    // public void delete(String sqlStatment) throws SQLException{
-    //     pstmt = con.prepareStatement(sqlStatment);
-    //     pstmt.executeQuery();
-    // }
+    public void delete(String sqlStatment) throws SQLException{
+        pstmt = con.prepareStatement(sqlStatment);
+        pstmt.executeQuery();
+    }
 
     public void closConnection() throws SQLException {
         App.consoleLog("close Connection");

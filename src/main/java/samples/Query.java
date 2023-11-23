@@ -62,8 +62,9 @@ public class Query {
             sing.pstmt.executeQuery();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            App.consoleLog("delet ->" + e.getMessage());
         }
-        
     }
+
+    
 }

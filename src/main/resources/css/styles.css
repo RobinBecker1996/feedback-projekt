@@ -13,6 +13,7 @@
     height: 100vh;
     flex-direction: column;
 }
+
 .employeesMitP{
     overflow: scroll !important;
 }
@@ -25,7 +26,7 @@
 .tableP {
     height: 250px;
     background-color: white;
-    width: 50%;
+    width: 63%;
     margin: 10px;
 }
 
@@ -38,18 +39,17 @@
 .topP {
     display: flex;
     height: 200px;
-    /* background-color: brown; */
 }
 
 .calendarMitP {
-    margin-left: 263px;
+    margin-left: 150px;
     margin-top: 60px;
 }
 
 .tableMitP {
     height: 500px;
     background-color: antiquewhite;
-    width: 50%;
+    width: 63%;
     display: flex;
     margin: 10px;
     justify-content: center;
@@ -67,151 +67,16 @@
     overflow: scroll;
 }
 
-/*Feedback*/
-/*Feedback*/
-/*Feedback*/
-.feedtableEmpP {
-    height: 200px;
-    background-color: white;
-    width: 900px;
-    margin: 10px;
-}
-
-.centerP {
-    display: flex;
-    height: 500px;
-    margin: 10px;
-    gap: 183px;
-}
-
-.formularP {
-    height: 500px;
-    background-color: aliceblue;
-    width: 450px;
-}
-
-.feedtableP {
-    width: 400px;
-    background-color: black;
-    height: 250px;
-}
-
-.calendarFeedP {
-    margin-top: -40px;
-}
-
-.feedbottomP {
-    display: flex;
-    width: 450px;
-    gap: 108px;
-    margin: 10px;
-}
-
-/*Mitarbeiter Frame*/
-/*Mitarbeiter Frame*/
-/*Mitarbeiter Frame*/
-.frameEmp {
-    display: flex;
-    height: 100vh;
-    flex-direction: column;
-}
-
-.overviewEmpP {
-    display: flex;
-}
-
-.titleEmp {
-    display: flex;
-    justify-content: center;
-    margin-top: -29px;
-    font-size: 20px;
-}
-
-.basisiconEmp {
-    display: flex;
-    height: 31px;
-}
-
-/*Employees login frame*/
-/*Employees login frame*/
-/*Employees login frame*/
-.empOverTableP {
-    height: 100px;
-    background-color: azure;
-    width: 900px;
-    margin: 10px;
-}
-
-.empOverTopP {
-    display: flex;
-}
-
-.empOverTextAreaP {
-    display: flex;
-    background-color: rgb(10, 136, 247);
-    justify-content: center;
-    padding: 10px;
-    height: 150px;
-    width: 250px;
-    margin-top: -105px;
-    margin-left: 150px;
-}
-
-.empFeedbackCalendarP{
-    display: flex;
-    margin: 10px;
-}
-
-/*EmpFeedPan*/
-/*EmpFeedPan*/
-/*EmpFeedPan*/
-.empFeedbackBackP {
-    /* display: inline; */
-    overflow: scroll !important;
-}
-
-.empFeedbackFormP {
-    height: 500px;
-    width: 400px;
-    background-color: aliceblue;
-    margin: 20px;
-    margin-left: 112px;
-}
-
-.empFeedbackTableFeedP {
-    height: 200px;
-    width: 400px;
-    background-color: aqua;
-    margin: 94px;
-}
-
-.empFeedbackCenterP {
-    display: flex;
-}
-
-.empFeedbackTableEmpP {
-    height: 100px;
-    width: 700px;
-    background-color: white;
-    margin: 10px;
-}
-
-.empFeedbackBtnP {
-    width: 80px;
-    margin-left: 268px;
-}
-
 /*Zweites Panel von EmployeesPan*/
 /*Zweites Panel von EmployeesPan*/
 /*Zweites Panel von EmployeesPan*/
 .backP {
-    /* display: flex; */
     overflow: scroll !important; 
 }
 
 .oneEmptableP {
-    height: 100px;
-    width: 800px;
+    height: 115px;
+    width: 64%;
     margin: 10px;
     background-color: white;
 }
@@ -262,6 +127,7 @@
 .threeBtnP{
     display:flex;
     width: 900px;
+    margin-left: 70px;
 }
 
 .insertP {
@@ -270,20 +136,15 @@
     width: 900px;
 }
 
-.rsTAOverview::part(control) {/*Später wieder entfernen*/
+.rsTAOverview::part(control) {
     width: 340px;
-}
-
-.empOverTextAreaP {
-    display: flex;
-    width: 500px;
-    height: 146px;
-    gap: 10px;
 }
 
 .zielbtn {
     margin-left: 370px;
 }
 
-
+.calendarFeedP {
+    margin-left: 290px;
+}
 

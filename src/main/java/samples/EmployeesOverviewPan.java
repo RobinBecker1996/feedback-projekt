@@ -1,6 +1,10 @@
 package samples;
 
+import java.sql.SQLException;
+import java.text.ParseException;
+
 import org.dwcj.App;
+import org.dwcj.bbjplugins.gridexwidget.GridExWidget;
 import org.dwcj.component.button.Button;
 import org.dwcj.component.button.ButtonTheme;
 import org.dwcj.component.textarea.TextArea;
@@ -11,16 +15,19 @@ import org.dwcj.exceptions.DwcjException;
 // import org.dwcj.ui5.calendar.UI5Calendar;
 // import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
 
+import com.basiscomponents.db.DataRow;
+import com.basiscomponents.db.ResultSet;
+
 public class EmployeesOverviewPan extends App{
     private Frame frameEmp;
     private Panel navbarEmpP;
-    private Panel profilMenuEmpP;
+    private Panel profilMenuP;
     private Panel menubarEmpP;
 
 
     private Panel empOverBackP;
     private Panel empOverTopP;
-    private Panel empOverTableP;
+    public Panel empOverTableP;
     private Panel empOverCalendarP;
     private Panel empOverBottomP;
     private Panel empOverTextAreaP;
@@ -37,15 +44,23 @@ public class EmployeesOverviewPan extends App{
 
     private boolean empFeedTestB;
     private boolean menuBarB;
+    private boolean gridB;
 
-    private TextArea zielTA;
-    private TextArea schwerpunktTA;
+    public TextArea zielTA;
+    public TextArea schwerpunktTA;
+
+    SingletonClass sing = SingletonClass.getInstance();
+    public GridExWidget grid;
+    GridClass gridclass = new GridClass();
+    
 
     EmpFeedbackPan empFeed = new EmpFeedbackPan();
     Login log;
 
     public void run() throws DwcjException{
         App.setTheme("dark-pure");
+        grid = new GridExWidget();
+
 
         // UI5Calendar calendar = new UI5Calendar();
         // calendar.setSelectionMode(SelectionMode.MULTIPLE);
@@ -54,6 +69,7 @@ public class EmployeesOverviewPan extends App{
         log = new Login();
         empFeedTestB = false;
         menuBarB = true;
+        gridB = false;
 
         frameEmp = new Frame().addClassName("frameEmp");
 
@@ -71,7 +87,7 @@ public class EmployeesOverviewPan extends App{
         schwerpunktTA = new TextArea().setAttribute("label", "Letzter schwerpunkt:");
 
         navbarEmpP = new Panel().addClassName("navbarEmpP");
-        profilMenuEmpP = new Panel().addClassName("profilMenuEmpP")
+        profilMenuP = new Panel().addClassName("profilMenuP")
         .add(menuIconbtn);
         menubarEmpP = new Panel().addClassName("menubarP");
 
@@ -101,18 +117,27 @@ public class EmployeesOverviewPan extends App{
             runtest();
             empFeed.empFeedbackBackP.setVisible(false);
             empOverBackP.setVisible(true);
+            
         });
 
         feedbackbtn.onClick(e -> {
             runtest();
             empOverBackP.setVisible(false);
+            empGridSetup(); 
             empFeed.empFeedbackBackP.setVisible(true);
+        });
+
+
+        zielbtn.onClick(e -> {
+            updateziele(genDataRow());
+            gridRefresh();
+            App.consoleLog("zielbtn reagiert");
         });
 
         zielSchwepunktBtnP.add(zielbtn);
 
         navbarEmpP.add(basisiconEmp, titleEmp);
-        frameEmp.add(navbarEmpP, profilMenuEmpP, menubarEmpP, empOverBackP);
+        frameEmp.add(navbarEmpP, profilMenuP, menubarEmpP, empOverBackP);
         menubarEmpP.add(overviewbtn, feedbackbtn, logoutBtn);
 
 
@@ -138,6 +163,56 @@ public class EmployeesOverviewPan extends App{
         }else if (menuBarB == false){
             menubarEmpP.setVisible(true);
             menuBarB = true;
+        }
+    }
+
+    public void empGridSetup() {
+        if(gridB == false){
+            empFeed.empFeedbackTableEmpP.add(grid);
+            try {    
+                ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter WHERE MitarbeiterID = 1");
+                rs.first();
+                grid.setData(rs, 1, true)
+                    .autoSizeColumns();
+            } catch (SQLException e) {
+                App.consoleLog("Gridsetup-> " + e.getMessage());
+            }
+            gridB = true;
+        }
+   }
+
+   public void updateziele(DataRow data) {   
+        try {
+            String sqlInsert = "update Mitarbeiter set Ziele = ?, Schwerpunkt = ?  WHERE MitarbeiterID =1";
+            sing.pstmt = sing.con.prepareStatement(sqlInsert);
+            sing.pstmt.setString(1, data.getFieldAsString("Ziele"));
+            sing.pstmt.setString(2, data.getFieldAsString("Schwerpunkt"));      
+            sing.pstmt.executeUpdate(); 
+            gridRefresh();     
+        } catch (SQLException e) {          
+            App.consoleLog("updateziele -> " + e.getMessage());
+        }
+    }
+
+    public DataRow genDataRow() { 
+        DataRow data = new DataRow();
+        try {
+            data.setFieldValue("Ziele", zielTA.getText());
+            data.setFieldValue("Schwerpunkt", schwerpunktTA.getText());
+        } catch (ParseException e) {
+            App.consoleLog("genDataRow ->" + e.getMessage());
+        }
+        return data;
+    }
+
+    public void gridRefresh() {
+        try {
+           ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter WHERE MitarbeiterID = 1");
+                rs.first();
+                grid.setData(rs, 1, true)
+                    .autoSizeColumns();
+        } catch (SQLException e) {
+            App.consoleLog("employees gridrefresh ->" + e.getMessage());
         }
     }
 

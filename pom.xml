@@ -7,10 +7,10 @@
     <artifactId>hello-world-java</artifactId>
     <version>23.03</version>
 
-   <properties>
+    <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <jar-directory>C:/bbx/lib</jar-directory>
+        <!-- <jar-directory>C:/bbx/lib</jar-directory> -->
     </properties>
     <repositories>
         <repository>
@@ -36,12 +36,19 @@
             <version>0.1.5</version>
             <scope>provided</scope>
         </dependency>
+          <dependency>
+            <groupId>org.dwcj</groupId>
+            <artifactId>ui5</artifactId>
+            <version>23.02</version>
+            <scope>system</scope>
+            <systemPath>C:/ui5/target/UI5Demo.jar</systemPath>
+        </dependency>
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
             <version>3.3.0</version>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>com.basis.lib</groupId>
             <artifactId>BBj</artifactId>
             <scope>provided</scope>
@@ -65,7 +72,7 @@
             <scope>system</scope>
             <version>1.0</version>
             <systemPath>${jar-directory}/basiscomponents.jar</systemPath>
-        </dependency>
+        </dependency> -->
     </dependencies>
     <build>
         <finalName>HelloWorldJava</finalName>

@@ -13,6 +13,8 @@ import com.basiscomponents.db.ResultSet;
 @InlineStyleSheet("context://css/styles.css")
 @InlineStyleSheet("context://css/menubar.css")
 @InlineStyleSheet("context://css/login.css")
+@InlineStyleSheet("context://css/feedback.css")
+@InlineStyleSheet("context://css/EmployeesPanels.css")
 @AppTitle("DWCJ Hello World")
 
 public class HelloWorldJava extends App {

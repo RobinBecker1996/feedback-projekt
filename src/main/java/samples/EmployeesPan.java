@@ -11,8 +11,8 @@ import org.dwcj.component.field.DateField;
 import org.dwcj.component.field.NumberField;
 import org.dwcj.component.window.Panel;
 
-// import org.dwcj.ui5.calendar.UI5Calendar;
-// import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
+import org.dwcj.ui5.calendar.UI5Calendar;
+import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
 
 import com.basiscomponents.db.DataRow;
 import com.basiscomponents.db.ResultSet;
@@ -51,9 +51,13 @@ public class EmployeesPan{
     private Button deletbtn;
     private Button createbtn;
 
-    private Button testEmpTablebtn;
+    private Button infobtn;
     private Button editbtn;
     private Button backBtn;
+
+
+    private Double id;
+    private Boolean gridB;
 
 
     SingletonClass sing;
@@ -62,13 +66,15 @@ public class EmployeesPan{
     MitarbeiterClass mit;
 
     public void run() {
-        // UI5Calendar calendar = new UI5Calendar();
+        UI5Calendar calendar = new UI5Calendar();
 
-        // calendar.setSelectionMode(SelectionMode.MULTIPLE);
-        // calendar.setHideWeekNumbers(true);
+        calendar.setSelectionMode(SelectionMode.MULTIPLE);
+        calendar.setHideWeekNumbers(true);
 
         sing = SingletonClass.getInstance();
         query = new Query();
+        grid = new GridExWidget();
+        gridB = false;
 
         threeBtnP = new Panel().addClassName("threeBtnP");
         employeesMitP = new Panel().addClassName("employeesMitP").setVisible(false);
@@ -103,15 +109,18 @@ public class EmployeesPan{
         editbtn = new Button("Edit");
         backBtn = new Button("<<");
 
+        
+
         backBtn.onClick(e -> {
             backP.setVisible(false);
             employeesMitP.setVisible(true);
         });
 
-        testEmpTablebtn = new Button("test")
+        infobtn = new Button("test")
                     .onClick(e -> {
                         employeesMitP.setVisible(false);
                         backP.setVisible(true);
+                        gridsetupinfo();
                     });
 
         savebtn = new Button("Save").addClassName("savebtn");
@@ -122,6 +131,7 @@ public class EmployeesPan{
         deletbtn = new Button("Delet").addClassName("deletbtn");
         deletbtn.onClick(e -> {
             deleteDataRow();
+            gridrefresh();
         });
 
         createbtn = new Button("Create").addClassName("createbtn");
@@ -129,11 +139,12 @@ public class EmployeesPan{
                 create();
         });
 
+        
 
-        // calendarMitP.add(calendar);
+        calendarMitP.add(calendar);
         topP.add(tableMitP, calendarMitP);
         bottomP.add(insertP, threeBtnP, buttonP);
-        tableMitP.add(testEmpTablebtn);
+        tableMitP.add(infobtn);
         insertP.add(employeesIDNF,  vornameTf, nachnameTf);
         threeBtnP.add(feedbackTf, terminDF);
         buttonP.add(savebtn, deletbtn, createbtn);
@@ -152,25 +163,13 @@ public class EmployeesPan{
 
     public void update(){ 
         query.updateEmp(genDataRow()); 
+        gridrefresh();
     }
 
 
-    public void create() {      
+    public void create() { 
         query.create(genDataRow());
-    }
-
-
-    public void felderfuellen(){
-        ResultSet rs;
-        try {
-            rs = sing.readout("Select * from Mitarbeiter");
-            DataRow data = rs.get(0);
-            mit = new MitarbeiterClass(data);
-            employeesIDNF.setText(data.getFieldAsString("MitarbeiterID"));
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        gridrefresh();
     }
 
     public DataRow genDataRow() { 
@@ -192,19 +191,60 @@ public class EmployeesPan{
     public void deleteDataRow() {
         Double id = employeesIDNF.getValue();
         query.delete(id);
+        gridrefresh();
+    }
+
+    public void gridsetupinfo() {
+        try { 
+            if (gridB == false){
+                oneEmptableP.add(grid);
+                Double value = employeesIDNF.getValue();
+                ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter WHERE MitarbeiterID = " + value);
+                rs.first();
+                grid.setData(rs, 1, true)
+                    .autoSizeColumns();
+                genDataRow();
+                gridB = true;
+            }
+       } catch (SQLException e) {
+           App.consoleLog("Gridsetup-> " + e.getMessage());
+       }
+    }
+
+    public void gridrefresh(){
+        try {
+            ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
+            grid.setData(rs)
+                    .autoSizeColumns();
+        } catch (SQLException e) {
+            App.consoleLog("gridRefresh -> " + e.getMessage());
+        }
     }
 
     public void gridsetup() {
-        try { 
-            grid = new GridExWidget();
-            ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
-            rs.first();
-            grid.setData(rs, 1, true)
-                .autoSizeColumns();
+        try {
+            if (gridB == false){    
+                tableMitP.add(grid);
+                ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
+                rs.first();
+                grid.setData(rs, 1, true)
+                    .autoSizeColumns();
+                gridB = true;
+                grid.onRowSelect(e -> {
+                    getID();
+                });
+            }else{
+                gridrefresh();
+            }
        } catch (SQLException e) {
            App.consoleLog("Gridsetup-> " + e.getMessage());
        }
    }
 
+   public void getID(){
+    DataRow data = grid.getSelectedRow();
+    id = Double.parseDouble(data.getFieldAsString("MitarbeiterID"));
+    employeesIDNF.setValue(id); 
+}
     
 }
