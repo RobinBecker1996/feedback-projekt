@@ -63,8 +63,10 @@ public class Overview extends App{
         grid = new GridExWidget();
         ogrid = new GridExWidget();
         feedgrid = new GridExWidget();
+        
         sing = SingletonClass.getInstance();
         log = new Login();
+
 
         empTestB = false;
         feedTestB = false;
@@ -187,6 +189,67 @@ public class Overview extends App{
         }
     }
 
+//     public void gridsetup() {
+//         try {
+//             if (gridB == false){    
+//                 empl.tableMitP.add(empl.grid);
+//                 ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
+//                 rs.first();
+//                 empl.grid.setData(rs, 1, true)
+//                     .autoSizeColumns();
+//                 gridB = true;
+//                 empl.grid.onRowSelect(e -> {
+//                     getID();
+//                 });
+//             }else{
+//                 gridrefresh();
+//             }
+//        } catch (SQLException e) {
+//            App.consoleLog("Gridsetup-> " + e.getMessage());
+//        }
+//    }
+
+   
+//    public void feedgridsetup() {
+//         try {
+//             if (feedgridB == false){    
+//                 feed.feedtableEmpP.add(grid);
+//                 // empl.tableMitP.add(grid);
+//                 ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
+//                 rs.first();
+//                 grid.setData(rs, 1, true)
+//                     .autoSizeColumns();
+//                 feedgridB = true;
+//             }else{
+//                 gridrefresh();
+//             }
+//        } catch (SQLException e) {
+//            App.consoleLog("Gridsetup-> " + e.getMessage());
+//        }
+//    }
+
+   public void ridsetup() {
+        try {
+            if (overgridB == false){    
+                tableP.add(grid);
+                ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
+                rs.first();
+                grid.setData(rs, 1, true)
+                    .autoSizeColumns();
+                overgridB = true;
+            }else{
+                gridrefresh();
+            }
+       } catch (SQLException e) {
+           App.consoleLog("Gridsetup-> " + e.getMessage());
+       }
+   }
+
+//    public void getID(){
+//         DataRow data = empl.grid.getSelectedRow();
+//         id = Double.parseDouble(data.getFieldAsString("MitarbeiterID"));
+//         empl.employeesIDNF.setValue(id); 
+//    }
 
     public void overgridrefresh(){
     try {

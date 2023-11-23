@@ -22,7 +22,6 @@ public class Login {
     private TextField tf_Passwort;
     private String name = "";
     private final Frame frame;
-    private int id;
     GridExWidget grid = new GridExWidget();
     GridClass gridclass = new GridClass();
    
@@ -52,7 +51,7 @@ public class Login {
         loginBtn.setTheme(ButtonTheme.PRIMARY)
                 .onClick(e -> {
                     try {
-                        Overview over = new Overview();
+                        // Overview over = new Overview();
                         sing.connect();
                         HashMap<String, Object> payload = new HashMap<>();
                         payload.put("user", name);
@@ -93,51 +92,5 @@ public class Login {
         return this;
     }
      
-//     public void adminGridSetup() {
-//         Overview over = new Overview();
-//         over.tableP.add(over.ogrid);
-//         try {    
-//             ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
-//             rs.first();
-//             over.ogrid.setData(rs, 1, true)
-//                 .autoSizeColumns();
-//        } catch (SQLException e) {
-//            App.consoleLog("Gridsetup-> " + e.getMessage());
-//        }
-//    }
-
-//    public void empGridSetup() {
-//         EmployeesOverviewPan empO = new EmployeesOverviewPan();
-//         empO.empOverTableP.add(empO.grid);
-//         try {    
-//             ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter WHERE Vorname = 'Robin'");
-//             empO.grid.setData(rs, 1, true)
-//                 .autoSizeColumns();
-//        } catch (SQLException e) {
-//            App.consoleLog("Gridsetup-> " + e.getMessage());
-//        }
-//    }
-
-//    public void gridrefresh(){
-//     try {
-//         ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
-//         rs.first();
-//         grid.setData(rs, 1, true)
-//             .autoSizeColumns();
-//     } catch (SQLException e) {
-//         App.consoleLog("gridRefresh -> " + e.getMessage());
-//     }
-//     }
-
-//     public void empgridrefresh(){
-//         try {
-//             ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter WHERE MitarbeiterID = 1");
-//             rs.first();
-//             grid.setData(rs, 1, true)
-//                 .autoSizeColumns();
-//         } catch (SQLException e) {
-//             App.consoleLog("gridRefresh -> " + e.getMessage());
-//         }
-//         }
    
 }

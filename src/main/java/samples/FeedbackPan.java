@@ -13,8 +13,6 @@ import org.dwcj.ui5.calendar.UI5CalendarDate;
 import com.basiscomponents.db.ResultSet;
 
 import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
-import org.dwcj.exceptions.DwcjAppInitializeException;
-import org.dwcj.exceptions.DwcjException;
 
 public class FeedbackPan {
     public Panel feedbackP;

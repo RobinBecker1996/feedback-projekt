@@ -196,7 +196,7 @@ public class EmployeesPan{
 
     public void gridsetupinfo() {
         try { 
-            if (gridB == false){
+            // if (gridB == false){
                 oneEmptableP.add(grid);
                 Double value = employeesIDNF.getValue();
                 ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter WHERE MitarbeiterID = " + value);
@@ -204,8 +204,8 @@ public class EmployeesPan{
                 grid.setData(rs, 1, true)
                     .autoSizeColumns();
                 genDataRow();
-                gridB = true;
-            }
+            //     gridB = true;
+            // }
        } catch (SQLException e) {
            App.consoleLog("Gridsetup-> " + e.getMessage());
        }
