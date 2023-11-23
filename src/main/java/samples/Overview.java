@@ -40,9 +40,7 @@ public class Overview extends App{
     private boolean empTestB;
     private boolean feedTestB;
     private boolean menuBarB;
-    private boolean gridB;
     private boolean overgridB;
-    private Boolean feedgridB;
 
     private EmployeesPan empl = new EmployeesPan();
     private FeedbackPan feed = new FeedbackPan();
@@ -71,8 +69,6 @@ public class Overview extends App{
         empTestB = false;
         feedTestB = false;
         menuBarB = true;
-        gridB = false;
-        feedgridB = false;
 
         overgridB = false;
         // Ä = "/u00c4";

@@ -32,11 +32,11 @@ public class EmpFeedbackPan {
 
         empFeedbackBackP = new Panel().addClassName("empFeedbackBackP").setVisible(false);
         empFeedbackTopP = new Panel().addClassName("empFeedbackTopP");
-        empFeedbackTableEmpP = new Panel().addClassName("empOverTableP");
+        empFeedbackTableEmpP = new Panel().addClassName("empFeedbackTableEmpP");
         empFeedbackCenterP = new Panel().addClassName("empFeedbackCenterP");
         empFeedbackFormP = new Panel().addClassName("empFeedbackFormP");
         // empFeedbackTableFeedP = new Panel().addClassName("empFeedbackTableFeedP");
-        empFeedbackCalendarP = new Panel().addClassName("empFeedbackCalendarP");
+        empFeedbackCalendarP = new Panel().addClassName("feedcalendarP");
         empFeedbackBtnP = new Panel().addClassName("empFeedbackBtnP");
 
         

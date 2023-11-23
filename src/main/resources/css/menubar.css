@@ -3,7 +3,7 @@
     display:flex;
     height: 70px !important; 
 }
-
+/* 
 .navbarEmpP {
     background-color: #101418;
     height: 32px!important;
@@ -15,7 +15,7 @@
     display: flex;
     background-color: #333F4D;
     height: 80px!important;
-}
+} */
 
 .logoutBtn{
     height: 70px!important;
@@ -43,7 +43,8 @@
 .profilMenuP {
     display: flex;
     background-color: black;
-    height: 60px!important;
+    /* height: 60px!important; */
+    height: 40px!important;
     width: 100%;
 }
 

@@ -10,7 +10,7 @@ import org.dwcj.component.field.TextField;
 import org.dwcj.component.field.DateField;
 import org.dwcj.component.field.NumberField;
 import org.dwcj.component.window.Panel;
-
+import org.dwcj.exceptions.DwcjException;
 import org.dwcj.ui5.calendar.UI5Calendar;
 import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
 
@@ -56,20 +56,25 @@ public class EmployeesPan{
     private Button backBtn;
 
 
+
     private Double id;
     private Boolean gridB;
+
+    
 
 
     SingletonClass sing;
     Query query;
     GridExWidget grid ;
     MitarbeiterClass mit;
+    // GridClass gridclass = new GridClass();
 
     public void run() {
         UI5Calendar calendar = new UI5Calendar();
 
         calendar.setSelectionMode(SelectionMode.MULTIPLE);
         calendar.setHideWeekNumbers(true);
+
 
         sing = SingletonClass.getInstance();
         query = new Query();
@@ -144,7 +149,6 @@ public class EmployeesPan{
         calendarMitP.add(calendar);
         topP.add(tableMitP, calendarMitP);
         bottomP.add(insertP, threeBtnP, buttonP);
-        tableMitP.add(infobtn);
         insertP.add(employeesIDNF,  vornameTf, nachnameTf);
         threeBtnP.add(feedbackTf, terminDF);
         buttonP.add(savebtn, deletbtn, createbtn);
@@ -196,16 +200,18 @@ public class EmployeesPan{
 
     public void gridsetupinfo() {
         try { 
-            // if (gridB == false){
-                oneEmptableP.add(grid);
-                Double value = employeesIDNF.getValue();
-                ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter WHERE MitarbeiterID = " + value);
-                rs.first();
-                grid.setData(rs, 1, true)
-                    .autoSizeColumns();
-                genDataRow();
-            //     gridB = true;
-            // }
+            DataRow data = grid.getSelectedRow();
+            id = data.getFieldAsNumber("MitarbeiterID");
+            App.consoleLog(id.toString());
+            employeesMitP.setVisible(false);
+            // employeesMitP.destroy();
+            backP.setVisible(true);
+            ResultSet rsinfo = sing.readout("SELECT * FROM Mitarbeiter WHERE MitarbeiterID = " + id);
+            rsinfo.first();
+            oneEmptableP.add(grid);
+            grid.setData(rsinfo, 1, true)
+                .autoSizeColumns();
+            // data = null;
        } catch (SQLException e) {
            App.consoleLog("Gridsetup-> " + e.getMessage());
        }
@@ -231,7 +237,7 @@ public class EmployeesPan{
                     .autoSizeColumns();
                 gridB = true;
                 grid.onRowSelect(e -> {
-                    getID();
+                    gridsetupinfo();
                 });
             }else{
                 gridrefresh();

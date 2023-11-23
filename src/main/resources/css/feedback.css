@@ -1,7 +1,6 @@
 .feedtableEmpP {
     height: 200px;
-    background-color: white;
-    width: 63%;
+    width: 64%;
     margin: 10px;
 }
 
@@ -21,7 +20,7 @@
 
 .feedtableP {
     width: 63%;
-    background-color: black;
+    /* background-color: black; */
     height: 250px;
 }
 
