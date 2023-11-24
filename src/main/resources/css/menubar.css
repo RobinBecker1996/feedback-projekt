@@ -1,24 +1,11 @@
 .menubarP {
     background-color: #333F4D;
     display:flex;
-    height: 70px !important; 
+    height: 40px !important; 
 }
-/* 
-.navbarEmpP {
-    background-color: #101418;
-    height: 32px!important;
-    width: 100%;
-}
-
-
-.menubarEmpP {
-    display: flex;
-    background-color: #333F4D;
-    height: 80px!important;
-} */
 
 .logoutBtn{
-    height: 70px!important;
+    height: 40px!important;
     padding-left: 2px;
     margin-inline-start: auto;
     transform: rotate(180deg);
@@ -43,8 +30,7 @@
 .profilMenuP {
     display: flex;
     background-color: black;
-    /* height: 60px!important; */
-    height: 40px!important;
+    height: 33px!important;
     width: 100%;
 }
 
@@ -60,6 +46,6 @@
 
 .navbarP {
     background-color: #101418;
-    height: 32px!important;
+    height: 31px!important;
     width: 100%;
 }

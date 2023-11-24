@@ -1,6 +1,4 @@
 /*Mitarbeiter Frame*/
-/*Mitarbeiter Frame*/
-/*Mitarbeiter Frame*/
 .frameEmp {
     display: flex;
     height: 100vh;
@@ -24,8 +22,6 @@
 }
 
 /*Employees login frame*/
-/*Employees login frame*/
-/*Employees login frame*/
 .empOverTableP, .empFeedbackTableEmpP {
     height: 112px;
     width: 64%;
@@ -38,7 +34,6 @@
 
 .empOverTextAreaP {
     display: flex;
-    /* background-color: rgb(10, 136, 247); */
     justify-content: center;
     padding: 10px;
     width: 500px;
@@ -46,19 +41,10 @@
     gap: 10px;
     margin-left: 150px;
     margin-top: -170px;
-
 }
 
-.empFeedbackCalendarP{
-    display: flex;
-    margin: 10px;
-}
-
-/*EmpFeedPan*/
-/*EmpFeedPan*/
 /*EmpFeedPan*/
 .empFeedbackBackP {
-    /* display: inline; */
     overflow: scroll !important;
 }
 
@@ -67,14 +53,8 @@
     width: 400px;
     background-color: aliceblue;
     margin: 20px;
-    margin-left: 112px;
-}
-
-.empFeedbackTableFeedP {
-    height: 200px;
-    width: 400px;
-    background-color: aqua;
-    margin: 94px;
+    margin-left: 220px;
+    margin-top: -200px;
 }
 
 .empFeedbackCenterP {
@@ -86,3 +66,20 @@
     margin-left: 268px;
 }
 
+.calendarP {
+    margin-left: 150px;
+    margin-top: 60px;
+}
+
+.feedcalendarP {
+    margin-left: 74%;
+    margin-top: -75px;
+}
+
+.btnP {
+    margin-left: -220px;
+}
+
+.testbtnpdf::part(control){
+    background-color: transparent;
+}

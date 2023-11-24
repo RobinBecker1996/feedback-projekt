@@ -51,6 +51,7 @@ public class Overview extends App{
     public GridExWidget ogrid;  
     public MitarbeiterClass mit;
     public GridClass gridclass = new GridClass();
+    Query query = new Query();
 
     Double id;
 
@@ -89,7 +90,7 @@ public class Overview extends App{
 
         frame = new Frame().addClassName("frame");
         // frame.add(grid);
-        title = new Label("Feedback").addClassName("title");
+        title = new Label("Admin").addClassName("title");
         basisicon = new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("basisicon");
 
 
@@ -143,6 +144,7 @@ public class Overview extends App{
             empl.backP.setVisible(false);
             empl.employeesMitP.setVisible(true);            
             empl.gridsetup();
+            // query.getNextID();
         });
 
         feedbackbtn.onClick(e -> {
@@ -185,44 +187,6 @@ public class Overview extends App{
         }
     }
 
-//     public void gridsetup() {
-//         try {
-//             if (gridB == false){    
-//                 empl.tableMitP.add(empl.grid);
-//                 ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
-//                 rs.first();
-//                 empl.grid.setData(rs, 1, true)
-//                     .autoSizeColumns();
-//                 gridB = true;
-//                 empl.grid.onRowSelect(e -> {
-//                     getID();
-//                 });
-//             }else{
-//                 gridrefresh();
-//             }
-//        } catch (SQLException e) {
-//            App.consoleLog("Gridsetup-> " + e.getMessage());
-//        }
-//    }
-
-   
-//    public void feedgridsetup() {
-//         try {
-//             if (feedgridB == false){    
-//                 feed.feedtableEmpP.add(grid);
-//                 // empl.tableMitP.add(grid);
-//                 ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
-//                 rs.first();
-//                 grid.setData(rs, 1, true)
-//                     .autoSizeColumns();
-//                 feedgridB = true;
-//             }else{
-//                 gridrefresh();
-//             }
-//        } catch (SQLException e) {
-//            App.consoleLog("Gridsetup-> " + e.getMessage());
-//        }
-//    }
 
    public void ridsetup() {
         try {
@@ -241,11 +205,6 @@ public class Overview extends App{
        }
    }
 
-//    public void getID(){
-//         DataRow data = empl.grid.getSelectedRow();
-//         id = Double.parseDouble(data.getFieldAsString("MitarbeiterID"));
-//         empl.employeesIDNF.setValue(id); 
-//    }
 
     public void overgridrefresh(){
     try {
@@ -269,4 +228,16 @@ public class Overview extends App{
         }
     }
 
+    // public void getNextID(){
+    //     try {
+    //         ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
+    //         Double id = Double.valueOf(rs.size()); 
+    //         id++;
+    //         App.consoleLog("last ID = " + id);
+    //         empl.employeesIDNF.setValue(id); 
+    //     } catch (SQLException e) {
+    //         // TODO Auto-generated catch block
+    //         e.printStackTrace();
+    //     }
+    // }
 }

@@ -117,7 +117,7 @@ public class EmployeesOverviewPan extends App{
             runtest();
             empFeed.empFeedbackBackP.setVisible(false);
             empOverBackP.setVisible(true);
-            
+            gridclass.empGridSetup();
         });
 
         feedbackbtn.onClick(e -> {
@@ -130,7 +130,7 @@ public class EmployeesOverviewPan extends App{
 
         zielbtn.onClick(e -> {
             updateziele(genDataRow());
-            gridRefresh();
+            // gridRefresh();
             App.consoleLog("zielbtn reagiert");
         });
 
@@ -178,6 +178,8 @@ public class EmployeesOverviewPan extends App{
                 App.consoleLog("Gridsetup-> " + e.getMessage());
             }
             gridB = true;
+        }else{
+            gridRefresh();
         }
    }
 
@@ -188,7 +190,7 @@ public class EmployeesOverviewPan extends App{
             sing.pstmt.setString(1, data.getFieldAsString("Ziele"));
             sing.pstmt.setString(2, data.getFieldAsString("Schwerpunkt"));      
             sing.pstmt.executeUpdate(); 
-            gridRefresh();     
+            gridclass.empGridSetup();     
         } catch (SQLException e) {          
             App.consoleLog("updateziele -> " + e.getMessage());
         }

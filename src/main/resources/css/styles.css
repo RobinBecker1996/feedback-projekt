@@ -24,20 +24,11 @@
 
 /*ubersicht*/
 .tableP {
-    height: 250px;
+    height: 500px;
     width: 63%;
     margin: 10px;
 }
 
-.calendarP {
-    margin-left: 140px;
-    margin-top: 60px;
-}
-
-.feedcalendarP {
-    margin-top: -54px;
-    margin-left: 570px;
-}
 
 .topP {
     display: flex;
@@ -65,12 +56,7 @@
     gap: 100px;
 }
 
-.emplyoeesMitP{
-    /* overflow: scroll; */
-}
 
-/*Zweites Panel von EmployeesPan*/
-/*Zweites Panel von EmployeesPan*/
 /*Zweites Panel von EmployeesPan*/
 .backP {
     overflow: scroll !important; 
@@ -87,19 +73,23 @@
     width: 350px;
     background-color: aliceblue;
     margin-left: 150px;
+    margin-top: -220px;
+
 }
 
 .schwerpunkP {
     height: 190px;
     width: 320px;
     background-color: azure;
+    margin-top: -220px;
+
 }
 
 .twocalendarP {
-    height: 300px;
-    width: 300px;
-    background-color: azure;
+    margin-left: 73%;
+    margin-top: -81px;
 }
+
 
 .empCenterP {
     display: flex;
@@ -145,10 +135,3 @@
 .zielbtn {
     margin-left: 370px;
 }
-
-.calendarFeedP {
-    margin-left: 265px;
-    margin-top: -143px !important;
-}
-
-

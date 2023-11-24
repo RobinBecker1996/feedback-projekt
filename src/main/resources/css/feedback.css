@@ -7,8 +7,7 @@
 .centerP {
     display: flex;
     height: 500px;
-    margin: 10px;
-    gap: 183px;
+    margin-top: -120px;
 }
 
 .formularP {
@@ -20,13 +19,15 @@
 
 .feedtableP {
     width: 63%;
-    /* background-color: black; */
     height: 250px;
 }
 
-.calendarFeedP {
-    margin-top: -40px;
+.pdfimg img{
+    height: 500px;
+    width: 450px;
+
 }
+
 
 .feedbottomP {
     display: flex;
@@ -35,3 +36,11 @@
     margin: 10px;
     margin-left: 200px;
 }
+
+.calendarFeedP {
+    margin-left: 74%;
+    margin-top: -160px;
+}
+
+
+

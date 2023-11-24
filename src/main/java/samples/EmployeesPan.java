@@ -10,7 +10,6 @@ import org.dwcj.component.field.TextField;
 import org.dwcj.component.field.DateField;
 import org.dwcj.component.field.NumberField;
 import org.dwcj.component.window.Panel;
-import org.dwcj.exceptions.DwcjException;
 import org.dwcj.ui5.calendar.UI5Calendar;
 import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
 
@@ -51,7 +50,6 @@ public class EmployeesPan{
     private Button deletbtn;
     private Button createbtn;
 
-    private Button infobtn;
     private Button editbtn;
     private Button backBtn;
 
@@ -60,20 +58,21 @@ public class EmployeesPan{
     private Double id;
     private Boolean gridB;
 
-    
 
-
-    SingletonClass sing;
-    Query query;
-    GridExWidget grid ;
-    MitarbeiterClass mit;
-    // GridClass gridclass = new GridClass();
+    private SingletonClass sing;
+    private Query query;
+    private GridExWidget grid ;
+    private MitarbeiterClass mit;
+    private PDFShow pdf = new PDFShow();
 
     public void run() {
         UI5Calendar calendar = new UI5Calendar();
+        UI5Calendar calendartow = new UI5Calendar();
 
         calendar.setSelectionMode(SelectionMode.MULTIPLE);
         calendar.setHideWeekNumbers(true);
+        calendartow.setSelectionMode(SelectionMode.MULTIPLE);
+        calendartow.setHideWeekNumbers(true);
 
 
         sing = SingletonClass.getInstance();
@@ -106,7 +105,7 @@ public class EmployeesPan{
         empCenterP = new Panel().addClassName("empCenterP");
         empFormP = new Panel().addClassName("empFormP");
         schwerpunkP = new Panel().addClassName("schwerpunkP");
-        twocalendarP = new Panel().addClassName("calendarP");
+        twocalendarP = new Panel().addClassName("twocalendarP");
         twoBottomP = new Panel().addClassName("twoBottomP");
         twoBtnP = new Panel().addClassName("twoBtnP");
         backBtnP = new Panel().addClassName("backBtnP");
@@ -114,19 +113,14 @@ public class EmployeesPan{
         editbtn = new Button("Edit");
         backBtn = new Button("<<");
 
-        
+        editbtn.onClick(e -> {
+            pdf.pdfShow();
+        });
 
         backBtn.onClick(e -> {
             backP.setVisible(false);
             employeesMitP.setVisible(true);
         });
-
-        infobtn = new Button("test")
-                    .onClick(e -> {
-                        employeesMitP.setVisible(false);
-                        backP.setVisible(true);
-                        gridsetupinfo();
-                    });
 
         savebtn = new Button("Save").addClassName("savebtn");
         savebtn.onClick(e -> {
@@ -156,8 +150,9 @@ public class EmployeesPan{
 
         // Zweites Panel "info Panel"
         backP.add(twoTopP, empCenterP, twoBottomP);
-        twoTopP.add(oneEmptableP);
-        empCenterP.add(empFormP, schwerpunkP, twocalendarP);
+        twoTopP.add(oneEmptableP, twocalendarP);
+        twocalendarP.add(calendartow);
+        empCenterP.add(empFormP, schwerpunkP);
         // twoBottomP.add(editbtn);
         twoBottomP.add(twoBtnP, backBtnP);
         backBtnP.add(backBtn);
@@ -168,12 +163,14 @@ public class EmployeesPan{
     public void update(){ 
         query.updateEmp(genDataRow()); 
         gridrefresh();
+        // query.getNextID();
     }
 
 
     public void create() { 
         query.create(genDataRow());
         gridrefresh();
+        // query.getNextID();
     }
 
     public DataRow genDataRow() { 
@@ -196,6 +193,7 @@ public class EmployeesPan{
         Double id = employeesIDNF.getValue();
         query.delete(id);
         gridrefresh();
+        // query.getNextID();
     }
 
     public void gridsetupinfo() {
@@ -204,14 +202,12 @@ public class EmployeesPan{
             id = data.getFieldAsNumber("MitarbeiterID");
             App.consoleLog(id.toString());
             employeesMitP.setVisible(false);
-            // employeesMitP.destroy();
             backP.setVisible(true);
             ResultSet rsinfo = sing.readout("SELECT * FROM Mitarbeiter WHERE MitarbeiterID = " + id);
             rsinfo.first();
             oneEmptableP.add(grid);
             grid.setData(rsinfo, 1, true)
                 .autoSizeColumns();
-            // data = null;
        } catch (SQLException e) {
            App.consoleLog("Gridsetup-> " + e.getMessage());
        }
@@ -247,10 +243,11 @@ public class EmployeesPan{
        }
    }
 
-   public void getID(){
-    DataRow data = grid.getSelectedRow();
-    id = Double.parseDouble(data.getFieldAsString("MitarbeiterID"));
-    employeesIDNF.setValue(id); 
-}
+    public void getID(){
+         DataRow data = grid.getSelectedRow();
+        id = Double.parseDouble(data.getFieldAsString("MitarbeiterID"));
+        employeesIDNF.setValue(id); 
+    }
+    
     
 }

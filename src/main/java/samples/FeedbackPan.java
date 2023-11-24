@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import org.dwcj.App;
 import org.dwcj.bbjplugins.gridexwidget.GridExWidget;
 import org.dwcj.component.button.Button;
+import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Panel;
 import org.dwcj.ui5.calendar.UI5Calendar;
 import org.dwcj.ui5.calendar.UI5CalendarDate;
@@ -26,12 +27,14 @@ public class FeedbackPan {
     private Button newFormularbtn;
     private Button savefeedbtn;
     private Button editfeedbtn;
+    private Label img;
 
     private Boolean feedgridB;
 
     SingletonClass sing = SingletonClass.getInstance();
     GridClass gridclass = new GridClass();
     GridExWidget grid = new GridExWidget();
+    PDFClass pdfclass = new PDFClass();
 
 
     public void run() {
@@ -71,13 +74,16 @@ public class FeedbackPan {
                 pdf.pdfShow();
             });
 
-
+        
         feedbackP.add(feedtopP, centerP, feedbottomP);
-        feedtopP.add(feedtableEmpP);
+        feedtopP.add(feedtableEmpP, calendarFeedP);
 
         calendarFeedP.add(calendar);
-        formularP.add(pdftestbtn);
-        centerP.add(formularP, calendarFeedP);
+        // formularP.add(pdftestbtn);
+        img = new Label("<html><img src=http://localhost:8888/Screen-Feedback.png></img></html>")
+        .addClassName("pdfimg");
+        formularP.add(img);
+        centerP.add(formularP);
         feedbottomP.add(newFormularbtn, editfeedbtn, savefeedbtn);
     }
 
@@ -87,7 +93,6 @@ public class FeedbackPan {
         try {
             if (feedgridB == false){    
                 feedtableEmpP.add(grid);
-                // empl.tableMitP.add(grid);
                 ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
                 rs.first();
                 grid.setData(rs, 1, true)
@@ -112,5 +117,8 @@ public class FeedbackPan {
             App.consoleLog("gridRefresh -> " + e.getMessage());
         }
     }
+
+    
+    
    
 }
