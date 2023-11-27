@@ -15,7 +15,6 @@ import org.dwcj.exceptions.DwcjException;
 import org.dwcj.ui5.calendar.UI5Calendar;
 import org.dwcj.ui5.calendar.UI5Calendar.SelectionMode;
 
-import com.basiscomponents.db.DataRow;
 import com.basiscomponents.db.ResultSet;
 
 
@@ -85,11 +84,9 @@ public class Overview extends App{
         calendar.setHideWeekNumbers(true);
       
 
-        Button dbtest = new Button("dbtest");
        
 
         frame = new Frame().addClassName("frame");
-        // frame.add(grid);
         title = new Label("Admin").addClassName("title");
         basisicon = new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("basisicon");
 
@@ -144,7 +141,6 @@ public class Overview extends App{
             empl.backP.setVisible(false);
             empl.employeesMitP.setVisible(true);            
             empl.gridsetup();
-            // query.getNextID();
         });
 
         feedbackbtn.onClick(e -> {
@@ -159,7 +155,6 @@ public class Overview extends App{
 
         calendarP.add(calendar);
         overviewP.add(tableP, calendarP);
-        // tableP.add(gridsetup(grid));
         frame.add(navbarP, profilMenuP, menubarP, overviewP);
         menubarP.add(overviewbtn, feedbackbtn, employeesbtn, logoutBtn);
     }
@@ -227,17 +222,4 @@ public class Overview extends App{
             App.consoleLog("gridRefresh -> " + e.getMessage());
         }
     }
-
-    // public void getNextID(){
-    //     try {
-    //         ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
-    //         Double id = Double.valueOf(rs.size()); 
-    //         id++;
-    //         App.consoleLog("last ID = " + id);
-    //         empl.employeesIDNF.setValue(id); 
-    //     } catch (SQLException e) {
-    //         // TODO Auto-generated catch block
-    //         e.printStackTrace();
-    //     }
-    // }
 }

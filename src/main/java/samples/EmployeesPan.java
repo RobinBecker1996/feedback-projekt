@@ -1,5 +1,6 @@
 package samples;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
@@ -7,6 +8,7 @@ import org.dwcj.App;
 import org.dwcj.bbjplugins.gridexwidget.GridExWidget;
 import org.dwcj.component.button.Button;
 import org.dwcj.component.field.TextField;
+import org.dwcj.component.texts.Label;
 import org.dwcj.component.field.DateField;
 import org.dwcj.component.field.NumberField;
 import org.dwcj.component.window.Panel;
@@ -61,9 +63,10 @@ public class EmployeesPan{
 
     private SingletonClass sing;
     private Query query;
-    private GridExWidget grid ;
-    private MitarbeiterClass mit;
+    public GridExWidget grid ;
     private PDFShow pdf = new PDFShow();
+    private Label img;
+    
 
     public void run() {
         UI5Calendar calendar = new UI5Calendar();
@@ -80,6 +83,8 @@ public class EmployeesPan{
         grid = new GridExWidget();
         gridB = false;
 
+        img = new Label("<html><img src=http://localhost:8888/Screen-Feedback.png></img></html>")
+        .addClassName("pdfimg");
         threeBtnP = new Panel().addClassName("threeBtnP");
         employeesMitP = new Panel().addClassName("employeesMitP").setVisible(false);
         tableMitP = new Panel().addClassName("tableMitP").setVisible(true);
@@ -115,6 +120,7 @@ public class EmployeesPan{
 
         editbtn.onClick(e -> {
             pdf.pdfShow();
+            // pdf.pdfclone();
         });
 
         backBtn.onClick(e -> {
@@ -152,6 +158,7 @@ public class EmployeesPan{
         backP.add(twoTopP, empCenterP, twoBottomP);
         twoTopP.add(oneEmptableP, twocalendarP);
         twocalendarP.add(calendartow);
+        empFormP.add(img);
         empCenterP.add(empFormP, schwerpunkP);
         // twoBottomP.add(editbtn);
         twoBottomP.add(twoBtnP, backBtnP);
@@ -195,6 +202,7 @@ public class EmployeesPan{
         gridrefresh();
         // query.getNextID();
     }
+
 
     public void gridsetupinfo() {
         try { 
@@ -244,9 +252,25 @@ public class EmployeesPan{
    }
 
     public void getID(){
-         DataRow data = grid.getSelectedRow();
+        DataRow data = grid.getSelectedRow();
         id = Double.parseDouble(data.getFieldAsString("MitarbeiterID"));
         employeesIDNF.setValue(id); 
+    }
+
+    public String getpdfname() {
+        DataRow data = grid.getSelectedRow();
+        String id = String.valueOf(data.getFieldAsNumber("MitarbeiterID"));
+        String name = data.getFieldAsString("Vorname");
+        String info = id +"_"+name;
+        App.consoleLog(info);
+        return info;
+    }
+
+
+     public String getName(){
+        DataRow data = grid.getSelectedRow();
+        String name = data.getFieldAsString("Vorname");
+        return name;
     }
     
     

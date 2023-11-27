@@ -130,7 +130,6 @@ public class EmployeesOverviewPan extends App{
 
         zielbtn.onClick(e -> {
             updateziele(genDataRow());
-            // gridRefresh();
             App.consoleLog("zielbtn reagiert");
         });
 

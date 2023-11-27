@@ -48,7 +48,7 @@ public class EmpFeedbackPan {
 
         
         testbtn.onClick(e -> {
-            pdf.pdfShow();
+            // pdf.pdfShow();
         });
 
         empFeedbackBackP.add(empFeedbackTopP, empFeedbackCenterP, empFeedbackBtnP);

@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import org.dwcj.App;
 
 import com.basiscomponents.db.DataRow;
-import com.basiscomponents.db.ResultSet;
 
 public class Query {
 
@@ -62,24 +61,8 @@ public class Query {
             sing.pstmt.setDouble(1, id);
             sing.pstmt.executeQuery();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             App.consoleLog("delet ->" + e.getMessage());
         }
     }
-
-    //   public void getNextID(){
-    //     EmployeesPan empl = new EmployeesPan();
-    //     try {
-    //         ResultSet rs = sing.readout("SELECT * FROM Mitarbeiter");
-    //         Double id = Double.valueOf(rs.size()); 
-    //         id++;
-    //         App.consoleLog("last ID = " + id);
-    //         empl.employeesIDNF.setValue(id); 
-    //     } catch (SQLException e) {
-    //         // TODO Auto-generated catch block
-    //         e.printStackTrace();
-    //     }
-    // }
-
-    
+   
 }

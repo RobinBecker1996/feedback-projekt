@@ -71,7 +71,7 @@ public class FeedbackPan {
         Button pdftestbtn = new Button("\u00d6ffnen");
 
         pdftestbtn.onClick(e -> {
-                pdf.pdfShow();
+                // pdf.pdfShow();
             });
 
         
