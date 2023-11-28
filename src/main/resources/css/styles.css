@@ -112,20 +112,22 @@
     color: white;
 }
 
-.feedbackTf::part(control), .terminDF::part(control), .hinzugefuegtField::part(control), .vornameTf::part(control), .nachnameTf::part(control), .employeesIDNF::part(control){
+.feedbackCB::part(control), .terminDF::part(control), .hinzugefuegtField::part(control), .vornameTf::part(control), .nachnameTf::part(control), .employeesIDNF::part(control){
     width: 250px;
 }
 
 .threeBtnP{
-    display:flex;
-    width: 900px;
-    margin-left: 70px;
+    display: flex;
+    width: 848px;
+    margin-left: 10px;
+    align-items: flex-end;
 }
 
 .insertP {
     display: flex;
     margin-top: 312px;
     width: 900px;
+    margin-left: 10px;
 }
 
 .rsTAOverview::part(control) {

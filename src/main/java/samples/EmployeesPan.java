@@ -1,12 +1,12 @@
 package samples;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
 import org.dwcj.App;
 import org.dwcj.bbjplugins.gridexwidget.GridExWidget;
 import org.dwcj.component.button.Button;
+import org.dwcj.component.choicebox.ChoiceBox;
 import org.dwcj.component.field.TextField;
 import org.dwcj.component.texts.Label;
 import org.dwcj.component.field.DateField;
@@ -47,6 +47,7 @@ public class EmployeesPan{
     public DateField hinzugefuegtField;
     public TextField zielTF;
     public TextField schwerpunktTf;
+    public ChoiceBox feedbackCB;
 
     private Button savebtn;
     private Button deletbtn;
@@ -97,7 +98,7 @@ public class EmployeesPan{
         employeesIDNF = new  NumberField("Employees ID:").addClassName("employeesIDNF");
         vornameTf = new TextField("Vorname").addClassName("vornameTf");
         nachnameTf = new TextField("Nachname").addClassName("nachnameTf");
-        feedbackTf = new TextField("Feedback").addClassName("feedbackTf");
+        // feedbackTf = new TextField("Feedback").addClassName("feedbackTf");
         terminDF = new DateField("Termin").addClassName("terminDF");
         hinzugefuegtField = new DateField("Hinzugefügt").addClassName("hinzugefuegtField");
         zielTF = new TextField("Goals:").addClassName("zielTF");
@@ -118,9 +119,13 @@ public class EmployeesPan{
         editbtn = new Button("Edit");
         backBtn = new Button("<<");
 
+
+        feedbackCB = new ChoiceBox().addClassName("feedbackCB");
+        feedbackCB.addItem("-", "-");
+        feedbackCB.addItem("+", "+");
+
         editbtn.onClick(e -> {
             pdf.pdfShow();
-            // pdf.pdfclone();
         });
 
         backBtn.onClick(e -> {
@@ -131,17 +136,19 @@ public class EmployeesPan{
         savebtn = new Button("Save").addClassName("savebtn");
         savebtn.onClick(e -> {
                 update();
+                gridsetup();
         });
 
         deletbtn = new Button("Delet").addClassName("deletbtn");
         deletbtn.onClick(e -> {
             deleteDataRow();
-            gridrefresh();
+            gridsetup();
         });
 
         createbtn = new Button("Create").addClassName("createbtn");
         createbtn.onClick(e -> {
                 create();
+                gridsetup();;
         });
 
         
@@ -150,7 +157,7 @@ public class EmployeesPan{
         topP.add(tableMitP, calendarMitP);
         bottomP.add(insertP, threeBtnP, buttonP);
         insertP.add(employeesIDNF,  vornameTf, nachnameTf);
-        threeBtnP.add(feedbackTf, terminDF);
+        threeBtnP.add(feedbackCB, terminDF);
         buttonP.add(savebtn, deletbtn, createbtn);
         employeesMitP.add(topP, bottomP);
 
@@ -160,7 +167,6 @@ public class EmployeesPan{
         twocalendarP.add(calendartow);
         empFormP.add(img);
         empCenterP.add(empFormP, schwerpunkP);
-        // twoBottomP.add(editbtn);
         twoBottomP.add(twoBtnP, backBtnP);
         backBtnP.add(backBtn);
         twoBtnP.add(editbtn);
@@ -169,15 +175,13 @@ public class EmployeesPan{
 
     public void update(){ 
         query.updateEmp(genDataRow()); 
-        gridrefresh();
-        // query.getNextID();
+        gridsetup();
     }
 
 
     public void create() { 
         query.create(genDataRow());
-        gridrefresh();
-        // query.getNextID();
+        gridsetup();
     }
 
     public DataRow genDataRow() { 
@@ -186,7 +190,7 @@ public class EmployeesPan{
             data.setFieldValue("MitarbeiterID", employeesIDNF.getText());
             data.setFieldValue("Vorname", vornameTf.getText());
             data.setFieldValue("Nachname", nachnameTf.getText());
-            data.setFieldValue("Feedback", feedbackTf.getText());
+            data.setFieldValue("Feedback", feedbackCB.getText());
             data.setFieldValue("Termin", terminDF.getText());
             data.setFieldValue("Ziele", "");
             data.setFieldValue("Schwerpunkt", "");
@@ -199,8 +203,7 @@ public class EmployeesPan{
     public void deleteDataRow() {
         Double id = employeesIDNF.getValue();
         query.delete(id);
-        gridrefresh();
-        // query.getNextID();
+        gridsetup();
     }
 
 

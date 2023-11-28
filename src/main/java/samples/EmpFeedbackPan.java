@@ -26,7 +26,6 @@ public class EmpFeedbackPan {
     private Label img;
 
     public void run() {
-        PDFShow pdf = new PDFShow();
         UI5Calendar calendar = new UI5Calendar();
         calendar.setSelectionMode(SelectionMode.MULTIPLE);
         calendar.setHideWeekNumbers(true);

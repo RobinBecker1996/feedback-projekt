@@ -36,15 +36,21 @@ public class Query {
     public void create(DataRow data) {
         try {
             String sqlInsert = "";
-            sqlInsert = "INSERT INTO mitarbeiter VALUES(?, ?, ?, ?, ?, ?, ?)";
+            sqlInsert = "INSERT INTO mitarbeiter (Vorname, Nachname, feedback)VALUES( ?, ?, ?)";
             sing.pstmt = sing.con.prepareStatement(sqlInsert);
-            sing.pstmt.setDouble(1, data.getFieldAsNumber(colMitarbeiter[0]));
-            int count = 2;
+            // sing.pstmt.setDouble(1, data.getFieldAsNumber(colMitarbeiter[0]));
+            // int count = 1;
+            // for (int i = 1; i < 3; i++){
+                sing.pstmt.setString(1, data.getFieldAsString("Vorname"));
+                sing.pstmt.setString(2, data.getFieldAsString("Nachname"));
+                sing.pstmt.setString(3, data.getFieldAsString("Feedback"));
+                // count++;
+            // }
 
-            for (int i = 1; i < colMitarbeiter.length; i++){
-                sing.pstmt.setString(count, data.getFieldAsString(colMitarbeiter[i]));
-                count++;
-            }
+            // for (int i = 1; i < colMitarbeiter.length; i++){
+            //     sing.pstmt.setString(count, data.getFieldAsString(colMitarbeiter[i]));
+            //     count++;
+            // }
             
             sing.pstmt.executeUpdate();
         } catch (SQLException e) {

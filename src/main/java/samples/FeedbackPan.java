@@ -41,7 +41,6 @@ public class FeedbackPan {
 
         feedgridB = false;
 
-        PDFShow pdf = new PDFShow();
         UI5Calendar calendar = new UI5Calendar();
         UI5CalendarDate ui5CalendarDate = new UI5CalendarDate().setValue("Nov 15, 2023");
         UI5CalendarDate ui5CalendarDate2 = new UI5CalendarDate().setValue("Nov 20, 2023");

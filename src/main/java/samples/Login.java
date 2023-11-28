@@ -51,7 +51,8 @@ public class Login {
         loginBtn.setTheme(ButtonTheme.PRIMARY)
                 .onClick(e -> {
                     try {
-                        // Overview over = new Overview();
+                        HashingClass hashing = new HashingClass();
+                        hashing.getPassword();
                         sing.connect();
                         HashMap<String, Object> payload = new HashMap<>();
                         payload.put("user", name);

@@ -1,8 +1,6 @@
 package samples;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -12,7 +10,6 @@ import java.awt.image.BufferedImage;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
-import org.dwcj.App;
 
 public class PDFClass {
 

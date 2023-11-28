@@ -9,8 +9,7 @@ import java.sql.SQLException;
 
 import org.dwcj.App;
 
-import com.basiscomponents.db.DataRow;
-import com.basiscomponents.db.ResultSet;
+
 
 
 public class PDFShow {
@@ -56,14 +55,10 @@ public class PDFShow {
 
     public void insertFeedback(String newpdf) {
         try {
-            ResultSet rs = sing.readout("Select * From feedback");
-            DataRow data = rs.get(0);
-
             String sqlInsert = "";
-            sqlInsert = "INSERT INTO Feedback (pfad, datum) value (?, ?)";
+            sqlInsert = "INSERT INTO Feedback (pfad, datum) value (?, CURRENT_DATE)";
             sing.pstmt = sing.con.prepareStatement(sqlInsert);
-            sing.pstmt.setString(1, data.getFieldAsString("pfad"));
-            sing.pstmt.setString(2, data.getFieldAsString("datum"));
+            sing.pstmt.setString(1, "C:/Robin/Leistungsbeurteilung"+ id + ".pdf");
             sing.pstmt.executeUpdate();
         } catch (SQLException e) {
             App.consoleLog("insertFeedback -> "  + e.getMessage());
