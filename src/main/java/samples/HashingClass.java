@@ -43,7 +43,7 @@ public class HashingClass {
         return salt;
     }
 
-    private static String base64Encoding(byte[] input) {
+    public String base64Encoding(byte[] input) {
         return Base64.getEncoder().encodeToString(input);
     }
 

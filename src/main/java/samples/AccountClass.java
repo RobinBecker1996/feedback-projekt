@@ -38,7 +38,7 @@ public class AccountClass {
     //     this.email = rs.getString("Email");
     //     this.freigabe = rs.getBoolean("Freigabe");
     //     } catch (SQLException e) {
-    //         // TODO Auto-generated catch block
+    //        
     //         e.printStackTrace();
     //     }
     // }

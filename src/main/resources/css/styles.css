@@ -112,8 +112,12 @@
     color: white;
 }
 
-.feedbackCB::part(control), .terminDF::part(control), .hinzugefuegtField::part(control), .vornameTf::part(control), .nachnameTf::part(control), .employeesIDNF::part(control){
+.feedbackCB::part(control), .terminDF::part(control), .hinzugefuegtField::part(control), .vornameTf::part(control), .nachnameTf::part(control), .employeesIDNF::part(control), .freigabenCB::part(control), .emailTF::part(control){
     width: 250px;
+}
+
+.freigabenCB::part(control) {
+    margin-left: 55px;
 }
 
 .threeBtnP{

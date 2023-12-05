@@ -44,10 +44,12 @@ public class EmployeesPan{
     public TextField nachnameTf;
     public TextField feedbackTf;
     public DateField terminDF;
+    public TextField emailTF;
     public DateField hinzugefuegtField;
     public TextField zielTF;
     public TextField schwerpunktTf;
     public ChoiceBox feedbackCB;
+    public ChoiceBox freigabenCB;
 
     private Button savebtn;
     private Button deletbtn;
@@ -97,6 +99,7 @@ public class EmployeesPan{
 
         employeesIDNF = new  NumberField("Employees ID:").addClassName("employeesIDNF");
         vornameTf = new TextField("Vorname").addClassName("vornameTf");
+        emailTF = new TextField("emailTF").addClassName("emailTF");
         nachnameTf = new TextField("Nachname").addClassName("nachnameTf");
         // feedbackTf = new TextField("Feedback").addClassName("feedbackTf");
         terminDF = new DateField("Termin").addClassName("terminDF");
@@ -119,10 +122,15 @@ public class EmployeesPan{
         editbtn = new Button("Edit");
         backBtn = new Button("<<");
 
+       
 
         feedbackCB = new ChoiceBox().addClassName("feedbackCB");
         feedbackCB.addItem("-", "-");
         feedbackCB.addItem("+", "+");
+
+        freigabenCB = new ChoiceBox().addClassName("freigabenCB");
+        freigabenCB.addItem("Admin", "Admin");
+        freigabenCB.addItem("Mitabreiter", "Mitarbeiter");
 
         editbtn.onClick(e -> {
             pdf.pdfShow();
@@ -148,7 +156,7 @@ public class EmployeesPan{
         createbtn = new Button("Create").addClassName("createbtn");
         createbtn.onClick(e -> {
                 create();
-                gridsetup();;
+                gridsetup();
         });
 
         
@@ -156,8 +164,8 @@ public class EmployeesPan{
         calendarMitP.add(calendar);
         topP.add(tableMitP, calendarMitP);
         bottomP.add(insertP, threeBtnP, buttonP);
-        insertP.add(employeesIDNF,  vornameTf, nachnameTf);
-        threeBtnP.add(feedbackCB, terminDF);
+        insertP.add(employeesIDNF,  vornameTf, nachnameTf, emailTF);
+        threeBtnP.add(feedbackCB, terminDF, freigabenCB);
         buttonP.add(savebtn, deletbtn, createbtn);
         employeesMitP.add(topP, bottomP);
 
@@ -181,6 +189,7 @@ public class EmployeesPan{
 
     public void create() { 
         query.create(genDataRow());
+        query.createAC(genDataRowForAccount());
         gridsetup();
     }
 
@@ -198,6 +207,23 @@ public class EmployeesPan{
             App.consoleLog("genDataRow ->" + e.getMessage());
         }
         return data;
+    }
+
+    public DataRow genDataRowForAccount() { 
+        DataRow dataAC = new DataRow();
+        try {
+            dataAC.setFieldValue("ID", "");
+            dataAC.setFieldValue("MitarbeiterID", "");
+            dataAC.setFieldValue("Vorname", vornameTf.getText());
+            dataAC.setFieldValue("Nachname", nachnameTf.getText());
+            dataAC.setFieldValue("Passwort", passwortGen());
+            dataAC.setFieldValue("Email", emailTF.getText());
+            dataAC.setFieldValue("Freigabe", freigabenCB.getText());
+            
+        } catch (ParseException e) {
+            App.consoleLog("genDataRow ->" + e.getMessage());
+        }
+        return dataAC;
     }
 
     public void deleteDataRow() {
@@ -269,6 +295,13 @@ public class EmployeesPan{
         return info;
     }
 
+    public String passwortGen(){
+        HashingClass hashing = new HashingClass();
+        byte[] salt = hashing.generateSalt16Byte();
+        String password = vornameTf.getText();
+        String encryptionKeyArgon2id = hashing.base64Encoding(hashing.generateArgon2id(password, salt));
+        return encryptionKeyArgon2id;
+    }
 
      public String getName(){
         DataRow data = grid.getSelectedRow();

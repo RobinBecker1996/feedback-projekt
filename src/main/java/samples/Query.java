@@ -19,11 +19,13 @@ public class Query {
             String sqlStatment = "";
             sqlStatment = "UPDATE mitarbeiter SET Vorname = ?, Nachname = ?, Feedback = ?, Termin = ?, Ziele = ?, Schwerpunkt = ? Where  MitarbeiterID = ?;";
             sing.pstmt = sing.con.prepareStatement(sqlStatment);
-            sing.pstmt.setDouble(7, data.getFieldAsNumber(colMitarbeiter[0]));
-
-            for (int i = 1; i < colMitarbeiter.length; i++){
-                sing.pstmt.setString(i, data.getFieldAsString(colMitarbeiter[i]));
-            } 
+            sing.pstmt.setDouble(7, data.getFieldAsNumber("MitarbeiterID")); 
+            sing.pstmt.setString(1, data.getFieldAsString("Vorname")); 
+            sing.pstmt.setString(2, data.getFieldAsString("Nachname")); 
+            sing.pstmt.setString(3, data.getFieldAsString("Feedback")); 
+            sing.pstmt.setString(4, data.getFieldAsString("Termin")); 
+            sing.pstmt.setString(5, data.getFieldAsString("Ziele")); 
+            sing.pstmt.setString(6, data.getFieldAsString("Schwerpunkt")); 
 
             sing.pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -35,23 +37,32 @@ public class Query {
 
     public void create(DataRow data) {
         try {
-            String sqlInsert = "";
-            sqlInsert = "INSERT INTO mitarbeiter (Vorname, Nachname, feedback)VALUES( ?, ?, ?)";
+            // String sqlInsert = "";
+            String sqlInsert = "INSERT INTO mitarbeiter (Vorname, Nachname, feedback)VALUES( ?, ?, ?)";
             sing.pstmt = sing.con.prepareStatement(sqlInsert);
-            // sing.pstmt.setDouble(1, data.getFieldAsNumber(colMitarbeiter[0]));
-            // int count = 1;
-            // for (int i = 1; i < 3; i++){
-                sing.pstmt.setString(1, data.getFieldAsString("Vorname"));
-                sing.pstmt.setString(2, data.getFieldAsString("Nachname"));
-                sing.pstmt.setString(3, data.getFieldAsString("Feedback"));
-                // count++;
-            // }
+            sing.pstmt.setString(1, data.getFieldAsString("Vorname"));
+            sing.pstmt.setString(2, data.getFieldAsString("Nachname"));
+            sing.pstmt.setString(3, data.getFieldAsString("Feedback"));
 
-            // for (int i = 1; i < colMitarbeiter.length; i++){
-            //     sing.pstmt.setString(count, data.getFieldAsString(colMitarbeiter[i]));
-            //     count++;
-            // }
-            
+          
+                
+            sing.pstmt.executeUpdate();
+        } catch (SQLException e) {
+            App.consoleLog("new Create -> "  + e.getMessage());
+            App.msgbox("Sie m\u00fcssen alle felder ausf\u00fcllen");
+        }
+    }
+
+       public void createAC(DataRow dataAC) {
+        try {
+            String sqlInsertAcount = "INSERT INTO account (Vorname, Nachname, Passwort, Email, Freigabe)VALUES(?, ?, ?, ?, ?)";         
+            sing.pstmt = sing.con.prepareStatement(sqlInsertAcount);
+            sing.pstmt.setString(1, dataAC.getFieldAsString("Vorname"));
+            sing.pstmt.setString(2, dataAC.getFieldAsString("Nachname"));
+            sing.pstmt.setString(3, dataAC.getFieldAsString("Passwort"));
+            sing.pstmt.setString(4, dataAC.getFieldAsString("Email"));
+            sing.pstmt.setString(5, dataAC.getFieldAsString("Freigabe"));
+                
             sing.pstmt.executeUpdate();
         } catch (SQLException e) {
             App.consoleLog("new Create -> "  + e.getMessage());
